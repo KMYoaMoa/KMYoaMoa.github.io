@@ -1,37 +1,23 @@
-## Welcome to GitHub Pages
+# 自由天堂网络共和国
+## ようこそ。
 
-You can use the [editor on GitHub](https://github.com/KMYoaMoa/KMYoaMoa.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+欢迎来到**自由天堂网络共和国**。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+自由天堂网络共和国于2020年8月5日成立，我国目前为建立初期，所有成员的任务是召集新成员。目标成立一个互帮互助交流学习资源的组织。终极目标是成立**世界第一**的网络共和国。
 
-### Markdown
+我们的QQ群：```549241805```
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+##  相关文字内容
 
-```markdown
-Syntax highlighted code block
+[《自由天堂网络共和国宪法修正案Ver.冰雪聪明》（现行有效）]()
 
-# Header 1
-## Header 2
-### Header 3
+## 大事记
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/KMYoaMoa/KMYoaMoa.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+20200805 自由天堂网络共和国成立
+20210525 颁布《自由天堂网络共和国宪法》
+20210621 颁布《自由天堂网络共和国宪法修正案》
+		 并在发布当天开始施行
+20210624 颁布《自由天堂网络共和国宪法修正案Ver.冰雪聪明》
+		 并在发布当天开始施行
+```
