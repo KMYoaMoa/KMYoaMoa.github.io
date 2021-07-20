@@ -23,4 +23,4 @@
 20210719 自由天堂网络共和国首都（即本站）成立
 ```
 
-[究极咸鱼党](https://kmyoamoa.github.io/usfparty/)
+[究极咸鱼党 | 友好邻邦鰝蠌蔕蔮](https://kmyoamoa.github.io/usfparty/)
