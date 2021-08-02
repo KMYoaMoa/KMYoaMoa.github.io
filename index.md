@@ -1,27 +1,13 @@
-# 自由天堂网络共和国
-## ようこそ。
+# Akatsuki's Home Page
+## ようこそ、枯野アカツキのホームページへ。
 
-欢迎来到**自由天堂网络共和国**。
-
-自由天堂网络共和国于2020年8月5日成立，我国目前为建立初期，所有成员的任务是召集新成员。目标成立一个互帮互助交流学习资源的组织。终极目标是成立**世界第一**的网络共和国。
-
-我们的QQ群：```549241805```
-
-##  相关文字内容
-
-[《自由天堂网络共和国宪法修正案Ver.冰雪聪明》（现行有效）](EffectiveConstitution.md)
-
-## 大事记
-
-```
-20200805 自由天堂网络共和国成立
-20210525 颁布《自由天堂网络共和国宪法》
-20210621 颁布《自由天堂网络共和国宪法修正案》
-		 并在发布当天开始施行
-20210624 颁布《自由天堂网络共和国宪法修正案Ver.冰雪聪明》
-		 并在发布当天开始施行
-20210719 自由天堂网络共和国首都（即本站）成立
-```
+| 動画 | 百度 | 文字 |
+| :-: | :-: | :--: |
+| [ビリビリ動画](https://www.bilibili.com/) | [搜尋](https://www.baidu.com/) | [洛谷](https://www.luogu.com.cn/) |
+| [AGE動画](https://www.agefans.cc/) | [翻譯](https://translate.baidu.com/) | [Github](https://github.com/) |
+| [KYIKAN動画](https://v.kyikan.com/index.php?m=vod-search) |    [地圖](https://map.baidu.com/)    |   [亂碼恢復](http://www.mytju.com/classcode/tools/messycoderecover.asp/)   |
 
 ## 传送门
-[究极咸鱼党 \| 友好邻邦鰝蠌蔕蔮](https://kmyoamoa.github.io/usfparty/)
+[究极咸鱼党 \| 鰝蠌蔕蔮](https://kmyoamoa.github.io/usfparty/)
+
+[自由天堂网络共和国](https://kmyoamoa.github.io/NRFP)
