@@ -1,0 +1,573 @@
+<!doctype html>
+
+
+
+<html lang="zh-CN" class="h-full scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Hexo " />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    
+
+
+
+    
+    
+<script data-cfasync="false">
+;(() => {
+    // Progressive enhancement marker (mobile nav CSS uses html.js before paint).
+    document.documentElement.classList.add('js');
+    const shiro = (window.__shiro = window.__shiro || {});
+    const defaultTheme = "dark";
+    shiro.themeDefault = defaultTheme;
+    
+    const states = defaultTheme === 'system' ? ['system', 'light', 'dark'] : ['light', 'dark'];
+    let saved;
+    try { saved = localStorage.getItem('theme'); } catch (_) {}
+    const state = saved && states.includes(saved) ? saved : defaultTheme;
+    const html = document.documentElement;
+    html.setAttribute('data-theme-state', state);
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    // Pagefind dark contract only when search is enabled.
+    const syncPagefindTheme = false;
+    shiro.searchEnabled = syncPagefindTheme;
+    // Single source for theme-toggle.js and system-follow listener.
+    const applyResolvedTheme = (dark) => {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        if (syncPagefindTheme) {
+            if (dark) html.setAttribute('data-pf-theme', 'dark');
+            else html.removeAttribute('data-pf-theme');
+        }
+        html.style.colorScheme = dark ? 'dark' : 'light';
+    };
+    shiro.applyResolvedTheme = applyResolvedTheme;
+    applyResolvedTheme(state === 'dark' || (state !== 'light' && darkQuery.matches));
+    if (defaultTheme === 'system') {
+        // Follow OS theme while in system mode even if the toggle script is absent.
+        const followSystem = () => {
+            if (html.getAttribute('data-theme-state') !== 'system') return;
+            applyResolvedTheme(darkQuery.matches);
+        };
+        if (darkQuery.addEventListener) darkQuery.addEventListener('change', followSystem);
+        else if (darkQuery.addListener) darkQuery.addListener(followSystem);
+    }
+    // Preloader skip: the session collection must contain this page's font-bundle URL.
+    const fontsReadyToken = "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700\u0026family=Yuji+Syuku\u0026family=Zen+Old+Mincho:wght@400;600\u0026family=Cormorant+Garamond:wght@400;600\u0026family=Noto+Serif+SC:wght@400;600\u0026display=swap";
+    shiro.fontsReadyToken = fontsReadyToken;
+    try {
+        const storedFontsReady = sessionStorage.getItem('shiro:fonts-ready');
+        const readyFontTokens = storedFontsReady === fontsReadyToken
+            ? [storedFontsReady]
+            : JSON.parse(storedFontsReady || '[]');
+        if (
+            fontsReadyToken
+            && Array.isArray(readyFontTokens)
+            && readyFontTokens.indexOf(fontsReadyToken) !== -1
+        ) {
+            html.classList.add('shiro-preloader-done');
+        }
+    } catch (_) {}
+})();
+</script>
+
+    
+
+    
+
+
+
+
+
+
+
+
+<title>Saas Module 03 | Akatsuki</title>
+
+
+<meta name="description" content="SaaS Application Architecture: Microservices, APIs and REST Web’s Client-Server Architecture Design Pattern Basics C/S is a type of Design Pattern : a reusable structure, behavior, strategym..." />
+
+
+<meta name="author" content="Akatsuki Kareno" />
+
+
+
+<meta property="og:title" content="Saas Module 03 | Akatsuki" />
+
+<meta property="og:description" content="SaaS Application Architecture: Microservices, APIs and REST Web’s Client-Server Architecture Design Pattern Basics C/S is a type of Design Pattern : a reusable structure, behavior, strategym..." />
+
+<meta property="og:url" content="https://kmyoamoa.github.io/2026/09/05/Saas-Module-03/index.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Akatsuki" />
+
+
+<meta property="og:locale" content="zh_CN" />
+
+
+
+
+<meta property="article:published_time" content="2026-09-05T20:20:00.000Z" />
+
+
+<meta property="article:modified_time" content="2026-09-16T22:28:48.531Z" />
+
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Saas Module 03 | Akatsuki" />
+
+<meta name="twitter:description" content="SaaS Application Architecture: Microservices, APIs and REST Web’s Client-Server Architecture Design Pattern Basics C/S is a type of Design Pattern : a reusable structure, behavior, strategym..." />
+
+
+
+<link rel="canonical" href="https://kmyoamoa.github.io/2026/09/05/Saas-Module-03/index.html" />
+
+
+
+
+
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"Saas Module 03","mainEntityOfPage":{"@type":"WebPage","@id":"https://kmyoamoa.github.io/2026/09/05/Saas-Module-03/"},"description":"SaaS Application Architecture: Microservices, APIs and REST Web’s Client-Server Architecture Design Pattern Basics C/S is a type of Design Pattern : a reusable structure, behavior, strategym...","datePublished":"2026-09-05T20:20:00.000Z","dateModified":"2026-09-16T22:28:48.531Z","author":{"@type":"Person","name":"Akatsuki Kareno"},"publisher":{"@type":"Organization","name":"Akatsuki","logo":{"@type":"ImageObject","url":"https://kmyoamoa.github.io/favicon.svg","width":112,"height":112}}}]</script>
+
+
+
+<link rel="icon" href="/favicon.svg" />
+
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Yuji+Syuku&family=Zen+Old+Mincho:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Noto+Serif+SC:wght@400;600&display=swap" />
+
+<link rel="stylesheet" href="/css/style.min.css?v=84edaf60">
+
+
+<link rel="stylesheet" href="/css/toc.min.css?v=d9987942">
+
+<script defer data-cfasync="false" src="/js/preloader.min.js?v=881cdc82"></script>
+
+</head>
+
+
+<body class="h-full fog-bg text-text-body">
+    <!-- Preloader: font CSS load + fonts.ready, or preloader.min.js deadline. -->
+    <div id="shiroPreloader" class="shiro-preloader" aria-hidden="true">
+        <div class="shiro-preloader-ripple" aria-hidden="true">
+            <span class="shiro-preloader-ring"></span>
+            <span class="shiro-preloader-ring"></span>
+        </div>
+    </div>
+    <a href="#main-content" class="shiro-skip-link">Skip to content</a>
+    
+    
+<svg width="0" height="0" class="absolute pointer-events-none" aria-hidden="true">
+    <defs>
+        <filter id="seal-roughness" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+        </filter>
+        <filter id="text-erosion">
+            <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="1" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" />
+        </filter>
+    </defs>
+</svg>
+
+    
+
+    
+    <div id="progressBar" class="progress-bar" aria-hidden="true"></div>
+    
+    
+    <div id="backToTopSentinel" class="back-to-top-sentinel" aria-hidden="true"></div>
+    
+
+    <div class="min-h-full px-4 pt-14 pb-6 md:pb-5">
+
+        <!-- Paper Card -->
+        <div
+            class="paper mx-auto w-full max-w-4xl rounded-xl px-5 sm:px-8 md:px-12 lg:px-14 pt-10 pb-6 md:pt-12 md:pb-8">
+
+            
+
+
+<header data-pagefind-ignore>
+
+    <div class="flex items-start justify-center">
+        <div class="text-center">
+            <div class="relative inline-block">
+                
+                <p class="site-title">
+                    <a href="/">Akatsuki</a>
+                </p>
+                
+                <!-- Seal: Mathematically Centered -->
+                
+                <div
+                    class="absolute left-full top-1/2 -translate-y-1/2 ml-1 sm:ml-4 origin-left scale-75 sm:scale-110">
+                    
+<svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M15,12 Q50,5 85,12 Q95,50 88,88 Q50,95 12,88 Q5,50 15,12 Z"
+        fill="var(--color-seal-fill)" filter="url(#seal-roughness)" opacity="0.92" />
+    <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
+        font-size="42" fill="var(--color-on-seal)" filter="url(#text-erosion)"
+        class="seal-text select-none">赤月</text>
+</svg>
+
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class="mt-3 sm:mt-4 flex items-center justify-center gap-2">
+                
+                
+                
+                <button id="themeToggle" type="button" class="focus-elegant header-pill-btn" aria-label="Dark" data-label-system="System" data-label-light="Light" data-label-dark="Dark" disabled>
+                    
+<svg data-icon="system" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="1.5"/>
+    <path d="M8 21h8M12 17v4" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="light" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="4" stroke-width="1.5"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="dark" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                </button>
+                
+                
+            </div>
+            
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+
+<nav class="mt-8 md:mt-10" aria-label="Menu" data-pagefind-ignore>
+    <!-- Mobile Toggle -->
+    <div class="flex items-center justify-center md:hidden">
+        
+        <button id="menuBtn" type="button"
+            class="focus-elegant inline-flex cursor-pointer items-center gap-2 rounded-full border border-border-strong bg-paper/95 px-4 py-2 text-sm text-text-body shadow-xs"
+            aria-expanded="false" aria-controls="mobileMenu" disabled>
+            <span class="text-base leading-none tracking-widest">Menu</span>
+            
+<svg class="size-4 text-text-chrome transition-transform duration-200" id="menuChevron"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+        </button>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:block">
+        <ul class="nav-desktop flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base text-text-body px-4">
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+
+    <!-- Mobile Menu Panel: open without JS; html.js collapses before paint until toggled. -->
+    <div id="mobileMenu" class="menu-panel md:hidden mt-4" data-open="false">
+        <ul
+            class="mx-auto max-w-sm max-h-menu overflow-y-auto rounded-2xl border border-border-strong bg-paper/95 shadow-xs">
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var menuPanel = document.getElementById('mobileMenu');
+        if (menuPanel) menuPanel.inert = true;
+    }
+    </script>
+</nav>
+
+
+
+            <!-- Main Content -->
+            <main id="main-content" class="section-divider" tabindex="-1">
+                
+
+
+
+
+
+
+
+
+<article class="py-2">
+    <header class="text-center mb-8">
+        
+        <h1 class="page-title mb-4" data-pagefind-body data-pagefind-meta="title">
+            Saas Module 03
+        </h1>
+        
+        
+
+
+
+
+
+
+
+
+<div class="mb-4 flex flex-wrap items-center justify-center gap-y-1 text-text-chrome gap-x-4 text-sm">
+    <div class="flex items-center gap-1.5">
+        
+<svg class="size-4 text-text-subtle shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+
+        <a href="/archives/2026/" class="oldstyle-nums link-chrome"><time datetime="2026-09-05">2026/09/05</time></a>
+    </div>
+    
+    
+</div>
+
+        
+    </header>
+
+    
+    
+<!-- Inline TOC (viewports below the `toc` breakpoint, where the fixed sidebar cannot fit beside the paper card).
+     html.js collapses the body before paint; toggle is disabled until toc.js binds. No-JS keeps body open. -->
+<nav id="tocInline" class="toc-inline toc:hidden mb-8" aria-label="Contents" data-pagefind-ignore>
+    <button type="button" class="toc-toggle" aria-expanded="false" aria-controls="tocInlineBody" disabled>
+        <span class="toc-toggle-title">Contents</span>
+        
+<svg class="toc-chevron size-4 text-text-chrome transition-transform duration-200"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+    </button>
+    <div class="toc-body" id="tocInlineBody" data-open="false"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#Web%E2%80%99s-Client-Server-Architecture" data-target="Web’s-Client-Server-Architecture">Web’s Client-Server Architecture</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Design-Pattern-Basics" data-target="Design-Pattern-Basics">Design Pattern Basics</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#C-S-Description" data-target="C-S-Description">C/S Description</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Alternative-for-Webapp-Peer-to-peer-architecture" data-target="Alternative-for-Webapp-Peer-to-peer-architecture">Alternative for Webapp: Peer-to-peer architecture</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#The-history-of-web" data-target="The-history-of-web">The history of web</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary" data-target="Summary">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#HTTP-Routes-SaaS-Communication" data-target="HTTP-Routes-SaaS-Communication">HTTP Routes: SaaS Communication</a></li></ul></div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var tocBody = document.getElementById('tocInlineBody');
+        if (tocBody) tocBody.inert = true;
+    }
+    </script>
+</nav>
+
+<!-- Sidebar TOC (`toc` breakpoint and up; see --breakpoint-toc in source/css/_core/tokens.css) -->
+<nav id="tocSidebar" class="toc-sidebar hidden toc:block" aria-label="Contents" data-pagefind-ignore>
+    <div class="toc-sidebar-inner">
+        <p class="toc-sidebar-title">Contents</p>
+        <div class="toc-body"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#Web%E2%80%99s-Client-Server-Architecture" data-target="Web’s-Client-Server-Architecture">Web’s Client-Server Architecture</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Design-Pattern-Basics" data-target="Design-Pattern-Basics">Design Pattern Basics</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#C-S-Description" data-target="C-S-Description">C/S Description</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Alternative-for-Webapp-Peer-to-peer-architecture" data-target="Alternative-for-Webapp-Peer-to-peer-architecture">Alternative for Webapp: Peer-to-peer architecture</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#The-history-of-web" data-target="The-history-of-web">The history of web</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary" data-target="Summary">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#HTTP-Routes-SaaS-Communication" data-target="HTTP-Routes-SaaS-Communication">HTTP Routes: SaaS Communication</a></li></ul></div>
+    </div>
+</nav>
+
+    
+
+    <div class="prose-shiro" data-pagefind-body>
+        <h1 id="SaaS-Application-Architecture-Microservices-APIs-and-REST"><a href="#SaaS-Application-Architecture-Microservices-APIs-and-REST" class="headerlink" title="SaaS Application Architecture: Microservices, APIs and REST"></a>SaaS Application Architecture: Microservices, APIs and REST</h1><h2 id="Web’s-Client-Server-Architecture"><a href="#Web’s-Client-Server-Architecture" class="headerlink" title="Web’s Client-Server Architecture"></a>Web’s Client-Server Architecture</h2><h3 id="Design-Pattern-Basics"><a href="#Design-Pattern-Basics" class="headerlink" title="Design Pattern Basics"></a>Design Pattern Basics</h3><p><strong>C&#x2F;S</strong> is a type of <strong>Design Pattern</strong>:</p>
+<ul>
+<li>a reusable structure, behavior, strategym technique</li>
+<li>captures a proven solution to a collection of similar problems</li>
+<li>by separating the things that change from those that stay the same.</li>
+</ul>
+<h3 id="C-S-Description"><a href="#C-S-Description" class="headerlink" title="C&#x2F;S Description"></a>C&#x2F;S Description</h3><p>SaaS ased on web protocals is widely deployed as C&#x2F;S Architecture</p>
+<ul>
+<li>SaaS Client<ul>
+<li>Make one or more <strong>request</strong> to SaaS Server</li>
+<li>Ask server for information, allow user to interact with the information </li>
+<li>Mobile app, Browser, etc. </li>
+<li>Clients on different platforms can access to the same server.</li>
+</ul>
+</li>
+<li>SaaS Server<ul>
+<li><strong>Efficiently</strong> serving large numbers of clients <strong>simultaneously</strong></li>
+<li>Typically a collection o computers running multiple different software components.</li>
+<li>The way for deployment depends on hosting environment and the user scale.</li>
+<li>Users are unaware of server’s deployment topology.</li>
+</ul>
+</li>
+</ul>
+<p>Motivation For dinstinguishing C&#x2F;S:</p>
+<ul>
+<li>allow different type of programs to be specialized to its task.</li>
+</ul>
+<h3 id="Alternative-for-Webapp-Peer-to-peer-architecture"><a href="#Alternative-for-Webapp-Peer-to-peer-architecture" class="headerlink" title="Alternative for Webapp: Peer-to-peer architecture"></a>Alternative for Webapp: Peer-to-peer architecture</h3><p>BitTorrent: Every participant is both client and server, participant ask information from each other.</p>
+<p>Harder to specialize the program to do either job well. But it is useful when the client machines are much cheaper than server machines.</p>
+<p>However, since today’s mobile devices are becoming more and more powerful, the C and S are both very complex, but in different ways.</p>
+<h3 id="The-history-of-web"><a href="#The-history-of-web" class="headerlink" title="The history of web"></a>The history of web</h3><p>1960: Sabre, Airline reservation system</p>
+<ul>
+<li>Custom FM-based protocal, over leased tel lines</li>
+</ul>
+<p>1971: FTP, File Transfer Protocol</p>
+<ul>
+<li>ASCII-based FTP protocal over TCP&#x2F;IP</li>
+</ul>
+<p>1983: Novell NetWare, allow PCs to share files on a server</p>
+<ul>
+<li>Custom protocals, PC compatible</li>
+</ul>
+<p>1984: POP, Post Office Protocal, allow separation of email clients from servers</p>
+<ul>
+<li>ASCII-based POP protocal over TCP&#x2F;IP</li>
+<li>largely superseded by IMAP</li>
+</ul>
+<p>1990: World Wide Web</p>
+<ul>
+<li>ASCII-based HTTP (Hyper-Text Transfer Protocol) over TCP&#x2F;IP</li>
+</ul>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>SaaS webapps are examples of client-server architectural pattern.</p>
+<p>This is built upon the fundamentally client-server architecture of the Web.</p>
+<p>Webapps use <strong>open standards</strong>, so that anyone can implement royalty-free, compared to some older client-server standards.</p>
+<p>p2p (peer to peer) is an alternative, all entities act as both clients and servers.</p>
+<p>The primary difference between the clients and servers:</p>
+<ul>
+<li>client is optimized for user to interact with information</li>
+<li>server is optimized for serving many clients simultaneously.</li>
+</ul>
+<h2 id="HTTP-Routes-SaaS-Communication"><a href="#HTTP-Routes-SaaS-Communication" class="headerlink" title="HTTP Routes: SaaS Communication"></a>HTTP Routes: SaaS Communication</h2><p><strong>Network Protocol</strong>: A set of communication rules on which agents participating in a network agree.</p>
+<p><strong>TCP&#x2F;IP</strong> (Transmission Control Protocal)</p>
+<ul>
+<li>also called Internet Protocal</li>
+<li>Fundamental protocal linking all computers on Internet.</li>
+<li>Allows:<ul>
+<li><strong>a pair</strong> of agents</li>
+<li>to exchange <strong>ordered</strong> sequnces of bytes</li>
+<li>in both directions</li>
+<li>simultaneuously</li>
+</ul>
+</li>
+<li>This is called <strong>Full Duplex</strong></li>
+</ul>
+
+    </div>
+
+    <!-- Tags -->
+    
+
+    
+    <!-- Post Navigation: Hexo's page.prev = newer post, page.next = older post -->
+    <nav class="section-divider flex justify-between items-center text-sm md:text-base" aria-label="Post navigation">
+        
+        <a href="/2026/09/17/Belief-Identity-Politics-and-Internet/" class="post-nav-link group text-left" title="Belief, Identity Politcs and Internet" aria-label="Newer post: Belief, Identity Politcs and Internet">
+             <span aria-hidden="true">&larr;</span>
+             <span class="post-nav-title">Belief, Identity Politcs and Internet</span>
+        </a>
+        
+
+        
+        <a href="/2026/08/29/Saas-Module-02/" class="post-nav-link group text-right" title="Saas Module 02" aria-label="Older post: Saas Module 02">
+            <span class="post-nav-title">Saas Module 02</span>
+            <span aria-hidden="true">&rarr;</span>
+        </a>
+        
+    </nav>
+
+
+    
+    
+</article>
+
+
+            </main>
+
+            <footer class="section-divider site-footer" data-pagefind-ignore>
+    <div class="site-footer-meta text-center text-sm text-text-chrome leading-relaxed">
+        <p>&copy; <span class="oldstyle-nums">2026</span> Akatsuki</p>
+        <p class="font-eng text-footnote tracking-wide opacity-90">Elegant theme by <a href="https://github.com/Acris/hexo-theme-shiro" target="_blank" rel="noopener noreferrer" class="link-chrome">Shiro</a> · Made by <a href="https://acris.me" target="_blank" rel="noopener noreferrer" class="link-chrome">Acris</a>
+                        with <span aria-label="love" title="love">❤️</span></p>
+    </div>
+</footer>
+
+        </div>
+
+        <!-- Note Text — decorative aside, not part of main content or footer -->
+        <aside class="mt-4 text-center" aria-hidden="true" role="presentation">
+            <p class="site-note font-title text-xs sm:text-sm text-text-subtle/70 tracking-note select-none" lang="ja">
+                白は、余白の名。
+            </p>
+        </aside>
+    </div>
+
+    
+    <button id="backToTop" type="button" class="back-to-top" data-visible="false" aria-label="Back to Top" hidden>
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+    
+    
+
+    <!-- Scripts -->
+    
+    
+    
+    <script defer src="/js/toc.min.js?v=3e0cca47"></script>
+    
+    <script defer src="/js/progress.min.js?v=d01e3a23"></script>
+    
+    <script defer src="/js/back-to-top.min.js?v=ff36a748"></script>
+    
+    <script defer src="/js/theme-toggle.min.js?v=04b6578e"></script>
+    
+    <script defer src="/js/mobile-menu.min.js?v=40df95a6"></script>
+    
+    
+
+    
+
+</body>
+</html>

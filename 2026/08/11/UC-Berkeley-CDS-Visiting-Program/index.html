@@ -1,0 +1,653 @@
+<!doctype html>
+
+
+
+<html lang="zh-CN" class="h-full scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Hexo " />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    
+
+
+
+    
+    
+<script data-cfasync="false">
+;(() => {
+    // Progressive enhancement marker (mobile nav CSS uses html.js before paint).
+    document.documentElement.classList.add('js');
+    const shiro = (window.__shiro = window.__shiro || {});
+    const defaultTheme = "dark";
+    shiro.themeDefault = defaultTheme;
+    
+    const states = defaultTheme === 'system' ? ['system', 'light', 'dark'] : ['light', 'dark'];
+    let saved;
+    try { saved = localStorage.getItem('theme'); } catch (_) {}
+    const state = saved && states.includes(saved) ? saved : defaultTheme;
+    const html = document.documentElement;
+    html.setAttribute('data-theme-state', state);
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    // Pagefind dark contract only when search is enabled.
+    const syncPagefindTheme = false;
+    shiro.searchEnabled = syncPagefindTheme;
+    // Single source for theme-toggle.js and system-follow listener.
+    const applyResolvedTheme = (dark) => {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        if (syncPagefindTheme) {
+            if (dark) html.setAttribute('data-pf-theme', 'dark');
+            else html.removeAttribute('data-pf-theme');
+        }
+        html.style.colorScheme = dark ? 'dark' : 'light';
+    };
+    shiro.applyResolvedTheme = applyResolvedTheme;
+    applyResolvedTheme(state === 'dark' || (state !== 'light' && darkQuery.matches));
+    if (defaultTheme === 'system') {
+        // Follow OS theme while in system mode even if the toggle script is absent.
+        const followSystem = () => {
+            if (html.getAttribute('data-theme-state') !== 'system') return;
+            applyResolvedTheme(darkQuery.matches);
+        };
+        if (darkQuery.addEventListener) darkQuery.addEventListener('change', followSystem);
+        else if (darkQuery.addListener) darkQuery.addListener(followSystem);
+    }
+    // Preloader skip: the session collection must contain this page's font-bundle URL.
+    const fontsReadyToken = "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700\u0026family=Yuji+Syuku\u0026family=Zen+Old+Mincho:wght@400;600\u0026family=Cormorant+Garamond:wght@400;600\u0026family=Noto+Serif+SC:wght@400;600\u0026display=swap";
+    shiro.fontsReadyToken = fontsReadyToken;
+    try {
+        const storedFontsReady = sessionStorage.getItem('shiro:fonts-ready');
+        const readyFontTokens = storedFontsReady === fontsReadyToken
+            ? [storedFontsReady]
+            : JSON.parse(storedFontsReady || '[]');
+        if (
+            fontsReadyToken
+            && Array.isArray(readyFontTokens)
+            && readyFontTokens.indexOf(fontsReadyToken) !== -1
+        ) {
+            html.classList.add('shiro-preloader-done');
+        }
+    } catch (_) {}
+})();
+</script>
+
+    
+
+    
+
+
+
+
+
+
+
+
+<title>UC Berkeley CDS Visiting Program | Akatsuki</title>
+
+
+<meta name="description" content="这篇 post 是我在 UC Berkeley 的 Computing and Data Science (CDS) 项目的 26 Fall 学期交流记录。内容将会包含从前期准备、签证申请到整个交流过程等等。既是作为个人的记录，也希望能够作为攻略帮到有需要的同学。 直到我的交流行程全部结束，这篇文章将会持续更新。行前准备部分原本用英文撰写，之后翻译成中文，所以读起来有点奇怪。 学校、项目介绍..." />
+
+
+<meta name="author" content="Akatsuki Kareno" />
+
+
+
+<meta property="og:title" content="UC Berkeley CDS Visiting Program | Akatsuki" />
+
+<meta property="og:description" content="这篇 post 是我在 UC Berkeley 的 Computing and Data Science (CDS) 项目的 26 Fall 学期交流记录。内容将会包含从前期准备、签证申请到整个交流过程等等。既是作为个人的记录，也希望能够作为攻略帮到有需要的同学。 直到我的交流行程全部结束，这篇文章将会持续更新。行前准备部分原本用英文撰写，之后翻译成中文，所以读起来有点奇怪。 学校、项目介绍..." />
+
+<meta property="og:url" content="https://kmyoamoa.github.io/2026/08/11/UC-Berkeley-CDS-Visiting-Program/index.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Akatsuki" />
+
+
+<meta property="og:locale" content="zh_CN" />
+
+
+
+
+<meta property="article:published_time" content="2026-08-11T21:52:59.000Z" />
+
+
+<meta property="article:modified_time" content="2026-09-19T10:11:51.328Z" />
+
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="UC Berkeley CDS Visiting Program | Akatsuki" />
+
+<meta name="twitter:description" content="这篇 post 是我在 UC Berkeley 的 Computing and Data Science (CDS) 项目的 26 Fall 学期交流记录。内容将会包含从前期准备、签证申请到整个交流过程等等。既是作为个人的记录，也希望能够作为攻略帮到有需要的同学。 直到我的交流行程全部结束，这篇文章将会持续更新。行前准备部分原本用英文撰写，之后翻译成中文，所以读起来有点奇怪。 学校、项目介绍..." />
+
+
+
+<link rel="canonical" href="https://kmyoamoa.github.io/2026/08/11/UC-Berkeley-CDS-Visiting-Program/index.html" />
+
+
+
+
+
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"UC Berkeley CDS Visiting Program","mainEntityOfPage":{"@type":"WebPage","@id":"https://kmyoamoa.github.io/2026/08/11/UC-Berkeley-CDS-Visiting-Program/"},"description":"这篇 post 是我在 UC Berkeley 的 Computing and Data Science (CDS) 项目的 26 Fall 学期交流记录。内容将会包含从前期准备、签证申请到整个交流过程等等。既是作为个人的记录，也希望能够作为攻略帮到有需要的同学。 直到我的交流行程全部结束，这篇文章将会持续更新。行前准备部分原本用英文撰写，之后翻译成中文，所以读起来有点奇怪。 学校、项目介绍...","datePublished":"2026-08-11T21:52:59.000Z","dateModified":"2026-09-19T10:11:51.328Z","author":{"@type":"Person","name":"Akatsuki Kareno"},"publisher":{"@type":"Organization","name":"Akatsuki","logo":{"@type":"ImageObject","url":"https://kmyoamoa.github.io/favicon.svg","width":112,"height":112}}}]</script>
+
+
+
+<link rel="icon" href="/favicon.svg" />
+
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Yuji+Syuku&family=Zen+Old+Mincho:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Noto+Serif+SC:wght@400;600&display=swap" />
+
+<link rel="stylesheet" href="/css/style.min.css?v=84edaf60">
+
+
+<link rel="stylesheet" href="/css/toc.min.css?v=d9987942">
+
+<script defer data-cfasync="false" src="/js/preloader.min.js?v=881cdc82"></script>
+
+</head>
+
+
+<body class="h-full fog-bg text-text-body">
+    <!-- Preloader: font CSS load + fonts.ready, or preloader.min.js deadline. -->
+    <div id="shiroPreloader" class="shiro-preloader" aria-hidden="true">
+        <div class="shiro-preloader-ripple" aria-hidden="true">
+            <span class="shiro-preloader-ring"></span>
+            <span class="shiro-preloader-ring"></span>
+        </div>
+    </div>
+    <a href="#main-content" class="shiro-skip-link">Skip to content</a>
+    
+    
+<svg width="0" height="0" class="absolute pointer-events-none" aria-hidden="true">
+    <defs>
+        <filter id="seal-roughness" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+        </filter>
+        <filter id="text-erosion">
+            <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="1" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" />
+        </filter>
+    </defs>
+</svg>
+
+    
+
+    
+    <div id="progressBar" class="progress-bar" aria-hidden="true"></div>
+    
+    
+    <div id="backToTopSentinel" class="back-to-top-sentinel" aria-hidden="true"></div>
+    
+
+    <div class="min-h-full px-4 pt-14 pb-6 md:pb-5">
+
+        <!-- Paper Card -->
+        <div
+            class="paper mx-auto w-full max-w-4xl rounded-xl px-5 sm:px-8 md:px-12 lg:px-14 pt-10 pb-6 md:pt-12 md:pb-8">
+
+            
+
+
+<header data-pagefind-ignore>
+
+    <div class="flex items-start justify-center">
+        <div class="text-center">
+            <div class="relative inline-block">
+                
+                <p class="site-title">
+                    <a href="/">Akatsuki</a>
+                </p>
+                
+                <!-- Seal: Mathematically Centered -->
+                
+                <div
+                    class="absolute left-full top-1/2 -translate-y-1/2 ml-1 sm:ml-4 origin-left scale-75 sm:scale-110">
+                    
+<svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M15,12 Q50,5 85,12 Q95,50 88,88 Q50,95 12,88 Q5,50 15,12 Z"
+        fill="var(--color-seal-fill)" filter="url(#seal-roughness)" opacity="0.92" />
+    <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
+        font-size="42" fill="var(--color-on-seal)" filter="url(#text-erosion)"
+        class="seal-text select-none">赤月</text>
+</svg>
+
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class="mt-3 sm:mt-4 flex items-center justify-center gap-2">
+                
+                
+                
+                <button id="themeToggle" type="button" class="focus-elegant header-pill-btn" aria-label="Dark" data-label-system="System" data-label-light="Light" data-label-dark="Dark" disabled>
+                    
+<svg data-icon="system" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="1.5"/>
+    <path d="M8 21h8M12 17v4" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="light" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="4" stroke-width="1.5"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="dark" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                </button>
+                
+                
+            </div>
+            
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+
+<nav class="mt-8 md:mt-10" aria-label="Menu" data-pagefind-ignore>
+    <!-- Mobile Toggle -->
+    <div class="flex items-center justify-center md:hidden">
+        
+        <button id="menuBtn" type="button"
+            class="focus-elegant inline-flex cursor-pointer items-center gap-2 rounded-full border border-border-strong bg-paper/95 px-4 py-2 text-sm text-text-body shadow-xs"
+            aria-expanded="false" aria-controls="mobileMenu" disabled>
+            <span class="text-base leading-none tracking-widest">Menu</span>
+            
+<svg class="size-4 text-text-chrome transition-transform duration-200" id="menuChevron"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+        </button>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:block">
+        <ul class="nav-desktop flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base text-text-body px-4">
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+
+    <!-- Mobile Menu Panel: open without JS; html.js collapses before paint until toggled. -->
+    <div id="mobileMenu" class="menu-panel md:hidden mt-4" data-open="false">
+        <ul
+            class="mx-auto max-w-sm max-h-menu overflow-y-auto rounded-2xl border border-border-strong bg-paper/95 shadow-xs">
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var menuPanel = document.getElementById('mobileMenu');
+        if (menuPanel) menuPanel.inert = true;
+    }
+    </script>
+</nav>
+
+
+
+            <!-- Main Content -->
+            <main id="main-content" class="section-divider" tabindex="-1">
+                
+
+
+
+
+
+
+
+
+<article class="py-2">
+    <header class="text-center mb-8">
+        
+        <h1 class="page-title mb-4" data-pagefind-body data-pagefind-meta="title">
+            UC Berkeley CDS Visiting Program
+        </h1>
+        
+        
+
+
+
+
+
+
+
+
+<div class="mb-4 flex flex-wrap items-center justify-center gap-y-1 text-text-chrome gap-x-4 text-sm">
+    <div class="flex items-center gap-1.5">
+        
+<svg class="size-4 text-text-subtle shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+
+        <a href="/archives/2026/" class="oldstyle-nums link-chrome"><time datetime="2026-08-11">2026/08/11</time></a>
+    </div>
+    
+    
+</div>
+
+        
+    </header>
+
+    
+    
+<!-- Inline TOC (viewports below the `toc` breakpoint, where the fixed sidebar cannot fit beside the paper card).
+     html.js collapses the body before paint; toggle is disabled until toc.js binds. No-JS keeps body open. -->
+<nav id="tocInline" class="toc-inline toc:hidden mb-8" aria-label="Contents" data-pagefind-ignore>
+    <button type="button" class="toc-toggle" aria-expanded="false" aria-controls="tocInlineBody" disabled>
+        <span class="toc-toggle-title">Contents</span>
+        
+<svg class="toc-chevron size-4 text-text-chrome transition-transform duration-200"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+    </button>
+    <div class="toc-body" id="tocInlineBody" data-open="false"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#%E5%AD%A6%E6%A0%A1%E3%80%81%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D" data-target="学校、项目介绍">学校、项目介绍</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7" data-target="申请">申请</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%BE%97%E5%88%B0-OAL-%E6%8F%90%E5%90%8D" data-target="第一步：得到-OAL-提名">第一步：得到 OAL 提名</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E8%A2%AB-UCB-%E7%9A%84-CDS-Global-%E9%A1%B9%E7%9B%AE%E5%BD%95%E5%8F%96" data-target="第二步：被-UCB-的-CDS-Global-项目录取">第二步：被 UCB 的 CDS Global 项目录取</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%8E%B7%E5%8F%96-I-20" data-target="第三步：获取-I-20">第三步：获取 I-20</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7%E7%BE%8E%E5%9B%BD%E7%AD%BE%E8%AF%81" data-target="申请美国签证">申请美国签证</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9ADS-160-Form" data-target="第一步：DS-160-Form">第一步：DS-160 Form</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E4%BA%A4-SEVIS-Fee" data-target="第二步：交-SEVIS-Fee">第二步：交 SEVIS Fee</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E9%A2%84%E7%BA%A6%E9%9D%A2%E7%AD%BE" data-target="第三步：预约面签">第三步：预约面签</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%9D%A2%E7%AD%BE%E4%B8%8E%E8%8E%B7%E5%BE%97%E7%AD%BE%E8%AF%81" data-target="面签与获得签证">面签与获得签证</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%87%86%E5%A4%87%E6%96%87%E4%BB%B6" data-target="第一步：准备文件">第一步：准备文件</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E9%9D%A2%E8%AF%95" data-target="第二步：面试">第二步：面试</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%AD%89%E5%BE%85%E5%87%BA%E7%AD%BE" data-target="第三步：等待出签">第三步：等待出签</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E6%8B%BF%E5%9B%9E%E4%BD%A0%E7%9A%84%E6%8A%A4%E7%85%A7" data-target="第四步：拿回你的护照">第四步：拿回你的护照</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E4%BD%8F%E5%AE%BF" data-target="计划住宿">计划住宿</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E6%9C%BA%E7%A5%A8%E4%B8%8E%E9%A3%9E%E8%A1%8C" data-target="机票与飞行">机票与飞行</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E8%A1%8C%E5%89%8D%E5%87%86%E5%A4%87" data-target="一些需要注意的行前准备">一些需要注意的行前准备</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E4%B8%8E%E6%89%8B%E6%9C%BA%E5%8D%A1" data-target="手机与手机卡">手机与手机卡</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E4%BF%A1%E7%94%A8%E5%8D%A1%E4%B8%8E%E9%93%B6%E8%A1%8C%E5%8D%A1" data-target="信用卡与银行卡">信用卡与银行卡</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E5%85%A5%E5%A2%83" data-target="入境">入境</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E4%BB%8E%E6%97%A7%E9%87%91%E5%B1%B1%E5%88%B0%E4%BC%AF%E5%85%8B%E5%88%A9" data-target="从旧金山到伯克利">从旧金山到伯克利</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E6%97%B6%E5%B7%AE" data-target="时差">时差</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E8%A1%A3%E9%A3%9F%E4%BD%8F%E8%A1%8C" data-target="衣食住行">衣食住行</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%A9%BF%E4%BB%80%E4%B9%88" data-target="穿什么">穿什么</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E5%90%83%E4%BB%80%E4%B9%88" data-target="吃什么">吃什么</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E4%BD%8F%E5%AE%BF%E7%94%A8%E5%93%81" data-target="住宿用品">住宿用品</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E5%87%BA%E8%A1%8C" data-target="出行">出行</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E5%AD%A6%E6%A0%A1%E5%9F%BA%E6%9C%AC%E6%83%85%E5%86%B5%E4%BB%8B%E7%BB%8D" data-target="学校基本情况介绍">学校基本情况介绍</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E5%9C%B0%E5%BD%A2" data-target="地形">地形</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E9%80%89%E8%AF%BE" data-target="选课">选课</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E4%B8%8A%E8%AF%BE" data-target="上课">上课</a></li></ul></li></ul></div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var tocBody = document.getElementById('tocInlineBody');
+        if (tocBody) tocBody.inert = true;
+    }
+    </script>
+</nav>
+
+<!-- Sidebar TOC (`toc` breakpoint and up; see --breakpoint-toc in source/css/_core/tokens.css) -->
+<nav id="tocSidebar" class="toc-sidebar hidden toc:block" aria-label="Contents" data-pagefind-ignore>
+    <div class="toc-sidebar-inner">
+        <p class="toc-sidebar-title">Contents</p>
+        <div class="toc-body"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#%E5%AD%A6%E6%A0%A1%E3%80%81%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D" data-target="学校、项目介绍">学校、项目介绍</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7" data-target="申请">申请</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%BE%97%E5%88%B0-OAL-%E6%8F%90%E5%90%8D" data-target="第一步：得到-OAL-提名">第一步：得到 OAL 提名</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E8%A2%AB-UCB-%E7%9A%84-CDS-Global-%E9%A1%B9%E7%9B%AE%E5%BD%95%E5%8F%96" data-target="第二步：被-UCB-的-CDS-Global-项目录取">第二步：被 UCB 的 CDS Global 项目录取</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%8E%B7%E5%8F%96-I-20" data-target="第三步：获取-I-20">第三步：获取 I-20</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7%E7%BE%8E%E5%9B%BD%E7%AD%BE%E8%AF%81" data-target="申请美国签证">申请美国签证</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9ADS-160-Form" data-target="第一步：DS-160-Form">第一步：DS-160 Form</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E4%BA%A4-SEVIS-Fee" data-target="第二步：交-SEVIS-Fee">第二步：交 SEVIS Fee</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E9%A2%84%E7%BA%A6%E9%9D%A2%E7%AD%BE" data-target="第三步：预约面签">第三步：预约面签</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E9%9D%A2%E7%AD%BE%E4%B8%8E%E8%8E%B7%E5%BE%97%E7%AD%BE%E8%AF%81" data-target="面签与获得签证">面签与获得签证</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%87%86%E5%A4%87%E6%96%87%E4%BB%B6" data-target="第一步：准备文件">第一步：准备文件</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E9%9D%A2%E8%AF%95" data-target="第二步：面试">第二步：面试</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%AD%89%E5%BE%85%E5%87%BA%E7%AD%BE" data-target="第三步：等待出签">第三步：等待出签</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E6%8B%BF%E5%9B%9E%E4%BD%A0%E7%9A%84%E6%8A%A4%E7%85%A7" data-target="第四步：拿回你的护照">第四步：拿回你的护照</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E4%BD%8F%E5%AE%BF" data-target="计划住宿">计划住宿</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E6%9C%BA%E7%A5%A8%E4%B8%8E%E9%A3%9E%E8%A1%8C" data-target="机票与飞行">机票与飞行</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E8%A1%8C%E5%89%8D%E5%87%86%E5%A4%87" data-target="一些需要注意的行前准备">一些需要注意的行前准备</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E4%B8%8E%E6%89%8B%E6%9C%BA%E5%8D%A1" data-target="手机与手机卡">手机与手机卡</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E4%BF%A1%E7%94%A8%E5%8D%A1%E4%B8%8E%E9%93%B6%E8%A1%8C%E5%8D%A1" data-target="信用卡与银行卡">信用卡与银行卡</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E5%85%A5%E5%A2%83" data-target="入境">入境</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E4%BB%8E%E6%97%A7%E9%87%91%E5%B1%B1%E5%88%B0%E4%BC%AF%E5%85%8B%E5%88%A9" data-target="从旧金山到伯克利">从旧金山到伯克利</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E6%97%B6%E5%B7%AE" data-target="时差">时差</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E8%A1%A3%E9%A3%9F%E4%BD%8F%E8%A1%8C" data-target="衣食住行">衣食住行</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E7%A9%BF%E4%BB%80%E4%B9%88" data-target="穿什么">穿什么</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E5%90%83%E4%BB%80%E4%B9%88" data-target="吃什么">吃什么</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E4%BD%8F%E5%AE%BF%E7%94%A8%E5%93%81" data-target="住宿用品">住宿用品</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E5%87%BA%E8%A1%8C" data-target="出行">出行</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#%E5%AD%A6%E6%A0%A1%E5%9F%BA%E6%9C%AC%E6%83%85%E5%86%B5%E4%BB%8B%E7%BB%8D" data-target="学校基本情况介绍">学校基本情况介绍</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#%E5%9C%B0%E5%BD%A2" data-target="地形">地形</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E9%80%89%E8%AF%BE" data-target="选课">选课</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#%E4%B8%8A%E8%AF%BE" data-target="上课">上课</a></li></ul></li></ul></div>
+    </div>
+</nav>
+
+    
+
+    <div class="prose-shiro" data-pagefind-body>
+        <p>这篇 post 是我在 UC Berkeley 的 Computing and Data Science (CDS) 项目的 26 Fall 学期交流记录。内容将会包含从前期准备、签证申请到整个交流过程等等。既是作为个人的记录，也希望能够作为攻略帮到有需要的同学。</p>
+<p>直到我的交流行程全部结束，这篇文章将会持续更新。行前准备部分原本用英文撰写，之后翻译成中文，所以读起来有点奇怪。</p>
+<hr>
+<h2 id="学校、项目介绍"><a href="#学校、项目介绍" class="headerlink" title="学校、项目介绍"></a>学校、项目介绍</h2><p>首先，UCB 在计算机专业方向有着十分丰富的资源和经验。今年更是成立了专门的 CDSS 新学院，并且有了一栋新的 Gateway 教学楼。而这个 CDS Global 项目就是 CDSS 学院和其他学院联合设立的。所以可以说，来 UCB 交换是一个很好的机会。</p>
+<p>其次，尼龙申请这个项目没有任何的 Position 限制。很多其他的交流交换项目都只有一两个位置，这个项目基本上是 GPA 符合项目就能被提名。还有一个好处就是，如果提名之后不想参加了，Withdraw 这种不设限制的项目完全不会影响其他项目的申请，而如果要退出有席位限制的项目，就没法申请其他的项目了。</p>
+<p>也正因如此，申请这个项目的人是比较多的，我们 26 Fall 总共有三十多个人一起去 UCB，所以基本上不会出现孤身一人的情况。而且即便尼龙参加的人少，也能遇到很多别的中国交换生。</p>
+<p>最后：不需要雅思&#x2F;托福成绩就可以申请。在得到提名之后，学校就会给你发一份 English Proficiency Certification 的 pdf 文件。所以你甚至可以在交换期间备考雅思，假设你足够外向（而不是像我一样超级社恐），锻炼英语口语的机会还是很充足的。</p>
+<p>不过需要注意的是，不像 UCB 的其他项目可能允许你选择 12 以上学分的课（三门课以上），我们 CDS 只允许选 11-12 学分：</p>
+<ul>
+<li>一门核心课程</li>
+<li>一门高年级专业选修</li>
+<li>一门任意课程</li>
+</ul>
+<p>所以需要考虑学分够不够用的问题。选课的情况和流程会在之后详细介绍。</p>
+<h2 id="申请"><a href="#申请" class="headerlink" title="申请"></a>申请</h2><p>申请的流程谈不上复杂，但也算不上简单。但是各种 pdf 文件的整理和保存，最好从这一步就开始做了。在申请阶段，会产生的重要文件是：</p>
+<ul>
+<li>英语能力证明</li>
+<li>UCB 的 Admission Letter</li>
+<li>存款证明和银行对账单</li>
+<li>Form I-20：这张表格可以被认为是你在美国的身份证。如果没有 I-20 或者状态失效，那你就是非法居留了。</li>
+</ul>
+<p>这三个文件的 pdf 版本需要下载下来并保存好，因为之后会在从签证申请、租房等各种地方用到。如果好好整理，不仅能够使得思路清晰，而且也能够提升效率。</p>
+<h3 id="第一步：得到-OAL-提名"><a href="#第一步：得到-OAL-提名" class="headerlink" title="第一步：得到 OAL 提名"></a>第一步：得到 OAL 提名</h3><p>这一步比较简单，只要下定决心报名了，那就跟着邮件的指引，在 OAL 的系统中申请项目，等待提名即可。提名之后，就像之前提到的那样，把英语能力的证明下载下来，保存到专门的地方即可。</p>
+<h3 id="第二步：被-UCB-的-CDS-Global-项目录取"><a href="#第二步：被-UCB-的-CDS-Global-项目录取" class="headerlink" title="第二步：被 UCB 的 CDS Global 项目录取"></a>第二步：被 UCB 的 CDS Global 项目录取</h3><p>在得到提名之后，学校并不会帮你联系 UCB ，你需要自己手动访问 UCB CDS Global 的官方网站，注册帐号并开始申请流程。按照申请表的指示准备并上传文件，填写信息。</p>
+<p>申请的最后一个环节需要你录制一个一两分钟的视频。他会在浏览器中实时录制，也就是说你不能自己录好视频之后上传。虽然我觉得通过某种虚拟摄像头是可以提前录制的。不过我觉得完全没有必要，因为还是很简单的，我没听说过有人因为这个环节被拒绝。点击开始录制后，会显示问题，然后给你一段时间准备，准备时间结束后系统自动开始录制。你有三次录制视频的机会，每一次的问题都是一样的，每个人的问题也都是一样的。所以你完全可以用第一次机会把问题记录下来，或者问其他同学要问题，然后写完稿子照着念。不过最好还是穿着稍微正式一点，找一个安静的地方录制。</p>
+<p>提交申请后，等待被通过即可。通过之后，你会先收到一封邮件，确认是否要参加项目。跟随引导确认之后，就会收到正式的录取信。虽然录取信的内容和邮件的内容是一样的，但是邮件截图不能被当作正式的文书使用。你需要打开链接，下载录取信的 pdf 版本，才能用于其他各种地方的申请流程。</p>
+<h3 id="第三步：获取-I-20"><a href="#第三步：获取-I-20" class="headerlink" title="第三步：获取 I-20"></a>第三步：获取 I-20</h3><p>在被录取之后，还有最后一个文件需要下载：Form I-20。</p>
+<p>你需要根据指示，找你的爹娘要银行的对账单和资金冻结证明之类的东西，向学校和政府证明你们家有钱资助你一个学期的学习和生活。或者如果你是有奖学金或者其他资助机构，按照指引操作并提交相关文件。学校审核通过之后，会为你准备你的 I-20 。</p>
+<p>你需要先注册 CalNet ID ，也就是 UCB 的学生系统的 ID，建议使用自己的拼音姓名之类的注册（比如yangshen-xu）。注册完成之后，登录 CalCentral ，也就是 UCB 的学生系统。同时，注册完之后，你也就自动获得了 UCB 的校园邮箱（例如<a href="mailto:&#x79;&#97;&#110;&#103;&#x73;&#x68;&#101;&#110;&#45;&#120;&#x75;&#x40;&#x62;&#101;&#114;&#107;&#101;&#x6c;&#101;&#x79;&#46;&#x65;&#x64;&#x75;">&#x79;&#97;&#110;&#103;&#x73;&#x68;&#101;&#110;&#45;&#120;&#x75;&#x40;&#x62;&#101;&#114;&#107;&#101;&#x6c;&#101;&#x79;&#46;&#x65;&#x64;&#x75;</a>）。它是一个 Google 账号，可以被当成正常的 Google 账号使用。</p>
+<p>你的 Form I-20 会被发到你的校园邮箱中（不是你申请时注册账号用的那个邮箱！）。根据指引完成 DocuSign 的签字流程之后，你就能获得你的 Form I-20 的 pdf 文件。同样的，需要把他下载下来。DocuSign 就是一个电子签名的系统，可以用它在线签署正式文件。</p>
+<h2 id="申请美国签证"><a href="#申请美国签证" class="headerlink" title="申请美国签证"></a>申请美国签证</h2><p>恭喜你，成功完成了项目申请，也成功被项目录取了。是不是觉得已经经历了不少，终于可以松一口气了？很遗憾，这大概是交流过程中最轻松的一步，前方还有无尽的噩梦在等待你。</p>
+<p>不过也不用太担心，因为这所谓的“噩梦”更多的是来源于未知。因为是第一次经历，所以比较摸不着头脑。办好之后回过头来看，虽然确实有点繁琐，但其实也就是这么回事。所以这一部分就是通过详细的解释，帮你减少这种未知的感觉。这样签证申请就显得没有那么噩梦了。</p>
+<p>和申请一样，学校也不会来帮你申请美国签证，你需要自己按照流程一步步申请美国签证。签证过程中可能包含各种各样的阻碍，包括但不限于：</p>
+<ul>
+<li>预约签证的系统估计是某个老古董了，难用到令人发指。</li>
+<li>预约签证面试的人可能非常多，所以需要抢号。2026年的面签预约尤其难抢，可能是因为世界杯和其他原因。总之我在项目开始前两周才终于拿到我的签证。虽然 Schedule 并不是特别的紧，但是会让人有很严重的焦虑情绪。</li>
+<li>即使成功预约了面签时间，也不能保证不会发生突发状况。（还真被我遇到了，后面细说，真的没有人类了）</li>
+<li>虽然本科生基本不会有什么问题，但是如果是研究生或博士生，即使完成了面签，也可能会陷入长达几周甚至数月的背景调查。</li>
+</ul>
+<p>此外，许多事务很有可能需要有了签证之后才能最终，例如机票、租房等。而且机票很有可能会越等越贵。基于以上原因，签证申请可以说是越早越好。甚至可以说，最好是可以和项目申请同步推进了。</p>
+<p>在这个阶段，会产生的重要文件是：</p>
+<ul>
+<li>51x51 mm 的近照</li>
+<li>DS-160 确认页</li>
+<li>你填写的 DS-160 表格内容</li>
+<li>SEVIS Payment Confirmation</li>
+<li>面签预约确认页</li>
+</ul>
+<p>下面详细介绍具体的签证申请流程。</p>
+<h3 id="第一步：DS-160-Form"><a href="#第一步：DS-160-Form" class="headerlink" title="第一步：DS-160 Form"></a>第一步：DS-160 Form</h3><p>签证申请的第一步就是填写 DS-160 表格，这个表格是整个美国签证申请的基础。而且在填表格的时候，就基本上要决定面签要去的使领馆了。因为在填表之前就需要选择一个使领馆。</p>
+<p>这个表格需要尽早填写，并且在面签时，签证官可以看到表格上的信息，而且会依据上面的信息向你提问，所以最好是亲自、如实填写，并且熟悉自己填写的内容。你也完全可以在申请的同时开始填表格中基本信息之类的部分，在确认提交之前，表格都可以通过一个 ID 恢复（这个 ID 也是在别的地方会用到的，所以可以复制一下存在记事本）。在拿到 I-20 之后，就有了充足的信息完整填写这个表格了。</p>
+<p>表格需要你上传一张照片，这张照片有格式要求，必须是 51x51 毫米的尺寸，并打印出证件照。DS-160 的网站上有图片裁切工具，而你需要下载并保存好裁切后的图片，冲洗出来。他虽说是要求 6 个月以内的近照，不过实践证明两年前的也是可以用的（而且我和那个时候相比还胖了很多）。不过核心就是需要能够辨认出来这就是你。</p>
+<p>需要注意的是，一定要在填表的时候做足功课，搞清楚每一个地方需要填什么，什么需要填，什么不用填。如果你并不确定提示的意思，千万不要想当然，一定要去搞清楚再填。</p>
+<p>例如一个常见的，对国人来说比较陌生的概念是“telecode”。这个是非英语&#x2F;拉丁字母国家的人都必须要填的，用于表示自己姓名的 Unique Identifier 。这时候就需要搞清楚这是什么，然后用一些工具将姓名转成 telecode 然后填写。不要乱填，也不要不填。</p>
+<p>此外，如果你是一个卷怪，在大二之前就已经实习过了的话，是需要把实习经历填写到工作经历中的。</p>
+<p>另一个重要的项目是社交媒体。社交媒体是必填的，而且需要把这些社交媒体的访问权限设置为可以公开访问。即使你现在不填，面签的时候还是会让你填的，因为基本上所有人都需要社交媒体审查。所以如果平时喜欢发奇奇怪怪的东西，可以考虑清理一下自己的社交媒体了。</p>
+<p>填写完成之后，一定要参考攻略，反复检查有没有信息的错漏。真的确认无误之后再提交。提交之后，会有两个文件可以下载，就是 DS-160 确认页，和你填写的表格内容。两个都要下载好 pdf 格式。</p>
+<h3 id="第二步：交-SEVIS-Fee"><a href="#第二步：交-SEVIS-Fee" class="headerlink" title="第二步：交 SEVIS Fee"></a>第二步：交 SEVIS Fee</h3><p>在你的 I-20 表格上，可以看到一个 SEVIS ID。你需要用这个 SEVIS ID 来交你的 SEVIS I-901 费用。缴费成功后，记得下载你的缴费证明的 pdf 文件。</p>
+<h3 id="第三步：预约面签"><a href="#第三步：预约面签" class="headerlink" title="第三步：预约面签"></a>第三步：预约面签</h3><p>对我来说这是最恶心、压力最大的部分。如果有人到了这个阶段还不得不退出项目，那问题大概就是出在面签上了。不过也不用太担心，毕竟最后所有人也都还是顺利的成行了，而且事后看来有很多的担忧都是多余的。</p>
+<p>正如前面所提到的，26 Fall 的面签预约简直难的可以。虽然我不清楚之前和之后的情况（据说 9 月之后政策会发生调整，所以还是要以最新的信息为准，我写的内容都是个人经历，仅供参考），但是尽早准备尽早预约，肯定是没有问题的。</p>
+<p>首先要澄清的一些事情是：</p>
+<ul>
+<li>如果你预约的时间是在项目费用缴费的截止日期之后，不用担心，如果被拒签，项目费用是可以退款的，我问过了。</li>
+<li>如果你需要在出签之前租房，也没关系，有的公寓的政策是除了申请费之外，如果被拒签，所有的费用都是可以退款的。</li>
+<li>但是机票可能就比较麻烦，所以最好是在出签之后买机票。</li>
+<li>预约时间之后，有一次尝试加急预约的机会，和两次修改预约时间的机会。用完之后就只能重新填 DS-160 了。</li>
+</ul>
+<p>接下来是我个人预约面签的历程。</p>
+<p>我在 26 年三月开始申请学校，但是五月期末考试之后才开始预约面签，当时能够预约到最早的时间已经是八月六号了。这个时间虽然来得及，但是确实比较晚了，是在项目开始日期的13天前（开始上课要晚一个星期，但是各种迎新活动已经开始了）。所以我就先约了八月六号，在武汉总领馆的号。</p>
+<p>但是项目费用缴费的截止日期在七月，而我当时并不知道费用是可以退的。所以我着急忙慌地就用掉了加急申请的机会，然后被拒绝了。之后就是每天找可以提前的时间，有一次就差一点能抢到七月十几号的时间，然后晚了一点点之后就失之交臂，被被别人抢走了。</p>
+<p>后来觉得自己刷号太累了，就找了黄牛帮忙用脚本代抢。结果一直抢不到，我爸还没忍住，上号想看一眼，结果因为异地登录被封号一个星期。结果后来知道了项目费用其实可以退之后，才终于稍微放下心来，觉得其实也来得及，就放弃抢号了。</p>
+<p>如果你没有使用过这个面签预约系统，你是很难感受到它用起来有多么折磨的。整个过程消耗了我大量的时间和精力。不过最后，还是保留了最初的八月六号的预约时间。</p>
+<p>预约完成之后，记得下载预约信息的 pdf 文件，这是面签的入场凭证。</p>
+<h2 id="面签与获得签证"><a href="#面签与获得签证" class="headerlink" title="面签与获得签证"></a>面签与获得签证</h2><p>面签的过程其实并不复杂，甚至可以说是简单的很。但是虽然简单，里边的坑可不少。</p>
+<h3 id="第一步：准备文件"><a href="#第一步：准备文件" class="headerlink" title="第一步：准备文件"></a>第一步：准备文件</h3><p>记得前面每个阶段列出来的一系列的文件吗？全部打印出来，包括那张照片。如果有什么出生证明、户口本、银行对账单的原件之类的，也都准备好复印件，放在一个文件袋里，带到面试去。DS-160 的填写记录上面会标注不要带到面试，那个就不用带了。但是 DS-160 的确认页是要的。</p>
+<h3 id="第二步：面试"><a href="#第二步：面试" class="headerlink" title="第二步：面试"></a>第二步：面试</h3><p>一个重要的建议是：最好提前一天的时间到使领馆所在的城市，不要等到前一天下午&#x2F;晚上到。</p>
+<p>为什么呢？这就是我遇到的突发情况。我一开始购买了八月五日上午十点从杭州出发到巴中途径武汉的动车票，结果开到南京南站的时候，车停了将近一个小时，然后广播通知：“由于天气原因，本次列车将在南京南站终止运行。乘客可以选择在本站下车，或者跟随列车返回杭州东站”。</p>
+<p>不是这真的还有人类吗？</p>
+<p>于是很多人就买了十几分钟后从南京到武汉的车票，准备下车赶紧换乘。我比较保守，买了两个小时之后的车票。结果大概等了十几二十分钟，全列才打开一节车厢的车门，导致很多乘客就错过了刚刚买的那一辆车。下车之后，估计是列车长还是什么工作人员，拿着喇叭喊所有四川方向的列车全部都停运了。</p>
+<p>其实这句话是有歧义的。因为列车的播报并没有明确指出是什么天气原因导致哪一段线路出现了问题，然后下车后的工作人员表示所有列车都停运了。在我们的理解中，这指的就是因为南京附近的天气原因，导致从南京出发的列车全部停运，因此无法从南京到达武汉了。我们只能从南京或杭州出发通过其他交通方式到达武汉，但是仍然要承受气象灾害的风险。所以我就乘坐列车回到杭州东站，浪费了一个上午的时间。</p>
+<p>但是在车上我们才发现，并不是南京到武汉的线路出现了问题，而是武汉到四川之间有一个地方出现了洪涝灾害破坏了铁路。我们买的从南京到武汉的列车其实是可以正常发车的。结果没有办法，只能又从杭州买了终点站就是武汉的高铁票。于是原定下午到达武汉，去黄鹤楼玩一圈，然后休息的形成，变成了将近八月六日零点才赶到宾馆，第二天还要早起排队。</p>
+<p>所以一定要预留足够的时间，为可能发生的突发情况做好准备啊。</p>
+<p>面签的过程中，大部分时间都是在排队。我排了一个多小时，最后面试大概两分钟左右就结束了。我带了很多文件，结果最后只看了 I-20 和护照。被问到的问题大概是以下几个：</p>
+<ul>
+<li>你去美国干什么？回答：在 UC Berkeley 参加交换项目，考虑学习……相关课程。</li>
+<li>你是大二吗？回答：是的。</li>
+<li>你去过日本吗？回答：是的，我去过日本。</li>
+<li>谁资助你在美国的学习？回答：我的父母提供全部的资金支持。</li>
+<li>你是否担心回国后遭受政治迫害或上海？回答：No。</li>
+</ul>
+<p>然后签证官告诉我，需要时间来审查我的社交媒体，然后给了我一张黄色的 A4 纸单子（不同使领馆颜色会不一样，内容是一样的），就结束了。</p>
+<h3 id="第三步：等待出签"><a href="#第三步：等待出签" class="headerlink" title="第三步：等待出签"></a>第三步：等待出签</h3><p>我的同学向我推荐了一个十分有用的 App 叫做“Case Track”，可以用来追踪签证申请的进度和信息。</p>
+<p>通常在面签结束之后几个小时之内，查询到的状态会是“Refused”。想必看到这里的时候一定会吓一跳吧。不过不用惊慌，它有可能并不是真的拒签了。如果真的拒签了，签证官大概率会当场就通知你，并给你一张拒签的通知单，而不是一张表格。</p>
+<p>如果签证官对你说的是需要时间审查你的社交媒体，那么这个“Refused”的意思就是：因为需要进行审查，所以签证官无法当场就决定下签，而是只能暂时 Refuse 。在审查结束之后，还会进一步更新申请的状态。你可以参考网络上对于 Long Refuse 和 Short Refuse 区别的解释。</p>
+<p>通常在当天下午或傍晚，状态就会更新为“Approved”。这时候就基本上没问题了。在次日下午，当状态更新为“Issued”之后，就说明美国签证就已经贴在你的护照上了。</p>
+<h3 id="第四步：拿回你的护照"><a href="#第四步：拿回你的护照" class="headerlink" title="第四步：拿回你的护照"></a>第四步：拿回你的护照</h3><p>到这个时候，大概率你已经开始兴奋了。和拿到驾照的时候一样兴奋。不过千万不要忘记了很重要的一步：拿回你的护照！</p>
+<p>签证贴在你的护照上之后，你的护照还在使领馆等待寄出。这个时候，如果你在预约的时候选择的是邮寄，此时你就需要交一个运费。我大概是在下签后的一个星期才想起来要交这个运费，虽然不会有什么问题，但是总之还是越早拿回来越好。</p>
+<p>交完运费之后，就会有邮件说明护照寄出，并且告诉你快递单号提供查询，这时候你需要本人在家里准备签收。拿到护照之后，恭喜你，你终于可以看到你的签证了。</p>
+<h2 id="计划住宿"><a href="#计划住宿" class="headerlink" title="计划住宿"></a>计划住宿</h2><p>如果你有“总会有地方住的”这样的想法，那未免是太乐观了。UCB 的本校生和国际学生都很多，有时候房源并不是那么充足。而且 CDS 是一个学期的项目，所以如果不想浪费钱或转租，就只能找半年租期的房源，这就更难找了。</p>
+<p>所以，提前准备好住宿的计划并尽早确定，是非常有必要的。甚至可以说，如果确认参加了，就可以直接开始准备找房子了。</p>
+<p>如果你有租房的经验或者沟通能力极强，或许可以不用中介，自己直接联系房源和房东。但是如果你和我一样是个脑子不太清楚，社会经验为零的超级社恐，那就没有必要为难自己，找中介并不是一个什么丢脸的事情。他们比你自己更有经验，并且也能够帮忙谈判来得到一个更合理的价格。</p>
+<p>我的建议是：无论如何，你需要建立一个租房过程中需要考虑的事项的基本概念，也就是识别什么是一个好的公寓，可能发生什么样的情况，是否能够接受一些风险等等。然后可以自己整理和浏览各种信息，整理出自己的一个判断。在这个基础上再去找中介，就会比较顺畅。</p>
+<p>我最终的选择是 University Ave 的 Bosco ，属于 Downton Berkeley，是一个比较冷门的选项，不过因为时间原因当时我们也没有更好的选择了。从公寓出发向东到学校西门大概是十分钟，而从学校西门到教学楼大概是五分钟到十分钟不等。而且 University Ave 上有公交车，环绕学校的线路还是很方便的，虽然我为了锻炼身体倾向于自己走过去。</p>
+<p>从 Bosco 继续往西走就是旧金山湾了，很吸引人吧。但是实际上离学校越远，就越不安全。一个和我一起租房的同学到达后的第二天尝试向西开地图，结果被抢劫了 50 刀，然后我就从来没敢尝试往西走。除此之外，Bosco 往东的一系列选项，在区位条件上除了距离之外就基本上没有什么区别了，因为大家的活动区域都比较类似。</p>
+<p>由于我找了中介，所以并不能提供什么更多的建议了。大家自己看着办吧。只有一点就是大家记住自己公寓的地址、邮政编码。美国的地址还是比较好记的，基本上都是这样的格式：</p>
+<ul>
+<li>1234 xxx Street, Berkeley, CA, 947xx</li>
+</ul>
+<p>记下来的好处就是各种需要邮寄的东西，账单地址，或者点外卖的时候填起来就是随手的事了。</p>
+<h2 id="机票与飞行"><a href="#机票与飞行" class="headerlink" title="机票与飞行"></a>机票与飞行</h2><p>在得到签证并且确定了住宿之后，就可以开始计划飞行了。但是实际上订机票并不是“我想从中国到美国”这么简单。飞机的到达时间，行李的配额等等都是需要考虑在内的因素。</p>
+<p>我最终的选择是美联航从上海浦东机场直飞到旧金山国际机场的航班，预计12:10起飞，当地时间大概早上九点到达，飞行时间接近12小时。这样到了美国之后也还有充裕的时间移动到公寓办理入住，处理各种各样的东西，然后安安心心吃饭睡觉，是一个比较舒服的时间。当然也有转机的选项，如果对转机的国家很感兴趣的，可以考虑转机，顺道出去玩一圈。但是这样需要走来走去，而且需要消耗的时间就太长了，我还是喜欢多一事不如少一事，所以选择了直飞。</p>
+<p>值机的时候，如果有同伴一起出行，哪怕是分开买的票也可以到同一个柜台一起办理。虽然可能没办法分到并排坐的位置，但是至少可以离的比较近。以及因为机舱内的行李架空间可能不够，值机的时候免费帮我们增加了小箱子的托运份额。</p>
+<p>我记得本来出境海关检查是挺复杂的，需要有人工窗口来检查登机牌、护照啥的，要排很长的队伍。但是浦东机场直接用闸机替代了，还是很方便的。</p>
+<p>起飞晚了几十分钟，落地只是略微晚了一点，但是落地之后飞机排队停靠到航站楼还等了十多分钟，不过总体来说还是在可以接受的范围内。十二个小时中我被夹在两个老墨中间，他们睡得可香了，我只能断断续续睡一会。美联航飞机上可以免费看电影，选择还比较多，不过为了倒时差我就没怎么看。餐食是不怎么好吃的白人饭，但也不至于难以下咽。座位还是比较狭窄的，感觉不如国内高铁。我腿下面还放了一个包，属于是雪上加霜。飞机上有两个中国人空乘，广播也是中英文播报，所以也不怎么需要在意语言问题。基本上敢报这个项目的话，英语应该就够用了。</p>
+<h2 id="一些需要注意的行前准备"><a href="#一些需要注意的行前准备" class="headerlink" title="一些需要注意的行前准备"></a>一些需要注意的行前准备</h2><p>一个就是之前提到的，要注意一下有没有什么生鲜之类的违禁品。还有两个非常重要的东西：手机与手机卡、信用卡。</p>
+<h3 id="手机与手机卡"><a href="#手机与手机卡" class="headerlink" title="手机与手机卡"></a>手机与手机卡</h3><p>这个问题可以分成两个部分：国内的手机卡在美国怎么用、美国的手机卡在美国怎么用。</p>
+<p>关于国内的手机卡在美国怎么用，有一个重要的条件是：不论用不用网络，一定要开通上网功能！我在国内是一个手机号只打电话收短信，用另一个手机号来上网。所以我那个打电话收短信的手机号的上网功能就关掉了。但是如果上网功能关掉了，这张卡可能就会在美国被退网，从而收不到任何信号，连电话和短信也不能收。所以一定要注意，要检查国际漫游和上网功能都要打开。如果主力手机号收不到短信验证码就是一个非常头疼的问题。</p>
+<p>关于美国手机卡在美国怎么用，要点就是：买一台苹果手机。不管你是果粉还是果黑，如果你要去美国留学或者交换，非常建议买一台 <strong>国内版</strong> 的苹果手机。原因如下：</p>
+<ol>
+<li>我的安卓手机完全收不到美国电话卡的频段，所以不管是什么美国电话卡都用不了。</li>
+<li>在国内买或许反而比美国买便宜。</li>
+<li>国内版的苹果手机都是支持物理 SIM 卡的，但是美国的苹果手机从 iPhone 14 开始就彻底取消了 SIM 卡槽了！</li>
+</ol>
+<p>这个事情属于是折磨了我两天，而且可以说浪费了不少钱。因为首先，我的国内手机卡没开上网功能，所以所幸可以用另一张卡打国际漫游服务热线，打开上网功能。但是打开上网功能是需要在归属地办理的，所以在美国的白天，他们很有可能没有上班，需要在美国的晚上打才可以开通。</p>
+<p>其次，因为我的手机用不了美国手机卡，所以只能购买一台 iPhone 。我本来打算在 Amazon 上买，但是不知道是缺货还是什么原因，订单总是被取消。然后我就只能去运营商的手机店里面买，这样就贵很多了，最后选择了一部 iPhone 12 ，专门用来在没有 Wifi 的时候上网。花了两天时间才把两个手机卡的问题解决了。</p>
+<h3 id="信用卡与银行卡"><a href="#信用卡与银行卡" class="headerlink" title="信用卡与银行卡"></a>信用卡与银行卡</h3><p>去美国之前，一定要办一张留学信用卡，可以是父母的副卡。不要用国内的借记卡，一点用都没有，丢了都不伤心，因为别人也用不了。同学就是因为这个问题找我借了好几天的卡刷。如果办好了留学信用卡，还要不要办美国的银行卡那就是可以游刃有余地决定了。如果落地之后发现卡用不了，结果遇到了周末银行不上班，那就是很烦的事情了。</p>
+<p>总而言之，如果在国内提前准备好这些东西，到美国之后就会顺畅很多。</p>
+<p>到达之后一段时间，我就已经办好了美国银行的银行卡了。如果运气好的话，开户的时候可以接受港普服务。记得带护照和 150 刀以上的现金，以及记住自己公寓的住址和邮政编码。我同学就是因为记错邮政编码，把新开的银行卡寄丢了。</p>
+<h2 id="入境"><a href="#入境" class="headerlink" title="入境"></a>入境</h2><p>到达之后，首先就是接受美国这边的边境检查。美国的官员感觉比较吊儿郎当，态度低国内一两个档次。也不告诉你要给他什么，就伸了个手。我猜估计就是要护照和I-20，给他检查之后就会问一些问题。似乎都是有几个预制问题大礼包，随便抽一个来问你。我属于是抽到了农产品检查了。</p>
+<p>他问我有没有带什么吃的，我就说带了一点饼干之类的。他就把我带到别的地方，把护照收走，给了我一张绿色卡片写着 Agricultural Inspection 。拿着这张卡片，先去行李转盘那边拿行李，然后把所有行李拿到一个绿色的区域接受询问和检查。检查通过了就可以把护照拿回来。主要是问我有没有携带一万美元以上的货币，有没有动物制品和新鲜水果。</p>
+<p>需要注意的是，动物制品和新鲜水果都是不允许入境的，哪怕是带包装的加工过的动物制品。还好我在飞机上把我的肉松饼和肉脯全都吃完了。做成香蕉干的香蕉似乎是可以带的。所以如果想吃，记得少带一点，在飞机上吃完，或者干脆就不要带。</p>
+<p>我的一个同学抽到的是背景调查大礼包，需要详细描述父母是干什么的。所以出发前可以稍微准备一下这种问题怎么回答。公司雇员这种没什么信息量的回答是不行的。</p>
+<p>行李转盘出口前面似乎还有一个什么匿名的检查。和做核酸比较像，反正搞完之后就可以走了，不记名。出去之后，就可以说是正式入境了。如果没有什么农产品检查可能还能更快一点，反正我大概花了几十分钟就过了。</p>
+<h2 id="从旧金山到伯克利"><a href="#从旧金山到伯克利" class="headerlink" title="从旧金山到伯克利"></a>从旧金山到伯克利</h2><p>我们本来是考虑订一个接机服务的，但是因为我们行李比较多，三个人有三个大箱子三个小箱子，完全找不到合适的车子，所以作罢，老老实实坐地铁。实际上坐 BART 还是很方便的，叫湾区快速交通。如果有能用的信用卡可以直接刷，不需要公交卡。如果发现自己带的卡都不能用，右边有一个机器可以买公交卡，3刀的制卡费和17刀的额度，临时坐个车完全够用了。不过领到校园卡之后可以免费坐车，所以稍微会浪费一点。进去之后是站台左边，坐 Red Line, Richmond 方向到 Downtown Berkeley ，大概四十分钟左右的车程。BART 会穿过一个海底隧道，噪音会比较大。</p>
+<p>到 Dt Berkeley 之后，由于没研究出来怎么用直梯，所以只能拎着一堆行李箱走楼梯。不过我们从机场到公寓只有这一段需要拎着行李箱上楼梯，所以其实已经算还好了（也有可能是我们太笨不会用直梯，实际上一点都不需要走楼梯）。如果公寓离 BART 站比较近，就可以直接走过去了，没必要等公交，当锻炼了。如果比较远可以转一下公交，就是又得多花钱了。</p>
+<h2 id="时差"><a href="#时差" class="headerlink" title="时差"></a>时差</h2><p>因为时差还是比较大的，所以需要一些技巧。我到达之后，到公寓办完入住大概是当地时间中午了，当时正常来说属于是国内的睡大觉时间，所以可想而知困飞了。这时候我睡了一觉，大概从一点睡到四点，然后建议这个时候无论如何都要起床，等到晚上九十点钟再睡，这样就比较容易很快地倒时差。我同学一点钟开始睡，然后就一直没起床，倒了几天都还没有倒回来（也有可能是他平时生活就不太规律）。</p>
+<p>我这样操作完之后，基本上能够适应当地的时间了。但是经常会在半夜两三点左右醒来，属于是轻度的症状。这时候看会手机找人聊天，然后接着睡就行了，一两天之后渐渐的就不容易醒了。开学之后，基本上就可以在美国享受三点睡十二点起的大学生正常作息了。</p>
+<h2 id="衣食住行"><a href="#衣食住行" class="headerlink" title="衣食住行"></a>衣食住行</h2><h3 id="穿什么"><a href="#穿什么" class="headerlink" title="穿什么"></a>穿什么</h3><p>衣服还没买过，带的基本上够了，买过之后再写。</p>
+<h3 id="吃什么"><a href="#吃什么" class="headerlink" title="吃什么"></a>吃什么</h3><p>从 Dt Berkeley 的 BART 站出来之后，往北走就有一家麦当劳，在夏达克街和 University Ave 交叉口。麦当劳穷鬼套餐真神了。University Ave 和夏达克街上还有很多吃的，到时候可能专门写一篇食物评测。</p>
+<h3 id="住宿用品"><a href="#住宿用品" class="headerlink" title="住宿用品"></a>住宿用品</h3><p>有些东西可以在 BART 站南边的 Tartget 买到，属于一个比较大的超市品牌。我看到的有枕头、衣架之类的用品，反正比较近可以经常来，可以记一下有哪些这里可以买到的东西。学校旁边的 Target 不是很大，很多东西都找不到，所以可能需要出远门到宜家和宜家旁边的大 Target 去买。因为比较远，所以可以只买一些公寓附近买不到的东西。</p>
+<p>我公寓的房间里甚至没有桌子，所以我去奥克兰北边的宜家直接买了一套折叠桌椅。宜家分成上下两层，可以推一辆车先上楼，小件放在车里，大件拍好牌子的照片什么的。大件建议多拍几个不同选项，因为去仓库拿的时候可能会没有货。然后在楼上吃完饭，带着车下楼再买一些零碎的东西。注意，买好东西之后小票要留好，因为寄件的时候会用到。</p>
+<p>宜家的餐厅还是挺不错的，seasonal soup 有一种神奇的味道，但是总体来说还是挺好喝的。</p>
+<p>无论是大件还是小件都可以送货上门。他是按照件数算：几个 blue bag，几个 flat package之类的，在他们的web app上填好之后，拍好照片，可以到柜台去找员工，员工可以根据件数和你的小票号码来确定你的订单。之后他们会找人把东西打包送过来，一般最早都是第二天到，没办法当天送达，所以最好决定一下哪些东西要自己带回去，哪些找他们送。</p>
+<p>去完宜家之后就可以走过高架桥，到旁边的 Target 接着买（实际上去宜家的时候就需要经过这家 Target ，然后走过那个有人行道的高架）。建议只买学校附近买不到的，因为带着太多东西坐公交走路都不方便。</p>
+<p>BTW：宜家附近是皮克斯动画工作室的总部，如果时间充裕可以顺道去看一眼。但是似乎不对外开放，只能看到大门。很多人去宜家的时候没注意就直接错过了（似乎也有人不知道皮克斯是什么）。</p>
+<p>BTW：公交好像甚至有粤语播报。而且很多告示都是英语、西班牙语、中文三种语言写的。</p>
+<h3 id="出行"><a href="#出行" class="headerlink" title="出行"></a>出行</h3><p>出行甚至去学校基本上公交为主，出远门的话可能偶尔需要坐 BART 。领了学生卡之后，他会附带一张有你的照片和名字的 Clipper Card ，就是公交卡，可以免费坐湾区内的所有公共交通，包括旧金山、硅谷之类的地方。爽飞了。</p>
+<p>公交是需要按按钮或者拉绳子才会停车，所以需要注意一下站名的播报。拉绳子如果太温柔会没有反应，可以稍微用一点力。</p>
+<p>在旧金山和南旧金山，可以打到无人驾驶的出租车 Waymo ，十分的高级，可以体验一下。可惜在伯克利没有运营。在旧金山还有轻轨，但是我还没坐过。</p>
+<h2 id="学校基本情况介绍"><a href="#学校基本情况介绍" class="headerlink" title="学校基本情况介绍"></a>学校基本情况介绍</h2><h3 id="地形"><a href="#地形" class="headerlink" title="地形"></a>地形</h3><p>学校的地形还是很好记的，西低东高。如果住在 Downtown ，那就和我一样每天都是超级上坡了。在学校里如果不会辨认方向，只需要记住，一直下坡就基本上是在往西走。</p>
+<h3 id="选课"><a href="#选课" class="headerlink" title="选课"></a>选课</h3><p>我们的选课方式叫做 Concurrent Enrollment ，也就是“同时选课”。意思就是：我们是低贱的二等公民，只能捡本校老爷的残羹冷炙吃。不过 CDS Global 是二等公民中的高等人，在抢 CS、统计、数据科学相关的课程的时候似乎有优先权。</p>
+<p>开学第一周的时候，由于本校学生的选课还没有确定，所以很多 CE 的选课申请都还没有开始受理。所以通常因为选了比要求更多的课，第一周会比较忙。从第二周开始，陆陆续续能够选进课了，就会轻松很多。到了第三周，我的选课就已经确定了，于是就补齐了学费。但是有的同学直到将近第五周还在搞选课的事情。如果没能够满足项目的选课学分要求，I-20 和 SEVIS 的状态就会激活失败，就有可能被遣返了。所以需要提前选一些保命课。</p>
+<p>不过总体上来说，听起来很恐怖，但是并没有想象中那么难抢。除了几个热门课程，想上的课最后我也都选进去了。</p>
+<p>一个指标就是在学校课程网站上的 Waitlist 数据。如果一门课程 Waitlist 都要满了，那恐怕是没戏了。如果只有几个人或者比例较小，那么机会还是很大的。如果介于中间，而且你很想上，那先选了再说。</p>
+<h3 id="上课"><a href="#上课" class="headerlink" title="上课"></a>上课</h3><p>如果你看了课程的时间表，会发现他是一节课接着一节课的，中间根本没有空隙。实际上是有的，是一个叫做 Berkeley Time 的习俗。也就是说：如果课表上显示的是 12:30 上课，那么实际的上课时间就会是 12:40 。比显示的晚十分钟。这样就足够大多数学生转移教室了（除非你的教室分布在校园的两端）。</p>
+<p>很多课都有 Discussion Session 。但是不同课的政策不同。有的课干脆不开 DIS ，有的则是必须要去，会点名。有的课会允许你选择要不要在 DIS 评分，如果选择不计 DIS 的考勤分，那么他的权重就会分配给期末考试，但是你仍然可以参加任何一个 DIS。</p>
+<p>关于 AI 政策，不同的课程也不一样。像操作系统课就明确说明不允许 AI 。理由是工作的时候随便你用，但是 AI 不利于学习阶段掌握知识，甚至每次作业都需要进行口头考试（太吓人了我直接退了）。软件工程课小作业不鼓励用 AI ，但是大作业鼓励用 AI 。计算机图形学则是：如果你声明用了 AI ，那么你的期末项目就不能是太简单的东西了。</p>
+
+    </div>
+
+    <!-- Tags -->
+    
+
+    
+    <!-- Post Navigation: Hexo's page.prev = newer post, page.next = older post -->
+    <nav class="section-divider flex justify-between items-center text-sm md:text-base" aria-label="Post navigation">
+        
+        <a href="/2026/08/11/Vibe-Coding-01/" class="post-nav-link group text-left" title="Vibe Coding 笔记 2026 Summer" aria-label="Newer post: Vibe Coding 笔记 2026 Summer">
+             <span aria-hidden="true">&larr;</span>
+             <span class="post-nav-title">Vibe Coding 笔记 2026 Summer</span>
+        </a>
+        
+
+        
+        <div aria-hidden="true"></div>
+        
+    </nav>
+
+
+    
+    
+</article>
+
+
+            </main>
+
+            <footer class="section-divider site-footer" data-pagefind-ignore>
+    <div class="site-footer-meta text-center text-sm text-text-chrome leading-relaxed">
+        <p>&copy; <span class="oldstyle-nums">2026</span> Akatsuki</p>
+        <p class="font-eng text-footnote tracking-wide opacity-90">Elegant theme by <a href="https://github.com/Acris/hexo-theme-shiro" target="_blank" rel="noopener noreferrer" class="link-chrome">Shiro</a> · Made by <a href="https://acris.me" target="_blank" rel="noopener noreferrer" class="link-chrome">Acris</a>
+                        with <span aria-label="love" title="love">❤️</span></p>
+    </div>
+</footer>
+
+        </div>
+
+        <!-- Note Text — decorative aside, not part of main content or footer -->
+        <aside class="mt-4 text-center" aria-hidden="true" role="presentation">
+            <p class="site-note font-title text-xs sm:text-sm text-text-subtle/70 tracking-note select-none" lang="ja">
+                白は、余白の名。
+            </p>
+        </aside>
+    </div>
+
+    
+    <button id="backToTop" type="button" class="back-to-top" data-visible="false" aria-label="Back to Top" hidden>
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+    
+    
+
+    <!-- Scripts -->
+    
+    
+    
+    <script defer src="/js/toc.min.js?v=3e0cca47"></script>
+    
+    <script defer src="/js/progress.min.js?v=d01e3a23"></script>
+    
+    <script defer src="/js/back-to-top.min.js?v=ff36a748"></script>
+    
+    <script defer src="/js/theme-toggle.min.js?v=04b6578e"></script>
+    
+    <script defer src="/js/mobile-menu.min.js?v=40df95a6"></script>
+    
+    
+
+    
+
+</body>
+</html>

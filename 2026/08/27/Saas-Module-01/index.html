@@ -1,0 +1,1086 @@
+<!doctype html>
+
+
+
+<html lang="zh-CN" class="h-full scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Hexo " />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    
+
+
+
+    
+    
+<script data-cfasync="false">
+;(() => {
+    // Progressive enhancement marker (mobile nav CSS uses html.js before paint).
+    document.documentElement.classList.add('js');
+    const shiro = (window.__shiro = window.__shiro || {});
+    const defaultTheme = "dark";
+    shiro.themeDefault = defaultTheme;
+    
+    const states = defaultTheme === 'system' ? ['system', 'light', 'dark'] : ['light', 'dark'];
+    let saved;
+    try { saved = localStorage.getItem('theme'); } catch (_) {}
+    const state = saved && states.includes(saved) ? saved : defaultTheme;
+    const html = document.documentElement;
+    html.setAttribute('data-theme-state', state);
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    // Pagefind dark contract only when search is enabled.
+    const syncPagefindTheme = false;
+    shiro.searchEnabled = syncPagefindTheme;
+    // Single source for theme-toggle.js and system-follow listener.
+    const applyResolvedTheme = (dark) => {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        if (syncPagefindTheme) {
+            if (dark) html.setAttribute('data-pf-theme', 'dark');
+            else html.removeAttribute('data-pf-theme');
+        }
+        html.style.colorScheme = dark ? 'dark' : 'light';
+    };
+    shiro.applyResolvedTheme = applyResolvedTheme;
+    applyResolvedTheme(state === 'dark' || (state !== 'light' && darkQuery.matches));
+    if (defaultTheme === 'system') {
+        // Follow OS theme while in system mode even if the toggle script is absent.
+        const followSystem = () => {
+            if (html.getAttribute('data-theme-state') !== 'system') return;
+            applyResolvedTheme(darkQuery.matches);
+        };
+        if (darkQuery.addEventListener) darkQuery.addEventListener('change', followSystem);
+        else if (darkQuery.addListener) darkQuery.addListener(followSystem);
+    }
+    // Preloader skip: the session collection must contain this page's font-bundle URL.
+    const fontsReadyToken = "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700\u0026family=Yuji+Syuku\u0026family=Zen+Old+Mincho:wght@400;600\u0026family=Cormorant+Garamond:wght@400;600\u0026family=Noto+Serif+SC:wght@400;600\u0026family=Fira+Code:wght@400;500\u0026display=swap";
+    shiro.fontsReadyToken = fontsReadyToken;
+    try {
+        const storedFontsReady = sessionStorage.getItem('shiro:fonts-ready');
+        const readyFontTokens = storedFontsReady === fontsReadyToken
+            ? [storedFontsReady]
+            : JSON.parse(storedFontsReady || '[]');
+        if (
+            fontsReadyToken
+            && Array.isArray(readyFontTokens)
+            && readyFontTokens.indexOf(fontsReadyToken) !== -1
+        ) {
+            html.classList.add('shiro-preloader-done');
+        }
+    } catch (_) {}
+})();
+</script>
+
+    
+
+    
+
+
+
+
+
+
+
+
+<title>Saas Module 01 | Akatsuki</title>
+
+
+<meta name="description" content="Intro This is my reading note of the SaaS book, the text book of COMPSCI 169A, Software Engineering provided by UC Berkeley 26 Fall. How-tos Here lists some how-tos about the book reading. Learn by..." />
+
+
+<meta name="author" content="Akatsuki Kareno" />
+
+
+
+<meta property="og:title" content="Saas Module 01 | Akatsuki" />
+
+<meta property="og:description" content="Intro This is my reading note of the SaaS book, the text book of COMPSCI 169A, Software Engineering provided by UC Berkeley 26 Fall. How-tos Here lists some how-tos about the book reading. Learn by..." />
+
+<meta property="og:url" content="https://kmyoamoa.github.io/2026/08/27/Saas-Module-01/index.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Akatsuki" />
+
+
+<meta property="og:locale" content="zh_CN" />
+
+
+
+
+<meta property="article:published_time" content="2026-08-28T02:37:48.000Z" />
+
+
+<meta property="article:modified_time" content="2026-09-15T16:57:33.499Z" />
+
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Saas Module 01 | Akatsuki" />
+
+<meta name="twitter:description" content="Intro This is my reading note of the SaaS book, the text book of COMPSCI 169A, Software Engineering provided by UC Berkeley 26 Fall. How-tos Here lists some how-tos about the book reading. Learn by..." />
+
+
+
+<link rel="canonical" href="https://kmyoamoa.github.io/2026/08/27/Saas-Module-01/index.html" />
+
+
+
+
+
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"Saas Module 01","mainEntityOfPage":{"@type":"WebPage","@id":"https://kmyoamoa.github.io/2026/08/27/Saas-Module-01/"},"description":"Intro This is my reading note of the SaaS book, the text book of COMPSCI 169A, Software Engineering provided by UC Berkeley 26 Fall. How-tos Here lists some how-tos about the book reading. Learn by...","datePublished":"2026-08-28T02:37:48.000Z","dateModified":"2026-09-15T16:57:33.499Z","author":{"@type":"Person","name":"Akatsuki Kareno"},"publisher":{"@type":"Organization","name":"Akatsuki","logo":{"@type":"ImageObject","url":"https://kmyoamoa.github.io/favicon.svg","width":112,"height":112}}}]</script>
+
+
+
+<link rel="icon" href="/favicon.svg" />
+
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Yuji+Syuku&family=Zen+Old+Mincho:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Noto+Serif+SC:wght@400;600&family=Fira+Code:wght@400;500&display=swap" />
+
+<link rel="stylesheet" href="/css/style.min.css?v=84edaf60">
+
+<link rel="stylesheet" href="/css/code.min.css?v=cb0da316">
+
+
+<link rel="stylesheet" href="/css/toc.min.css?v=d9987942">
+
+<script defer data-cfasync="false" src="/js/preloader.min.js?v=881cdc82"></script>
+
+</head>
+
+
+<body class="h-full fog-bg text-text-body">
+    <!-- Preloader: font CSS load + fonts.ready, or preloader.min.js deadline. -->
+    <div id="shiroPreloader" class="shiro-preloader" aria-hidden="true">
+        <div class="shiro-preloader-ripple" aria-hidden="true">
+            <span class="shiro-preloader-ring"></span>
+            <span class="shiro-preloader-ring"></span>
+        </div>
+    </div>
+    <a href="#main-content" class="shiro-skip-link">Skip to content</a>
+    
+    
+<svg width="0" height="0" class="absolute pointer-events-none" aria-hidden="true">
+    <defs>
+        <filter id="seal-roughness" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+        </filter>
+        <filter id="text-erosion">
+            <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="1" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" />
+        </filter>
+    </defs>
+</svg>
+
+    
+
+    
+    <div id="progressBar" class="progress-bar" aria-hidden="true"></div>
+    
+    
+    <div id="backToTopSentinel" class="back-to-top-sentinel" aria-hidden="true"></div>
+    
+
+    <div class="min-h-full px-4 pt-14 pb-6 md:pb-5">
+
+        <!-- Paper Card -->
+        <div
+            class="paper mx-auto w-full max-w-4xl rounded-xl px-5 sm:px-8 md:px-12 lg:px-14 pt-10 pb-6 md:pt-12 md:pb-8">
+
+            
+
+
+<header data-pagefind-ignore>
+
+    <div class="flex items-start justify-center">
+        <div class="text-center">
+            <div class="relative inline-block">
+                
+                <p class="site-title">
+                    <a href="/">Akatsuki</a>
+                </p>
+                
+                <!-- Seal: Mathematically Centered -->
+                
+                <div
+                    class="absolute left-full top-1/2 -translate-y-1/2 ml-1 sm:ml-4 origin-left scale-75 sm:scale-110">
+                    
+<svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M15,12 Q50,5 85,12 Q95,50 88,88 Q50,95 12,88 Q5,50 15,12 Z"
+        fill="var(--color-seal-fill)" filter="url(#seal-roughness)" opacity="0.92" />
+    <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
+        font-size="42" fill="var(--color-on-seal)" filter="url(#text-erosion)"
+        class="seal-text select-none">赤月</text>
+</svg>
+
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class="mt-3 sm:mt-4 flex items-center justify-center gap-2">
+                
+                
+                
+                <button id="themeToggle" type="button" class="focus-elegant header-pill-btn" aria-label="Dark" data-label-system="System" data-label-light="Light" data-label-dark="Dark" disabled>
+                    
+<svg data-icon="system" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="1.5"/>
+    <path d="M8 21h8M12 17v4" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="light" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="4" stroke-width="1.5"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="dark" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                </button>
+                
+                
+            </div>
+            
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+
+<nav class="mt-8 md:mt-10" aria-label="Menu" data-pagefind-ignore>
+    <!-- Mobile Toggle -->
+    <div class="flex items-center justify-center md:hidden">
+        
+        <button id="menuBtn" type="button"
+            class="focus-elegant inline-flex cursor-pointer items-center gap-2 rounded-full border border-border-strong bg-paper/95 px-4 py-2 text-sm text-text-body shadow-xs"
+            aria-expanded="false" aria-controls="mobileMenu" disabled>
+            <span class="text-base leading-none tracking-widest">Menu</span>
+            
+<svg class="size-4 text-text-chrome transition-transform duration-200" id="menuChevron"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+        </button>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:block">
+        <ul class="nav-desktop flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base text-text-body px-4">
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+
+    <!-- Mobile Menu Panel: open without JS; html.js collapses before paint until toggled. -->
+    <div id="mobileMenu" class="menu-panel md:hidden mt-4" data-open="false">
+        <ul
+            class="mx-auto max-w-sm max-h-menu overflow-y-auto rounded-2xl border border-border-strong bg-paper/95 shadow-xs">
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var menuPanel = document.getElementById('mobileMenu');
+        if (menuPanel) menuPanel.inert = true;
+    }
+    </script>
+</nav>
+
+
+
+            <!-- Main Content -->
+            <main id="main-content" class="section-divider" tabindex="-1">
+                
+
+
+
+
+
+
+
+
+<article class="py-2">
+    <header class="text-center mb-8">
+        
+        <h1 class="page-title mb-4" data-pagefind-body data-pagefind-meta="title">
+            Saas Module 01
+        </h1>
+        
+        
+
+
+
+
+
+
+
+
+<div class="mb-4 flex flex-wrap items-center justify-center gap-y-1 text-text-chrome gap-x-4 text-sm">
+    <div class="flex items-center gap-1.5">
+        
+<svg class="size-4 text-text-subtle shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+
+        <a href="/archives/2026/" class="oldstyle-nums link-chrome"><time datetime="2026-08-27">2026/08/27</time></a>
+    </div>
+    
+    
+</div>
+
+        
+    </header>
+
+    
+    
+<!-- Inline TOC (viewports below the `toc` breakpoint, where the fixed sidebar cannot fit beside the paper card).
+     html.js collapses the body before paint; toggle is disabled until toc.js binds. No-JS keeps body open. -->
+<nav id="tocInline" class="toc-inline toc:hidden mb-8" aria-label="Contents" data-pagefind-ignore>
+    <button type="button" class="toc-toggle" aria-expanded="false" aria-controls="tocInlineBody" disabled>
+        <span class="toc-toggle-title">Contents</span>
+        
+<svg class="toc-chevron size-4 text-text-chrome transition-transform duration-200"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+    </button>
+    <div class="toc-body" id="tocInlineBody" data-open="false"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#Intro" data-target="Intro">Intro</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#How-tos" data-target="How-tos">How-tos</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Concept-List" data-target="Concept-List">Concept List</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Two-Development-Methodologies" data-target="Two-Development-Methodologies">Two Development Methodologies</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#SaaS-What-Why-and-How" data-target="SaaS-What-Why-and-How">SaaS: What, Why, and How</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Notable-Concepts-in-Developing" data-target="Notable-Concepts-in-Developing">Notable Concepts in Developing</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Plan-and-Document-From-Software-Development-to-Software-Engineering" data-target="Plan-and-Document-From-Software-Development-to-Software-Engineering">Plan-and-Document: From Software Development to Software Engineering</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Background-and-Motivation" data-target="Background-and-Motivation">Background and Motivation</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Waterfall-Early-Versions" data-target="Waterfall-Early-Versions">Waterfall: Early Versions</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Spiral-Model-Improvement-with-Prototypes" data-target="Spiral-Model-Improvement-with-Prototypes">Spiral Model: Improvement with Prototypes</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Other-Variations" data-target="Other-Variations">Other Variations</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary" data-target="Summary">Summary</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Elaboration-SEI-Compability-Maturity-Model-CMM" data-target="Elaboration-SEI-Compability-Maturity-Model-CMM">Elaboration: SEI Compability Maturity Model (CMM)</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#The-Agile-Manifesto" data-target="The-Agile-Manifesto">The Agile Manifesto</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Background" data-target="Background">Background</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Principles" data-target="Principles">Principles</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Software-Lifetimes" data-target="Software-Lifetimes">Software Lifetimes</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Variants-and-Tools" data-target="Variants-and-Tools">Variants and Tools</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-1" data-target="Summary-1">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Testing-Assures-Software-Quality" data-target="Testing-Assures-Software-Quality">Testing: Assures Software Quality</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Distinguishing-Verification-and-Validation" data-target="Distinguishing-Verification-and-Validation">Distinguishing Verification and Validation</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Testing-Verify-and-Validate" data-target="Testing-Verify-and-Validate">Testing: Verify and Validate</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#One-way-to-do-it-XP" data-target="One-way-to-do-it-XP">One way to do it: XP</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-2" data-target="Summary-2">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Productivity-of-Development-Conciseness-Synthesis-Reuse-and-Tools" data-target="Productivity-of-Development-Conciseness-Synthesis-Reuse-and-Tools">Productivity of Development: Conciseness, Synthesis, Reuse and Tools</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Clarity-via-Conciseness" data-target="Clarity-via-Conciseness">Clarity via Conciseness</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Synthesis" data-target="Synthesis">Synthesis</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Reuse" data-target="Reuse">Reuse</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Automation" data-target="Automation">Automation</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-3" data-target="Summary-3">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#SaaS-and-Service-Oriented-Architecture" data-target="SaaS-and-Service-Oriented-Architecture">SaaS and Service Oriented Architecture</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-4" data-target="Summary-4">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Cloud-Computing-Deploy-SaaS" data-target="Cloud-Computing-Deploy-SaaS">Cloud Computing: Deploy SaaS</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#From-Big-Iron-to-Datacenter" data-target="From-Big-Iron-to-Datacenter">From Big Iron to Datacenter</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Cloud-Services" data-target="Cloud-Services">Cloud Services</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-5" data-target="Summary-5">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Browsers-and-Mobile" data-target="Browsers-and-Mobile">Browsers and Mobile</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Appearance-and-CSS" data-target="Appearance-and-CSS">Appearance and CSS</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Mechanism-of-CSS-to-style-HTML" data-target="Mechanism-of-CSS-to-style-HTML">Mechanism of CSS to style HTML</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Use-Frameworks" data-target="Use-Frameworks">Use Frameworks</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Comparing-different-apps" data-target="Comparing-different-apps">Comparing different apps</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-6" data-target="Summary-6">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Beautiful-v-s-Legacy-Code" data-target="Beautiful-v-s-Legacy-Code">Beautiful v.s. Legacy Code</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Background-1" data-target="Background-1">Background</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Legacy-Code" data-target="Legacy-Code">Legacy Code</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Legacy-v-s-Beautiful" data-target="Legacy-v-s-Beautiful">Legacy v.s. Beautiful</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Why-are-we-learning-this" data-target="Why-are-we-learning-this">Why are we learning this?</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-7" data-target="Summary-7">Summary</a></li></ul></li></ul></div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var tocBody = document.getElementById('tocInlineBody');
+        if (tocBody) tocBody.inert = true;
+    }
+    </script>
+</nav>
+
+<!-- Sidebar TOC (`toc` breakpoint and up; see --breakpoint-toc in source/css/_core/tokens.css) -->
+<nav id="tocSidebar" class="toc-sidebar hidden toc:block" aria-label="Contents" data-pagefind-ignore>
+    <div class="toc-sidebar-inner">
+        <p class="toc-sidebar-title">Contents</p>
+        <div class="toc-body"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#Intro" data-target="Intro">Intro</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#How-tos" data-target="How-tos">How-tos</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Concept-List" data-target="Concept-List">Concept List</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Two-Development-Methodologies" data-target="Two-Development-Methodologies">Two Development Methodologies</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#SaaS-What-Why-and-How" data-target="SaaS-What-Why-and-How">SaaS: What, Why, and How</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Notable-Concepts-in-Developing" data-target="Notable-Concepts-in-Developing">Notable Concepts in Developing</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Plan-and-Document-From-Software-Development-to-Software-Engineering" data-target="Plan-and-Document-From-Software-Development-to-Software-Engineering">Plan-and-Document: From Software Development to Software Engineering</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Background-and-Motivation" data-target="Background-and-Motivation">Background and Motivation</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Waterfall-Early-Versions" data-target="Waterfall-Early-Versions">Waterfall: Early Versions</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Spiral-Model-Improvement-with-Prototypes" data-target="Spiral-Model-Improvement-with-Prototypes">Spiral Model: Improvement with Prototypes</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Other-Variations" data-target="Other-Variations">Other Variations</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary" data-target="Summary">Summary</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Elaboration-SEI-Compability-Maturity-Model-CMM" data-target="Elaboration-SEI-Compability-Maturity-Model-CMM">Elaboration: SEI Compability Maturity Model (CMM)</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#The-Agile-Manifesto" data-target="The-Agile-Manifesto">The Agile Manifesto</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Background" data-target="Background">Background</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Principles" data-target="Principles">Principles</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Software-Lifetimes" data-target="Software-Lifetimes">Software Lifetimes</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Variants-and-Tools" data-target="Variants-and-Tools">Variants and Tools</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-1" data-target="Summary-1">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Testing-Assures-Software-Quality" data-target="Testing-Assures-Software-Quality">Testing: Assures Software Quality</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Distinguishing-Verification-and-Validation" data-target="Distinguishing-Verification-and-Validation">Distinguishing Verification and Validation</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Testing-Verify-and-Validate" data-target="Testing-Verify-and-Validate">Testing: Verify and Validate</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#One-way-to-do-it-XP" data-target="One-way-to-do-it-XP">One way to do it: XP</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-2" data-target="Summary-2">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Productivity-of-Development-Conciseness-Synthesis-Reuse-and-Tools" data-target="Productivity-of-Development-Conciseness-Synthesis-Reuse-and-Tools">Productivity of Development: Conciseness, Synthesis, Reuse and Tools</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Clarity-via-Conciseness" data-target="Clarity-via-Conciseness">Clarity via Conciseness</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Synthesis" data-target="Synthesis">Synthesis</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Reuse" data-target="Reuse">Reuse</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Automation" data-target="Automation">Automation</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-3" data-target="Summary-3">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#SaaS-and-Service-Oriented-Architecture" data-target="SaaS-and-Service-Oriented-Architecture">SaaS and Service Oriented Architecture</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-4" data-target="Summary-4">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Cloud-Computing-Deploy-SaaS" data-target="Cloud-Computing-Deploy-SaaS">Cloud Computing: Deploy SaaS</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#From-Big-Iron-to-Datacenter" data-target="From-Big-Iron-to-Datacenter">From Big Iron to Datacenter</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Cloud-Services" data-target="Cloud-Services">Cloud Services</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-5" data-target="Summary-5">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Browsers-and-Mobile" data-target="Browsers-and-Mobile">Browsers and Mobile</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Appearance-and-CSS" data-target="Appearance-and-CSS">Appearance and CSS</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Mechanism-of-CSS-to-style-HTML" data-target="Mechanism-of-CSS-to-style-HTML">Mechanism of CSS to style HTML</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Use-Frameworks" data-target="Use-Frameworks">Use Frameworks</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Comparing-different-apps" data-target="Comparing-different-apps">Comparing different apps</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-6" data-target="Summary-6">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Beautiful-v-s-Legacy-Code" data-target="Beautiful-v-s-Legacy-Code">Beautiful v.s. Legacy Code</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Background-1" data-target="Background-1">Background</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Legacy-Code" data-target="Legacy-Code">Legacy Code</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Legacy-v-s-Beautiful" data-target="Legacy-v-s-Beautiful">Legacy v.s. Beautiful</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Why-are-we-learning-this" data-target="Why-are-we-learning-this">Why are we learning this?</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-7" data-target="Summary-7">Summary</a></li></ul></li></ul></div>
+    </div>
+</nav>
+
+    
+
+    <div class="prose-shiro" data-pagefind-body>
+        <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>This is my reading note of the SaaS book, the text book of COMPSCI 169A, Software Engineering provided by UC Berkeley 26 Fall.</p>
+<h3 id="How-tos"><a href="#How-tos" class="headerlink" title="How-tos"></a>How-tos</h3><p>Here lists some how-tos about the book reading.</p>
+<ul>
+<li>Learn by doing, instead of just reading and watching videos.</li>
+<li>Learn to learn, instead of just learning some specific language or framework.</li>
+<li>Understand Principles.</li>
+</ul>
+<hr>
+<h1 id="Module-1"><a href="#Module-1" class="headerlink" title="Module 1"></a>Module 1</h1><p>This chapter requires basic knowledge of HTML, which I do know to some extent.</p>
+<h2 id="Concept-List"><a href="#Concept-List" class="headerlink" title="Concept List"></a>Concept List</h2><h3 id="Two-Development-Methodologies"><a href="#Two-Development-Methodologies" class="headerlink" title="Two Development Methodologies"></a>Two Development Methodologies</h3><p>Many severe problems can be avoided with good methodology in software development. Some methodologies can even help other areas like civil engineering.</p>
+<p>Learn from good practices, also learn from disasters.</p>
+<p><strong>Plan-and-Document Software Development</strong></p>
+<ul>
+<li>The core of this method is <strong>Planning</strong> and <strong>Detailed Documentation</strong>. The whole <strong>lifecycle</strong> relies on careful, up-front planning.</li>
+<li>It works, but have many downsides, leading to many failures.</li>
+</ul>
+<p><strong>Agile Software Development</strong></p>
+<ul>
+<li>whose core is <strong>Prototypes</strong>. <em>TODO: FIX THIS!!!</em></li>
+<li>continuously incrementally refine the prototypes.</li>
+<li>respond better to <em>change</em>, and enable developers to get <em>feedback</em> on time, and works well with <em>smaller teams</em>.</li>
+<li>Each <strong>iteration</strong> takes about 1-4 weeks.</li>
+<li>doesn’t work well with very large software and hardware. </li>
+<li>Developers themselves is responsible for <strong>Software Quality</strong>, instead of <strong>QA Team</strong>.</li>
+</ul>
+<h3 id="SaaS-What-Why-and-How"><a href="#SaaS-What-Why-and-How" class="headerlink" title="SaaS: What, Why, and How"></a>SaaS: What, Why, and How</h3><p><strong>Software as a Product</strong> (SaaP)</p>
+<ul>
+<li>user install&#x2F;deploy sw on own device</li>
+</ul>
+<p><strong>Mobile Devices as Backgroud</strong></p>
+<ul>
+<li>Mobile Devices account for the majority of visits to websites.</li>
+<li>SaaS is suitable for “Mobile-first” apps.</li>
+<li><strong>Responsive Web Design</strong> Automatically adapt to different screen sizes</li>
+</ul>
+<p><strong>Software as a Service</strong> (SaaS)</p>
+<ul>
+<li>software deployed on internet servers</li>
+<li>accessible to millons of users.</li>
+<li>eaiser to upgrade and evolves, only one copy is deployed</li>
+</ul>
+<p><strong>Cloud Computing</strong></p>
+<ul>
+<li>supplies dependable and scalable computation</li>
+<li>supplies storage for Saas with <strong>Warehouse Scale Computers</strong><ul>
+<li>contains as much as 100k servers</li>
+</ul>
+</li>
+</ul>
+<p>Synergy (协同作用) of:</p>
+<ul>
+<li>Agile Software Development</li>
+<li>Software as a Service</li>
+<li>Cloud Computing</li>
+</ul>
+<h3 id="Notable-Concepts-in-Developing"><a href="#Notable-Concepts-in-Developing" class="headerlink" title="Notable Concepts in Developing"></a>Notable Concepts in Developing</h3><p><strong>Software Quality</strong></p>
+<ul>
+<li>is about <strong>Value Delivery</strong> to customers and developers.</li>
+<li>requires: <strong>Testing</strong>.</li>
+</ul>
+<p><strong>Developer Productivity</strong></p>
+<ul>
+<li>boosted by<ul>
+<li><strong>Clarity</strong> via conciseness, synthesis, reuse</li>
+<li><strong>Automation</strong> via tools</li>
+</ul>
+</li>
+<li>Ruby on Rails employs all of them</li>
+</ul>
+<p><strong>Code Base Enhancement and Legacy Code Evolution</strong></p>
+<ul>
+<li>a vital issue in reality, but often ignored</li>
+<li>Agile can also be applied to enhancing legacy code or existing code bases.</li>
+</ul>
+<h2 id="Plan-and-Document-From-Software-Development-to-Software-Engineering"><a href="#Plan-and-Document-From-Software-Development-to-Software-Engineering" class="headerlink" title="Plan-and-Document: From Software Development to Software Engineering"></a>Plan-and-Document: From Software Development to Software Engineering</h2><h3 id="Background-and-Motivation"><a href="#Background-and-Motivation" class="headerlink" title="Background and Motivation"></a>Background and Motivation</h3><p>Background:</p>
+<ul>
+<li>unpredictability of software development</li>
+<li>many engineering disasters in late 1960s</li>
+</ul>
+<p>“Software Engineering” was coined:</p>
+<ul>
+<li><strong>How</strong>: bring in engineering Discipline and Methods <ul>
+<li>extensive documentation</li>
+<li>IEEE&#x2F;ANSI standard 830&#x2F;1993</li>
+</ul>
+</li>
+<li><strong>Goal</strong>: make development more predictable in<ul>
+<li>quality, cost, time for development</li>
+</ul>
+</li>
+</ul>
+<p>Required Plan and Document for the project</p>
+<ul>
+<li>Requirements &amp; Designs</li>
+<li>User manuals</li>
+<li>Test instructions</li>
+<li>Project Plans</li>
+<li>Change Logs</li>
+</ul>
+<h3 id="Waterfall-Early-Versions"><a href="#Waterfall-Early-Versions" class="headerlink" title="Waterfall: Early Versions"></a>Waterfall: Early Versions</h3><p><strong>Process&#x2F;Lifecycle</strong></p>
+<ul>
+<li>Requirements Analysis and Specification</li>
+<li>Architectural Design</li>
+<li>Implementation and Integration</li>
+<li>Verification</li>
+<li>Operation and Maintenance</li>
+</ul>
+<p><strong>Time Schedule</strong></p>
+<ul>
+<li>First Release: Years</li>
+<li>Maintanance &amp; Update: 6-18 months<ul>
+<li>Go through the same lifecycle</li>
+</ul>
+</li>
+</ul>
+<p><strong>Pros</strong>:</p>
+<ul>
+<li>work well with well-specified tasks</li>
+<li>needs and requirements are clear</li>
+</ul>
+<p><strong>Cons</strong>:</p>
+<ul>
+<li>fails when the customers frequently change their minds</li>
+</ul>
+<h3 id="Spiral-Model-Improvement-with-Prototypes"><a href="#Spiral-Model-Improvement-with-Prototypes" class="headerlink" title="Spiral Model: Improvement with Prototypes"></a>Spiral Model: Improvement with Prototypes</h3><p><strong>Background</strong></p>
+<ul>
+<li>Given these downsides, people found that it is easier for customers to understand what they want once they see a <strong>prototype</strong>.</li>
+<li>This led to <strong>Spiral Model</strong>, which is Prototypes with the Waterfall Model.</li>
+<li>It iterate through a sequence of four pahses, each resulting in a prototype, which is a refinement of a previous one.</li>
+</ul>
+<p><strong>Process&#x2F;Lifecycle</strong></p>
+<ul>
+<li>Determine Objectives and Constraints of this Iteration.</li>
+<li>Evaluate Alternatives and Identify and Resolve risks.</li>
+<li>Develop and Verify the Prototype for This Iteration.</li>
+<li>Plan the Next Iteration.<ul>
+<li>documents: developed across the iterations; evolve with the project, like code.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Pros</strong></p>
+<ul>
+<li>allow each iteration to involve the customer before the product is completed</li>
+<li>reducing the chance of misunderstandings.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li>each Iteration still takes 6-24 months long</li>
+<li>still a high chance for customers to change their mind in such a long time.</li>
+</ul>
+<h3 id="Other-Variations"><a href="#Other-Variations" class="headerlink" title="Other Variations"></a>Other Variations</h3><p><strong>Rational Unified Process (RUP)</strong></p>
+<p>Combines features of both Waterfall and Spiral, more allied to business issues than to technical issues.</p>
+<ul>
+<li><strong>Inception</strong>: makes the business case for the software and scopes the project to set the schedules and budget, which is used to judge progress and justify expenditures, and initial assessment of risks to schedule and budget.</li>
+<li><strong>Elaboration</strong>: works with stakeholders to identify use cases, designs a software architecture, seets the development plan, builds an initial prototype.</li>
+<li><strong>Construction</strong>: codes and tests the product, resulting in the first external release.</li>
+<li><strong>Transition</strong>: moves the product from development to production in the real environment, including customer acceptance testing and user traning.</li>
+</ul>
+<p>Each phase involves iteration. A phase can has multiple iterations. For example:</p>
+<ul>
+<li>1 Inception Phase Iteration</li>
+<li>2 Elaboration Phase Iteration</li>
+<li>4 Construction Phase Iteration</li>
+<li>2 Transition Phase Iteration</li>
+</ul>
+<p>A project could also iterate across all four phases repeatedly.</p>
+<p>RUP also identifies six <strong>Engineering Disciplines</strong> or <strong>Workflows</strong>, which are more static than the phases.</p>
+<ul>
+<li>Business Modelling</li>
+<li>Requirements</li>
+<li>Analysis and Design</li>
+<li>Implementation</li>
+<li>Test</li>
+<li>Deployment</li>
+</ul>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>Waterfall Lifecycle</p>
+<ul>
+<li>much of the design in advance</li>
+<li>complete each phase before going on to the next one.</li>
+</ul>
+<p>Spiral Lifecycle</p>
+<ul>
+<li>iterates through all the development phases</li>
+<li>produces prototypes</li>
+</ul>
+<p>Rational Unified Process Lifecycle</p>
+<ul>
+<li>includes phases, iterations, prototypes</li>
+<li>identifying people skills for the project.</li>
+</ul>
+<p>All rely on careful planning and documentation. All measure progress against a plan.</p>
+<p>P&amp;D Processes brought discipline to software development, but many projects still failed.</p>
+<h3 id="Elaboration-SEI-Compability-Maturity-Model-CMM"><a href="#Elaboration-SEI-Compability-Maturity-Model-CMM" class="headerlink" title="Elaboration: SEI Compability Maturity Model (CMM)"></a>Elaboration: SEI Compability Maturity Model (CMM)</h3><p>Evaluates organzations’ software development processes based on Plan-and-Document methodologies so that the process can be improved.</p>
+<p>Five levels of software practice</p>
+<ul>
+<li><strong>Initial or Chaotic</strong>: undocumented&#x2F;ad hoc&#x2F;unstable software development</li>
+<li><strong>Repeatable</strong>: not following rigorous discipline, but someprocesses repeatable with consistent result.</li>
+<li><strong>Defined</strong>: Defined and documented standard processes that improve over time.</li>
+<li><strong>Managed</strong>: Management can control software development using process metrics, adapting the process to different projects successfully.</li>
+<li><strong>Optimizing</strong>: Part of the management process is delibereate quantitative optimization of the development process</li>
+</ul>
+<p>Some consider level 2 as Agile.</p>
+<h2 id="The-Agile-Manifesto"><a href="#The-Agile-Manifesto" class="headerlink" title="The Agile Manifesto"></a>The Agile Manifesto</h2><h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>Many P&amp;D projects failed to meet the time&#x2F;schedule and budgets, and many are cancelledor abandoned.</p>
+<blockquote>
+<p>We are uncovering better ways of developing software by doing it and helping others do it. Through this work we have come to value:</p>
+</blockquote>
+<p><strong>Agile Manifesto</strong> is a lighter-weight software lifecycle.</p>
+<ul>
+<li><strong>Individuals and Interactions</strong> over processes and tools</li>
+<li><strong>Working Software</strong> over comprehensive documentation</li>
+<li><strong>Customer Collaboration</strong> over contract negotiation</li>
+<li><strong>Responding to Change</strong> over following a plan</li>
+</ul>
+<blockquote>
+<p>That is, while there is value in the items on the right, we value the items on the left more.</p>
+</blockquote>
+<h3 id="Principles"><a href="#Principles" class="headerlink" title="Principles"></a>Principles</h3><ol>
+<li><strong>Test-Driven Development (TDD)</strong></li>
+</ol>
+<p>Agile emphasizes <strong>writing tests before writing the code</strong> to reduce mistakes.</p>
+<ol start="2">
+<li><strong>User Stories</strong></li>
+</ol>
+<p>Reach agreement and validate customer requirements.</p>
+<ol start="3">
+<li><strong>Velocity</strong></li>
+</ol>
+<p>Measures project progress.</p>
+<h3 id="Software-Lifetimes"><a href="#Software-Lifetimes" class="headerlink" title="Software Lifetimes"></a>Software Lifetimes</h3><p>Agile software lifecycle</p>
+<ul>
+<li>is very quick, new versions are available every week or two, even everyday.</li>
+<li>de-emphasizes planning, documentation, and binding specifications.</li>
+</ul>
+<p>On the one hand, it is welcomed, because it is more friendly to developers. But on the other hand it is controversial and questioned, because it seems less predictable.</p>
+<p>However, more researches showed that Agile indeed work very well.</p>
+<h3 id="Variants-and-Tools"><a href="#Variants-and-Tools" class="headerlink" title="Variants and Tools"></a>Variants and Tools</h3><p>Like P&amp;D, Agile is also a family of methodologies.</p>
+<p><strong>Extreme Programming (XP)</strong></p>
+<ul>
+<li>1-2 week iterations</li>
+<li>behavior driven design</li>
+<li>test-driven development</li>
+<li>pair programming</li>
+</ul>
+<p><strong>Scrum</strong></p>
+<ul>
+<li>2-4 week iterations called <strong>Sprints</strong></li>
+<li>self-organizing teams: regroup to plan the next sprint</li>
+</ul>
+<p>Also, to overcome its obstacles, Agile implements many useful tools and approaches.</p>
+<p><strong>Kanban Approach</strong></p>
+<ul>
+<li>treats software development as a pipeline</li>
+<li>fixed roles of team membet</li>
+<li>balance the number of team members to reduce bottleneck</li>
+<li>a wall of cards illustrating the state of tasks</li>
+<li>hybrid lifecycles that try to combine the best of two worlds, <strong>ScrumBan</strong></li>
+</ul>
+<h3 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h3><p>Agile was born from small teams and small projects, but not all projects are small.</p>
+<p>Agile works with customers to</p>
+<ul>
+<li>continuously add features to prototypes until the customer is satisfied.</li>
+<li>allow customers to change what they want as project develops.</li>
+</ul>
+<p>Documentation is primarily through</p>
+<ul>
+<li>User Stories</li>
+<li>Test Cases</li>
+</ul>
+<p>Agile does not measure progress against a predefined plan. Progress is gauged by recording velocity, the rate that a project commpletes features.</p>
+<h2 id="Testing-Assures-Software-Quality"><a href="#Testing-Assures-Software-Quality" class="headerlink" title="Testing: Assures Software Quality"></a>Testing: Assures Software Quality</h2><p><strong>Quality</strong> of any product: <strong>Fitness for use</strong>.</p>
+<ul>
+<li>provide business value for both customer and the manufacturer.</li>
+</ul>
+<p><strong>Quality for Software</strong>:</p>
+<ul>
+<li>satisfying the customer’s needs<ul>
+<li>easy to use, correctness, does not crash, etc.</li>
+</ul>
+</li>
+<li>being easy for developers to debug and enhance.</li>
+</ul>
+<p><strong>Quality Assurance (QA)</strong>: comes from manufacturing</p>
+<ul>
+<li>process and standards that lead to manufacture of high-quality products</li>
+<li>introduction of manufacturing processes that improve quality</li>
+</ul>
+<p><strong>Software QA</strong></p>
+<ul>
+<li>ensuring products under development have high quality </li>
+<li>creating processes and standards in an org that lead to high quality software</li>
+</ul>
+<h3 id="Distinguishing-Verification-and-Validation"><a href="#Distinguishing-Verification-and-Validation" class="headerlink" title="Distinguishing Verification and Validation"></a>Distinguishing Verification and Validation</h3><p><strong>Verification</strong></p>
+<ul>
+<li>Did you build the thing right?</li>
+<li>Did you meet the specification</li>
+<li>More important in hardware.</li>
+</ul>
+<p><strong>Validation</strong></p>
+<ul>
+<li>Did you build the right thing?</li>
+<li>I sthis what the customer wants?</li>
+<li>Is the specification correct?</li>
+<li>More important in software.</li>
+</ul>
+<p>Software prototypes in Agile help with <strong>Validation</strong> rather than verification to keep up with customers’ minds.</p>
+<h3 id="Testing-Verify-and-Validate"><a href="#Testing-Verify-and-Validate" class="headerlink" title="Testing: Verify and Validate"></a>Testing: Verify and Validate</h3><p>The main approach to both Verification and Validation is <strong>Testing</strong>.</p>
+<p>Motivation: the earlier developers find mistakes, the cheaper it is to repair them.</p>
+<p>However, the combinations of inputs has a vast number. To reduce its space, we do different testing in different phases of software development.</p>
+<ul>
+<li><strong>Unit Testing</strong>: single procedure or method, within a class</li>
+<li><strong>Module Testing</strong>: across individual units, involving different classes</li>
+<li><strong>Integration Testing</strong>: interface between units have consistent assumptions and communicates correctly</li>
+<li><strong>System Testing &#x2F; Acceptance testing</strong>: integrated program meets its spec.</li>
+</ul>
+<p>There is also an alternative to testing: <strong>Formal Methods</strong>. </p>
+<h3 id="One-way-to-do-it-XP"><a href="#One-way-to-do-it-XP" class="headerlink" title="One way to do it: XP"></a>One way to do it: XP</h3><p>Write tests before writing code. Then write minimal code to pass the tests. So, the code is always tested, and reduce the chances of writing discarded code.</p>
+<p>XP splits the test-first philosophy into 2 parts:</p>
+<p>System, Acceptance, Integration Tests:</p>
+<ul>
+<li>uses <strong>Behavior-Driven Design (BDD)</strong></li>
+</ul>
+<p>Unit, Module Tests</p>
+<ul>
+<li>uses <strong>Test-Driven Development (TDD)</strong></li>
+</ul>
+<h3 id="Summary-2"><a href="#Summary-2" class="headerlink" title="Summary"></a>Summary</h3><p>Testing reduces the risk of errors in designs.</p>
+<p>Helps verify and validate</p>
+<p>Tests are divided to avoid exhausting.</p>
+<p>Agile do tests before code, and use BDD and TDD.</p>
+<h2 id="Productivity-of-Development-Conciseness-Synthesis-Reuse-and-Tools"><a href="#Productivity-of-Development-Conciseness-Synthesis-Reuse-and-Tools" class="headerlink" title="Productivity of Development: Conciseness, Synthesis, Reuse and Tools"></a>Productivity of Development: Conciseness, Synthesis, Reuse and Tools</h2><p>Moore’s Law -&gt; Bigger Apps -&gt; Higher Productivity Requirements</p>
+<p>Four fundamental mechinisms to improve productivity</p>
+<ul>
+<li>Clarity via Conciseness</li>
+<li>Synthesis</li>
+<li>Reuse</li>
+<li>Automation via Tools</li>
+</ul>
+<h3 id="Clarity-via-Conciseness"><a href="#Clarity-via-Conciseness" class="headerlink" title="Clarity via Conciseness"></a>Clarity via Conciseness</h3><blockquote>
+<p>if programs are easier to understand, they will have fewer bugs and will be easier to maintain.</p>
+</blockquote>
+<p>One Way: <strong>Program Language</strong></p>
+<figure class="not-prose highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Longer, harder to read</span><br><span class="line">assert_greater_than_or_equal_to(a, b)</span><br><span class="line"></span><br><span class="line"># Shorter, concise, easy to understand</span><br><span class="line">expect(a).to be &gt;= b</span><br></pre></td></tr></table></figure>
+
+<p>Another Way: <strong>Higher Level Abstraction</strong></p>
+<p>Assembly -&gt; High Level Languages<br>Deligate more to Compilers and Runtime<br>C&#x2F;C++ -&gt; Java -&gt; Ruby, Python</p>
+<p>Reflection is an example of higher level abstraction, allowing programs to observe themselves.</p>
+<p>Higher order functions, allows higher-level behaviors to be reused, by passing functions as arguments to other functions.</p>
+<h3 id="Synthesis"><a href="#Synthesis" class="headerlink" title="Synthesis"></a>Synthesis</h3><p>Generate Code automatically rather than create manually.</p>
+<p>Often used in hardware design.<br>Classic Synthesis software: Bit Blit.</p>
+<p>Rails framework makes extensive use of the Ruby language’s facilities for metaprogramming, which allows Ruby programs to automatically synthesize code at runtime.</p>
+<h3 id="Reuse"><a href="#Reuse" class="headerlink" title="Reuse"></a>Reuse</h3><p>Reusing portions from past designs. It is easier to make changes than building from scratch.</p>
+<p>Ways to reuse: </p>
+<ul>
+<li><strong>Standardized Libraries</strong></li>
+<li><strong>Object Oriencted Programming (OOP)</strong></li>
+<li><strong>Design Patterns</strong></li>
+<li>Language Support<ul>
+<li><strong>Dynamic Typing</strong></li>
+<li><strong>Mix-ins</strong></li>
+<li><strong>Funtional Programming</strong></li>
+</ul>
+</li>
+</ul>
+<p>Reuse doesn’t mean copying and pasting code so that it appears everywhere. It is called repetition, which is bad.</p>
+<p>The guidelines for reuse:</p>
+<blockquote>
+<p>Every piece of knowledge must have a single, unabiguous, authoritative reprensation within a system.</p>
+</blockquote>
+<p>Which is captured in the motto and acronym: <strong>Don’t Repeat Yourself (DRY)</strong></p>
+<h3 id="Automation"><a href="#Automation" class="headerlink" title="Automation"></a>Automation</h3><p>Replacing tedious manual tasks with tools to save time, improve accuracy or both.</p>
+<p>Compilers, Interpreters are tools that raise abstracction levels and generate codes.</p>
+<p>Makefiles, Version Control Systems are more used to automate tedious tasks.</p>
+<p>Common Tradeoff:</p>
+<ul>
+<li>Time used to learn and choose tools<ul>
+<li>Dependability of the tool</li>
+<li>Quality of the user experience</li>
+</ul>
+</li>
+<li>Time saved in applying it.</li>
+</ul>
+<p>New tools usually make our lives better.</p>
+<p>Example tools</p>
+<ul>
+<li><strong>Cucumber</strong>: automate turning user stories into acceptance tests</li>
+<li><strong>Pivotal Tracker</strong>: automatically measures Velocity</li>
+<li><strong>RSpec</strong>: automate the unit testing process.</li>
+</ul>
+<h3 id="Summary-3"><a href="#Summary-3" class="headerlink" title="Summary"></a>Summary</h3><p>Moore’s Law inspired engineers to improve productivity.</p>
+<p>Conciseness</p>
+<ul>
+<li>compact syntax</li>
+<li>raising level of abstraction</li>
+<li>reflection, higher-order functions</li>
+</ul>
+<p>Synthesizing Implementations</p>
+<p>Reusing Designs</p>
+<ul>
+<li>DRY</li>
+</ul>
+<p>Using and Inventing tools to automate</p>
+<h2 id="SaaS-and-Service-Oriented-Architecture"><a href="#SaaS-and-Service-Oriented-Architecture" class="headerlink" title="SaaS and Service Oriented Architecture"></a>SaaS and Service Oriented Architecture</h2><p>Background: Web is gaining larger audiences. This inspires a new idea: rather than relying on users’ devices to install software, why not run software centrally on servers?</p>
+<p>This new model is called <strong>Software as a Service (SaaS)</strong></p>
+<p>Advantages</p>
+<ul>
+<li>Customers don’t need to worry about their own hardwares, as long as it can run web browser.</li>
+<li>Customers don’t need to worry about data backup.</li>
+<li>A group of users can interact with the same data.</li>
+<li>Centralizing makses more sense in hadling large, frequently updated data..</li>
+<li>Only single copy of server software is deployed, no need to care about compatibility on different devices. (it requires compatibility of web browsers, but it is much easier)</li>
+<li>Developers have full control to update, without changing <strong>Application Program Interfaces (API)</strong></li>
+<li>Encourages competition among SaaS companies.</li>
+</ul>
+<p>Frameworks Helps with SaaS</p>
+<ul>
+<li><strong>Active Server Pages (ASP.NET)</strong> for C#, VB.NET</li>
+<li><strong>Enterprise Java Beans (EJB)</strong> for Java</li>
+<li><strong>JavaServer Pages (JSP)</strong> for Java</li>
+<li><strong>Spring</strong> for Java</li>
+<li><strong>Rails</strong> for Ruby</li>
+<li><strong>Django</strong> for Python</li>
+<li><strong>Zend</strong> for PHP</li>
+<li><strong>Sinatra</strong> for Ruby</li>
+</ul>
+<p>Disadvantage:</p>
+<ul>
+<li>Software libraries for SaaP</li>
+</ul>
+<p>Mitigation:</p>
+<ul>
+<li><strong>Service-Oriented Architecture (SOA)</strong>, allow SaaS services call other services built and maintained by others.</li>
+<li>It became <strong>Microservices</strong></li>
+</ul>
+<h3 id="Summary-4"><a href="#Summary-4" class="headerlink" title="Summary"></a>Summary</h3><p>attractive to both customers and providers.</p>
+<ul>
+<li>easier for customer to use the service, due to the use of the universal client: Web Browser.</li>
+<li>easier for provider to deliver and improve, due to centralized deployment.</li>
+<li>works well with Agile Software Development Process</li>
+</ul>
+<h2 id="Cloud-Computing-Deploy-SaaS"><a href="#Cloud-Computing-Deploy-SaaS" class="headerlink" title="Cloud Computing: Deploy SaaS"></a>Cloud Computing: Deploy SaaS</h2><p>Demand of SaaS:</p>
+<ul>
+<li>Communication: allow any customer to interact with the service<ul>
+<li>Resolved easily by broadband to home.</li>
+</ul>
+</li>
+<li>Scalability in the Central Facility: deal with the fluctuations in demand during popular times</li>
+<li>Availability in both Service and Communication Vehicle: 24x7 available, 99.999% (five nines) rule, 5min of downtime per year.</li>
+</ul>
+<h3 id="From-Big-Iron-to-Datacenter"><a href="#From-Big-Iron-to-Datacenter" class="headerlink" title="From Big Iron to Datacenter"></a>From Big Iron to Datacenter</h3><p>Early web services were deployed on expensive large-scale machines. They are more reliable and easier to operate.</p>
+<p>However, another approach has taken over the industry: Collections of commodity small-scale computers, connected by commodity Ethernet switches. Known as <strong>Clusters</strong>.</p>
+<p>The <strong>Clusters</strong> has several advantages:</p>
+<ul>
+<li>Much more scalable due to their reliance on Ethernet. It can contain 100k or more computers now.</li>
+<li>Virtual Machines can simplify operations to carefully controlled and selected hardwares.<ul>
+<li>imitate with low overhead.</li>
+</ul>
+</li>
+<li>even more efficient way is OS-Level Virtualization (Docker is an example)</li>
+<li>Lower Costs than for “big iron”, by a factor of 20.</li>
+<li>Though less reliable, but more dependable by affordable redundancy in multiple datacenters.</li>
+</ul>
+<h3 id="Cloud-Services"><a href="#Cloud-Services" class="headerlink" title="Cloud Services"></a>Cloud Services</h3><p>Some big datacenter owner finds that their cost per capita is sustainably lower than other smaller datacenter owner.</p>
+<p>So, by sharing giant datacenters, untility can be increased, and benefits are made for both owner and customer.</p>
+<p>The result is called <strong>Public Cloud Services</strong> &#x2F; <strong>Utility Computing</strong> &#x2F; <strong>Cloud Computing</strong>.</p>
+<p>It offers computing, storage and communication at pennies per hour, with no additional cost for scale. The cost is the same when using 1 computer for 1000 hours as when using 1000 computers for 1 hour.</p>
+<h3 id="Summary-5"><a href="#Summary-5" class="headerlink" title="Summary"></a>Summary</h3><p>The engineering SaaS for Cloud Computing is radically different from engineering SaaP for PCs and Servers.</p>
+<p>The Internet supplies the communiation for SaaS</p>
+<p>Cloud Computing provides the scalable and dependable hardware computation and storage for SaaS.</p>
+<p>Cloud computing consists of clusters of commodity servers connected by local area networks switches.<br>A software layer providing sufficient redundancy to make it cost-effective while dependable.</p>
+<p>These large clusters are called Warehouse Scale Computers, and offer economies of scale.</p>
+<p>Cloud Computing providers offer hardware infra as low-cost utility computing that anyone can use. </p>
+<h2 id="Browsers-and-Mobile"><a href="#Browsers-and-Mobile" class="headerlink" title="Browsers and Mobile"></a>Browsers and Mobile</h2><p>Success of Web wipe out many SaaP apps, browser has become universal client.</p>
+<p>The user interface of site is described by the <strong>Hypertext Markup Language (HTML)</strong>. Then, JavaScript entered to enrich the interactive experience of Web Pages.</p>
+<p><strong>Markup Language</strong>: combines text with markup (annotations about the text’s structure) in a way that makes it easy to syntactically distinguish the two.</p>
+<p>HTML 5 is one type of document that can be expressed in <strong>Extensible Markup Language (XML)</strong>. XML can be used to represent data and to describe other markup languages.</p>
+<h3 id="Appearance-and-CSS"><a href="#Appearance-and-CSS" class="headerlink" title="Appearance and CSS"></a>Appearance and CSS</h3><p>Later, the <strong>Appearance</strong> information in HTML is separated from the <strong>Logical Structure</strong>.</p>
+<p>Logical Structure</p>
+<ul>
+<li>logical component of page</li>
+<li><code>div</code>: group together logically related elements</li>
+</ul>
+<p>Appearance</p>
+<ul>
+<li>basic typography: fonts, colors</li>
+<li>layout of elements on the page</li>
+</ul>
+<p><strong>Cascading Style Sheets (CSS)</strong> is used to separate struycture and appearance. It associate visual rendering information with HTML elements.</p>
+<p>One key concept of CSS is <strong>Selector</strong>: an expression that matches on or more HTML elements in a document. Selectors are also used as a mechanismm in JavaScript to create interactive Web Pages.</p>
+<p>One of the most widely used approach is to associate the selector with an element’s <code>class</code> attr</p>
+<h3 id="Mechanism-of-CSS-to-style-HTML"><a href="#Mechanism-of-CSS-to-style-HTML" class="headerlink" title="Mechanism of CSS to style HTML"></a>Mechanism of CSS to style HTML</h3><p>When browser loads the page, it looks for one or more <code>link</code> elements, which should be children of the HTML document’s <code>head</code> element, that specify stylesheets to be used in conjuction with this document. In this case, the link’s <code>href</code> refers to the main stylesheet of Bootstrap CSS.</p>
+<p>The browser loads each referenced CSS stylesheet. A stylesheet contains a set of selectors and for each selector, a set of rules for how to display emelements mathcing that selector. These rules can specify typography, layout on the page, colors and more.</p>
+<p>When displaying the page, the browser matches up the CSS rules with the matching elements on each displayed page. In this example, Bootstrap provides basic style rules for each element type, and the <code>class</code> attr on various elements are there to match particular CSS selectors in Bootstrap that further “tweak” the formatting of specific page elements.</p>
+<h3 id="Use-Frameworks"><a href="#Use-Frameworks" class="headerlink" title="Use Frameworks"></a>Use Frameworks</h3><p>Good visual design of CSS requires skills. We can use the stylesheets designed by professionals and use <strong>CSS frameworks</strong> or even <strong>front-end frameworks</strong>.</p>
+<p>A good CSS framework provides at least four main benefits:</p>
+<ul>
+<li>A set of high-level compoents that combinemultiple HTML elements into a logical unit</li>
+<li>A grid metaphor for specifying the layout of components on a page. Bootstrap divide the page into 12 cols.</li>
+<li>Responsive behavior on a variety of display sizes.</li>
+<li>Support for accessibility for users with disabilities.</li>
+</ul>
+<p>These frameworks have become particularly important with the takeover of mobile devices.</p>
+<h3 id="Comparing-different-apps"><a href="#Comparing-different-apps" class="headerlink" title="Comparing different apps"></a>Comparing different apps</h3><p>Mobile First &#x2F; Responsive Web Apps</p>
+<p>Advantages</p>
+<ul>
+<li>Use same languages, tools, frameworks</li>
+<li>Portable across devices, no need to develop multiple versions</li>
+<li>User don’t need to install updates</li>
+<li>Can be offline</li>
+<li>Icon placement on user’s home screen</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Not listed in app stores</li>
+<li>Lack access to advanced platform hardware features</li>
+<li>Performance may be lower than platform-specific app</li>
+</ul>
+<p>Wrapped App</p>
+<p>Advantages</p>
+<ul>
+<li>Same as mobile website except for update installation</li>
+<li>Can be listed in app stores</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Rely on users to download and install</li>
+<li>Additional frameworks to package app for distribution</li>
+</ul>
+<p>Platform apps</p>
+<p>Advantages</p>
+<ul>
+<li>Best performace</li>
+<li>Can be listed in app stores</li>
+<li>access to all platform hardware features</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Install and learn new platform development env, testing framework, and deployment pipeline</li>
+<li>rely on users to install updates</li>
+<li>Support multiple platforms requires maintaining multiple codebases</li>
+</ul>
+<h3 id="Summary-6"><a href="#Summary-6" class="headerlink" title="Summary"></a>Summary</h3><p>HTML consists of hierarchically nested collection of lelemnts. Each begins with a <strong>tag</strong> and may have optional <strong>attributes</strong>. Elements describe the logical structure of the docuemnt.</p>
+<p>Cascading Style Sheets (CSS) is a stylesheet language describing visual attributes of elements on a Web Page. Associates sets of visual properites with <strong>selectors</strong>.</p>
+<p>CSS are separated from HTML documents.</p>
+<p>Mobile devices now account for the majority of visits to SaaS apps.</p>
+<p>Use framework or use platform specifc apps to build apps. Both have pros and cons.</p>
+<h2 id="Beautiful-v-s-Legacy-Code"><a href="#Beautiful-v-s-Legacy-Code" class="headerlink" title="Beautiful v.s. Legacy Code"></a>Beautiful v.s. Legacy Code</h2><h3 id="Background-1"><a href="#Background-1" class="headerlink" title="Background"></a>Background</h3><p>Software is expected to grow and evolve more compared to hardware, because they can be easily upgraded over time.</p>
+<p>The drivers of <strong>Software Evolution</strong> are not only fixing faults, but also</p>
+<ul>
+<li>adding new features</li>
+<li>adjust to changing business requirements</li>
+<li>improving performance</li>
+<li>adapt to a changed environment</li>
+</ul>
+<p>Older code is hard to maintain because of its lower Abstraction Level.</p>
+<p>However, Software enigneers would still hope their works can be long lasting.</p>
+<h3 id="Legacy-Code"><a href="#Legacy-Code" class="headerlink" title="Legacy Code"></a>Legacy Code</h3><p>The term <strong>Legacy Code</strong> refers to software that despite its old age, continues to be used because it meets customers’ needs.</p>
+<p>60% of software maintenance costs are for adding new functionality to legacy software, while only 17% fixing bugs.</p>
+<blockquote>
+<p>Legacy Software is Successful Software.</p>
+</blockquote>
+<h3 id="Legacy-v-s-Beautiful"><a href="#Legacy-v-s-Beautiful" class="headerlink" title="Legacy v.s. Beautiful"></a>Legacy v.s. Beautiful</h3><p>The word “Legacy” has a negative connotation, and it indicates that the code is difficult to evolve because it has an inelegant design or uses antiquated tech.</p>
+<p>We use the term <strong>“Beautiful Code”</strong> to indicate long-lasting code that is easy to evolve instead.</p>
+<p>Though Legacy is not as good as Beautiful, but it is not the worst. The worst case is <strong>Unexpectedly Short-Lived Code</strong> that is soon discarded because it is useless.</p>
+<h3 id="Why-are-we-learning-this"><a href="#Why-are-we-learning-this" class="headerlink" title="Why are we learning this?"></a>Why are we learning this?</h3><p>We want to reduce the effort to build by finding existing code that we can reuse.</p>
+<p>It is also beneficial to write code that can be easily enhanced by successors.</p>
+<p>In Agile, we need to revise code continuously to improve the design and add functionality. Practice with legacy code helps this.</p>
+<h3 id="Summary-7"><a href="#Summary-7" class="headerlink" title="Summary"></a>Summary</h3><p>While hardware should be finalized for manufacture, Successful software can live long and is expected to eveolve and improve. </p>
+<p>Our goal is to increase the chances of producing beautiful code.</p>
+
+    </div>
+
+    <!-- Tags -->
+    
+
+    
+    <!-- Post Navigation: Hexo's page.prev = newer post, page.next = older post -->
+    <nav class="section-divider flex justify-between items-center text-sm md:text-base" aria-label="Post navigation">
+        
+        <a href="/2026/08/27/hello-world/" class="post-nav-link group text-left" title="Hello World" aria-label="Newer post: Hello World">
+             <span aria-hidden="true">&larr;</span>
+             <span class="post-nav-title">Hello World</span>
+        </a>
+        
+
+        
+        <a href="/2026/08/11/Vibe-Coding-01/" class="post-nav-link group text-right" title="Vibe Coding 笔记 2026 Summer" aria-label="Older post: Vibe Coding 笔记 2026 Summer">
+            <span class="post-nav-title">Vibe Coding 笔记 2026 Summer</span>
+            <span aria-hidden="true">&rarr;</span>
+        </a>
+        
+    </nav>
+
+
+    
+    
+</article>
+
+
+            </main>
+
+            <footer class="section-divider site-footer" data-pagefind-ignore>
+    <div class="site-footer-meta text-center text-sm text-text-chrome leading-relaxed">
+        <p>&copy; <span class="oldstyle-nums">2026</span> Akatsuki</p>
+        <p class="font-eng text-footnote tracking-wide opacity-90">Elegant theme by <a href="https://github.com/Acris/hexo-theme-shiro" target="_blank" rel="noopener noreferrer" class="link-chrome">Shiro</a> · Made by <a href="https://acris.me" target="_blank" rel="noopener noreferrer" class="link-chrome">Acris</a>
+                        with <span aria-label="love" title="love">❤️</span></p>
+    </div>
+</footer>
+
+        </div>
+
+        <!-- Note Text — decorative aside, not part of main content or footer -->
+        <aside class="mt-4 text-center" aria-hidden="true" role="presentation">
+            <p class="site-note font-title text-xs sm:text-sm text-text-subtle/70 tracking-note select-none" lang="ja">
+                白は、余白の名。
+            </p>
+        </aside>
+    </div>
+
+    
+    <button id="backToTop" type="button" class="back-to-top" data-visible="false" aria-label="Back to Top" hidden>
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+    
+    
+
+    <!-- Scripts -->
+    
+    
+    <script>
+        
+        (window.__shiro = window.__shiro || {}).i18n = window.__shiro.i18n || {};
+        
+        
+        
+        
+        (window.__shiro = window.__shiro || {}).i18n = window.__shiro.i18n || {};
+window.__shiro.i18n["clipboard"] = {"copied":"Copied","copy":"Copy code","failed":"Copy failed"};
+        (window.__shiro = window.__shiro || {})["clipboardScript"] = "/js/clipboard.min.js?v=add85817";
+        
+    </script>
+    
+    
+    <script defer src="/js/runtime.min.js?v=71138c68"></script>
+    
+    <script defer src="/js/clipboard-bootstrap.min.js?v=917b808f"></script>
+    
+    <script defer src="/js/toc.min.js?v=3e0cca47"></script>
+    
+    <script defer src="/js/progress.min.js?v=d01e3a23"></script>
+    
+    <script defer src="/js/back-to-top.min.js?v=ff36a748"></script>
+    
+    <script defer src="/js/theme-toggle.min.js?v=04b6578e"></script>
+    
+    <script defer src="/js/mobile-menu.min.js?v=40df95a6"></script>
+    
+    
+
+    
+
+</body>
+</html>

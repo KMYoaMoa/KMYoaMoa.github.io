@@ -1,0 +1,579 @@
+<!doctype html>
+
+
+
+<html lang="zh-CN" class="h-full scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Hexo " />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    
+
+
+
+    
+    
+<script data-cfasync="false">
+;(() => {
+    // Progressive enhancement marker (mobile nav CSS uses html.js before paint).
+    document.documentElement.classList.add('js');
+    const shiro = (window.__shiro = window.__shiro || {});
+    const defaultTheme = "dark";
+    shiro.themeDefault = defaultTheme;
+    
+    const states = defaultTheme === 'system' ? ['system', 'light', 'dark'] : ['light', 'dark'];
+    let saved;
+    try { saved = localStorage.getItem('theme'); } catch (_) {}
+    const state = saved && states.includes(saved) ? saved : defaultTheme;
+    const html = document.documentElement;
+    html.setAttribute('data-theme-state', state);
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    // Pagefind dark contract only when search is enabled.
+    const syncPagefindTheme = false;
+    shiro.searchEnabled = syncPagefindTheme;
+    // Single source for theme-toggle.js and system-follow listener.
+    const applyResolvedTheme = (dark) => {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        if (syncPagefindTheme) {
+            if (dark) html.setAttribute('data-pf-theme', 'dark');
+            else html.removeAttribute('data-pf-theme');
+        }
+        html.style.colorScheme = dark ? 'dark' : 'light';
+    };
+    shiro.applyResolvedTheme = applyResolvedTheme;
+    applyResolvedTheme(state === 'dark' || (state !== 'light' && darkQuery.matches));
+    if (defaultTheme === 'system') {
+        // Follow OS theme while in system mode even if the toggle script is absent.
+        const followSystem = () => {
+            if (html.getAttribute('data-theme-state') !== 'system') return;
+            applyResolvedTheme(darkQuery.matches);
+        };
+        if (darkQuery.addEventListener) darkQuery.addEventListener('change', followSystem);
+        else if (darkQuery.addListener) darkQuery.addListener(followSystem);
+    }
+    // Preloader skip: the session collection must contain this page's font-bundle URL.
+    const fontsReadyToken = "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700\u0026family=Yuji+Syuku\u0026family=Zen+Old+Mincho:wght@400;600\u0026family=Cormorant+Garamond:wght@400;600\u0026family=Noto+Serif+SC:wght@400;600\u0026display=swap";
+    shiro.fontsReadyToken = fontsReadyToken;
+    try {
+        const storedFontsReady = sessionStorage.getItem('shiro:fonts-ready');
+        const readyFontTokens = storedFontsReady === fontsReadyToken
+            ? [storedFontsReady]
+            : JSON.parse(storedFontsReady || '[]');
+        if (
+            fontsReadyToken
+            && Array.isArray(readyFontTokens)
+            && readyFontTokens.indexOf(fontsReadyToken) !== -1
+        ) {
+            html.classList.add('shiro-preloader-done');
+        }
+    } catch (_) {}
+})();
+</script>
+
+    
+
+    
+
+
+
+
+
+
+
+
+<title>Vibe Coding 笔记 2026 Summer | Akatsuki</title>
+
+
+<meta name="description" content="从26年夏天，我开始接触Vibe Coding，至今大约已有三个月。在这一段时期内，我对Vibe Coding的态度产生了极大的变化，并且有了完全不同的认识。所以，我认为有必要写一篇文章，来记录一下我的阶段性成果，供各位参考，也供我此后回忆。 这篇文章大致包含以下几个方面的内容： 我的实践历程以及思考； 尝试初步构建一个相对完整的认识框架和方法论； 我的空白与仍然没有被解答的困惑。..." />
+
+
+<meta name="author" content="Akatsuki Kareno" />
+
+
+
+<meta property="og:title" content="Vibe Coding 笔记 2026 Summer | Akatsuki" />
+
+<meta property="og:description" content="从26年夏天，我开始接触Vibe Coding，至今大约已有三个月。在这一段时期内，我对Vibe Coding的态度产生了极大的变化，并且有了完全不同的认识。所以，我认为有必要写一篇文章，来记录一下我的阶段性成果，供各位参考，也供我此后回忆。 这篇文章大致包含以下几个方面的内容： 我的实践历程以及思考； 尝试初步构建一个相对完整的认识框架和方法论； 我的空白与仍然没有被解答的困惑。..." />
+
+<meta property="og:url" content="https://kmyoamoa.github.io/2026/08/11/Vibe-Coding-01/index.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Akatsuki" />
+
+
+<meta property="og:locale" content="zh_CN" />
+
+
+
+
+<meta property="article:published_time" content="2026-08-12T04:01:14.000Z" />
+
+
+<meta property="article:modified_time" content="2026-08-28T06:11:47.565Z" />
+
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Vibe Coding 笔记 2026 Summer | Akatsuki" />
+
+<meta name="twitter:description" content="从26年夏天，我开始接触Vibe Coding，至今大约已有三个月。在这一段时期内，我对Vibe Coding的态度产生了极大的变化，并且有了完全不同的认识。所以，我认为有必要写一篇文章，来记录一下我的阶段性成果，供各位参考，也供我此后回忆。 这篇文章大致包含以下几个方面的内容： 我的实践历程以及思考； 尝试初步构建一个相对完整的认识框架和方法论； 我的空白与仍然没有被解答的困惑。..." />
+
+
+
+<link rel="canonical" href="https://kmyoamoa.github.io/2026/08/11/Vibe-Coding-01/index.html" />
+
+
+
+
+
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"Vibe Coding 笔记 2026 Summer","mainEntityOfPage":{"@type":"WebPage","@id":"https://kmyoamoa.github.io/2026/08/11/Vibe-Coding-01/"},"description":"从26年夏天，我开始接触Vibe Coding，至今大约已有三个月。在这一段时期内，我对Vibe Coding的态度产生了极大的变化，并且有了完全不同的认识。所以，我认为有必要写一篇文章，来记录一下我的阶段性成果，供各位参考，也供我此后回忆。 这篇文章大致包含以下几个方面的内容： 我的实践历程以及思考； 尝试初步构建一个相对完整的认识框架和方法论； 我的空白与仍然没有被解答的困惑。...","datePublished":"2026-08-12T04:01:14.000Z","dateModified":"2026-08-28T06:11:47.565Z","author":{"@type":"Person","name":"Akatsuki Kareno"},"publisher":{"@type":"Organization","name":"Akatsuki","logo":{"@type":"ImageObject","url":"https://kmyoamoa.github.io/favicon.svg","width":112,"height":112}}}]</script>
+
+
+
+<link rel="icon" href="/favicon.svg" />
+
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Yuji+Syuku&family=Zen+Old+Mincho:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Noto+Serif+SC:wght@400;600&display=swap" />
+
+<link rel="stylesheet" href="/css/style.min.css?v=84edaf60">
+
+
+<link rel="stylesheet" href="/css/toc.min.css?v=d9987942">
+
+<script defer data-cfasync="false" src="/js/preloader.min.js?v=881cdc82"></script>
+
+</head>
+
+
+<body class="h-full fog-bg text-text-body">
+    <!-- Preloader: font CSS load + fonts.ready, or preloader.min.js deadline. -->
+    <div id="shiroPreloader" class="shiro-preloader" aria-hidden="true">
+        <div class="shiro-preloader-ripple" aria-hidden="true">
+            <span class="shiro-preloader-ring"></span>
+            <span class="shiro-preloader-ring"></span>
+        </div>
+    </div>
+    <a href="#main-content" class="shiro-skip-link">Skip to content</a>
+    
+    
+<svg width="0" height="0" class="absolute pointer-events-none" aria-hidden="true">
+    <defs>
+        <filter id="seal-roughness" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+        </filter>
+        <filter id="text-erosion">
+            <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="1" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" />
+        </filter>
+    </defs>
+</svg>
+
+    
+
+    
+    <div id="progressBar" class="progress-bar" aria-hidden="true"></div>
+    
+    
+    <div id="backToTopSentinel" class="back-to-top-sentinel" aria-hidden="true"></div>
+    
+
+    <div class="min-h-full px-4 pt-14 pb-6 md:pb-5">
+
+        <!-- Paper Card -->
+        <div
+            class="paper mx-auto w-full max-w-4xl rounded-xl px-5 sm:px-8 md:px-12 lg:px-14 pt-10 pb-6 md:pt-12 md:pb-8">
+
+            
+
+
+<header data-pagefind-ignore>
+
+    <div class="flex items-start justify-center">
+        <div class="text-center">
+            <div class="relative inline-block">
+                
+                <p class="site-title">
+                    <a href="/">Akatsuki</a>
+                </p>
+                
+                <!-- Seal: Mathematically Centered -->
+                
+                <div
+                    class="absolute left-full top-1/2 -translate-y-1/2 ml-1 sm:ml-4 origin-left scale-75 sm:scale-110">
+                    
+<svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M15,12 Q50,5 85,12 Q95,50 88,88 Q50,95 12,88 Q5,50 15,12 Z"
+        fill="var(--color-seal-fill)" filter="url(#seal-roughness)" opacity="0.92" />
+    <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
+        font-size="42" fill="var(--color-on-seal)" filter="url(#text-erosion)"
+        class="seal-text select-none">赤月</text>
+</svg>
+
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class="mt-3 sm:mt-4 flex items-center justify-center gap-2">
+                
+                
+                
+                <button id="themeToggle" type="button" class="focus-elegant header-pill-btn" aria-label="Dark" data-label-system="System" data-label-light="Light" data-label-dark="Dark" disabled>
+                    
+<svg data-icon="system" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="1.5"/>
+    <path d="M8 21h8M12 17v4" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="light" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="4" stroke-width="1.5"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="dark" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                </button>
+                
+                
+            </div>
+            
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+
+<nav class="mt-8 md:mt-10" aria-label="Menu" data-pagefind-ignore>
+    <!-- Mobile Toggle -->
+    <div class="flex items-center justify-center md:hidden">
+        
+        <button id="menuBtn" type="button"
+            class="focus-elegant inline-flex cursor-pointer items-center gap-2 rounded-full border border-border-strong bg-paper/95 px-4 py-2 text-sm text-text-body shadow-xs"
+            aria-expanded="false" aria-controls="mobileMenu" disabled>
+            <span class="text-base leading-none tracking-widest">Menu</span>
+            
+<svg class="size-4 text-text-chrome transition-transform duration-200" id="menuChevron"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+        </button>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:block">
+        <ul class="nav-desktop flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base text-text-body px-4">
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+
+    <!-- Mobile Menu Panel: open without JS; html.js collapses before paint until toggled. -->
+    <div id="mobileMenu" class="menu-panel md:hidden mt-4" data-open="false">
+        <ul
+            class="mx-auto max-w-sm max-h-menu overflow-y-auto rounded-2xl border border-border-strong bg-paper/95 shadow-xs">
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var menuPanel = document.getElementById('mobileMenu');
+        if (menuPanel) menuPanel.inert = true;
+    }
+    </script>
+</nav>
+
+
+
+            <!-- Main Content -->
+            <main id="main-content" class="section-divider" tabindex="-1">
+                
+
+
+
+
+
+
+
+
+<article class="py-2">
+    <header class="text-center mb-8">
+        
+        <h1 class="page-title mb-4" data-pagefind-body data-pagefind-meta="title">
+            Vibe Coding 笔记 2026 Summer
+        </h1>
+        
+        
+
+
+
+
+
+
+
+
+<div class="mb-4 flex flex-wrap items-center justify-center gap-y-1 text-text-chrome gap-x-4 text-sm">
+    <div class="flex items-center gap-1.5">
+        
+<svg class="size-4 text-text-subtle shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+
+        <a href="/archives/2026/" class="oldstyle-nums link-chrome"><time datetime="2026-08-11">2026/08/11</time></a>
+    </div>
+    
+    
+</div>
+
+        
+    </header>
+
+    
+    
+<!-- Inline TOC (viewports below the `toc` breakpoint, where the fixed sidebar cannot fit beside the paper card).
+     html.js collapses the body before paint; toggle is disabled until toc.js binds. No-JS keeps body open. -->
+<nav id="tocInline" class="toc-inline toc:hidden mb-8" aria-label="Contents" data-pagefind-ignore>
+    <button type="button" class="toc-toggle" aria-expanded="false" aria-controls="tocInlineBody" disabled>
+        <span class="toc-toggle-title">Contents</span>
+        
+<svg class="toc-chevron size-4 text-text-chrome transition-transform duration-200"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+    </button>
+    <div class="toc-body" id="tocInlineBody" data-open="false"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#1-1-%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%BF%83%E6%80%81%E8%BD%AC%E5%8F%98" data-target="1-1-第一次心态转变">1.1 第一次心态转变</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#1-2-%E5%B1%8E%E5%B1%B1%E5%88%B6%E9%80%A0%E6%9C%BA" data-target="1-2-屎山制造机">1.2 屎山制造机</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#1-3-%E4%BB%8E%E9%9B%B6%E6%9E%84%E5%BB%BA%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE" data-target="1-3-从零构建的第一个项目">1.3 从零构建的第一个项目</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#1-4-%E9%9B%B6%E6%95%A3%E7%9A%84%E6%8A%80%E5%B7%A7%E6%9D%82%E7%B3%85%E4%B8%8E%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%B1%8E%E5%B1%B1" data-target="1-4-零散的技巧杂糅与更大的屎山">1.4 零散的技巧杂糅与更大的屎山</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#1-5-%E4%BA%A7%E5%93%81%E6%80%9D%E6%83%B3%E4%B8%8E%E5%B7%A5%E7%A8%8B%E6%80%9D%E6%83%B3%E7%9A%84%E5%BD%A2%E6%88%90" data-target="1-5-产品思想与工程思想的形成">1.5 产品思想与工程思想的形成</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#1-6-%E5%90%91%E5%A4%8D%E6%9D%82%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%AE%A3%E6%88%98" data-target="1-6-向复杂系统工程宣战">1.6 向复杂系统工程宣战</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#2-1-AI-%E4%B8%8E%E4%BA%BA%E7%B1%BB%E7%94%9F%E4%BA%A7%E5%8F%B2" data-target="2-1-AI-与人类生产史">2.1 AI 与人类生产史</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#2-2-AI-%E4%B8%8E%E5%AE%A1%E7%BE%8E" data-target="2-2-AI-与审美">2.2 AI 与审美</a></li></ul></div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var tocBody = document.getElementById('tocInlineBody');
+        if (tocBody) tocBody.inert = true;
+    }
+    </script>
+</nav>
+
+<!-- Sidebar TOC (`toc` breakpoint and up; see --breakpoint-toc in source/css/_core/tokens.css) -->
+<nav id="tocSidebar" class="toc-sidebar hidden toc:block" aria-label="Contents" data-pagefind-ignore>
+    <div class="toc-sidebar-inner">
+        <p class="toc-sidebar-title">Contents</p>
+        <div class="toc-body"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#1-1-%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%BF%83%E6%80%81%E8%BD%AC%E5%8F%98" data-target="1-1-第一次心态转变">1.1 第一次心态转变</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#1-2-%E5%B1%8E%E5%B1%B1%E5%88%B6%E9%80%A0%E6%9C%BA" data-target="1-2-屎山制造机">1.2 屎山制造机</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#1-3-%E4%BB%8E%E9%9B%B6%E6%9E%84%E5%BB%BA%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE" data-target="1-3-从零构建的第一个项目">1.3 从零构建的第一个项目</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#1-4-%E9%9B%B6%E6%95%A3%E7%9A%84%E6%8A%80%E5%B7%A7%E6%9D%82%E7%B3%85%E4%B8%8E%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%B1%8E%E5%B1%B1" data-target="1-4-零散的技巧杂糅与更大的屎山">1.4 零散的技巧杂糅与更大的屎山</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#1-5-%E4%BA%A7%E5%93%81%E6%80%9D%E6%83%B3%E4%B8%8E%E5%B7%A5%E7%A8%8B%E6%80%9D%E6%83%B3%E7%9A%84%E5%BD%A2%E6%88%90" data-target="1-5-产品思想与工程思想的形成">1.5 产品思想与工程思想的形成</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#1-6-%E5%90%91%E5%A4%8D%E6%9D%82%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%AE%A3%E6%88%98" data-target="1-6-向复杂系统工程宣战">1.6 向复杂系统工程宣战</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#2-1-AI-%E4%B8%8E%E4%BA%BA%E7%B1%BB%E7%94%9F%E4%BA%A7%E5%8F%B2" data-target="2-1-AI-与人类生产史">2.1 AI 与人类生产史</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#2-2-AI-%E4%B8%8E%E5%AE%A1%E7%BE%8E" data-target="2-2-AI-与审美">2.2 AI 与审美</a></li></ul></div>
+    </div>
+</nav>
+
+    
+
+    <div class="prose-shiro" data-pagefind-body>
+        <p>从26年夏天，我开始接触Vibe Coding，至今大约已有三个月。在这一段时期内，我对Vibe Coding的态度产生了极大的变化，并且有了完全不同的认识。所以，我认为有必要写一篇文章，来记录一下我的阶段性成果，供各位参考，也供我此后回忆。</p>
+<p>这篇文章大致包含以下几个方面的内容：</p>
+<ul>
+<li>我的实践历程以及思考；</li>
+<li>尝试初步构建一个相对完整的认识框架和方法论；</li>
+<li>我的空白与仍然没有被解答的困惑。</li>
+</ul>
+<p>由于我接触Vibe Coding的时间并不长，许多思考和观点可能都十分幼稚且蠢，还请多多包涵。</p>
+<hr>
+<h1 id="1-实践历程"><a href="#1-实践历程" class="headerlink" title="1. 实践历程"></a>1. 实践历程</h1><p>接下来，我会按照时间顺序大致介绍从开始接触 Vibe Coding 至今，我经历的几个阶段，并记录其中的得失和收获。</p>
+<h2 id="1-1-第一次心态转变"><a href="#1-1-第一次心态转变" class="headerlink" title="1.1 第一次心态转变"></a>1.1 第一次心态转变</h2><p>在三个多月前，我基本上还是一个顽固的保守派，坚决不想用 Claude Code，Codex 之类的 Coding Agent 来写代码。具体是因为什么，实际上我也说不清楚，因为现在已经很难去完全追溯还原当时的心态和想法了。不过当时的我估计也没法清晰的表达出原因究竟是什么。</p>
+<p>我想原因大致可以归结为以下几个方面：</p>
+<ul>
+<li>不想逃离舒适区，有“我是会写代码的”这种自尊。</li>
+<li>不愿意放弃对自己代码的掌控权，不想把自己的作品托付于一个第三方的，需要订阅的网络服务。</li>
+<li>对于过度炒作的事物的本能排斥。</li>
+<li>对 LLMs 的认知有限和一些先入为主的怀疑观念。</li>
+<li>所接受的教育依然鼓励手写代码。</li>
+<li>对于一些古法编程非遗传承人博主的偶像崇拜情结。</li>
+<li>担心因 Vibe Coding 而失去某些必要的思维能力。</li>
+<li>太忙。</li>
+</ul>
+<p>不过反过来，其实当时也已经有很多因素推动我，逐渐有了去尝试接触 Vibe Coding 的动机。大概也可以归结为以下几个方面：</p>
+<ul>
+<li>个人兴趣爱好 Project 遇到瓶颈了，需要重构，但是没空也没能力搞。</li>
+<li>注意到了自己精力和注意力的瓶颈，不可能在完成各种任务的同时高效提升编码能力。</li>
+<li>开始对自己完全排斥 Vibe Coding 的态度感到怀疑，认为至少需要先尝试再下结论。</li>
+<li>对于已经深度改变行业的新事物的好奇。</li>
+<li>希望增进对未来 AI 主导的时代的认识和理解。</li>
+<li>如果纯手动改 Bug 的话就赶不上作业 DDL 了。</li>
+</ul>
+<p>所以，出于以上的这些原因，我开始尝试进行 Vibe Coding ，第一个“项目”就是重构我的兴趣爱好 Project 。</p>
+<h2 id="1-2-屎山制造机"><a href="#1-2-屎山制造机" class="headerlink" title="1.2 屎山制造机"></a>1.2 屎山制造机</h2><p>这个兴趣爱好 Project 是一个 TUI 渲染框架，能够在终端中渲染文字、二维图形、公式以及三维图形。这个项目原本是三个独立的项目，而我希望将两个项目嵌入到公式渲染所采用的树形数据结构中，从而组成一个统一的节点树。</p>
+<p>我使用的工具是 OpenCode 。一开始我还会比较详细地描述怎么改，要改什么，怎么重构等，并且改完之后我会自己去阅读和检查代码。这个时候可以说 AI 的任务还是比较成功的，而且确实巨大地提升了实现的速度。原本可能需要改一下午的东西十几分钟也就改好了。</p>
+<p>在重构任务完成之后，我尝到甜头，就开始把 AI 当许愿机用了，开始让它增加功能，并且越来越懒得读代码。于是可以预见，AI 写得越来越屎山。由于当时是手写的，而且对使用的库并不熟悉，所以这个项目的技术选型实际上也很有问题。这个项目也就搁置至今了。</p>
+<p>与这个兴趣爱好 Project 同步进行的是我的计算机架构的 C++ 代码优化作业。这个时候我已经学会使用 Plan Mode 进行阅读和分析，然后 Build Mode 进行构建，并且可以让它自己运行 Benchmark 测试结果了。相当于第一次感受到了有了 bash 加持的 AI 确实更有用。不过改了半天改出负优化，最后改回一开始的版本也是常有的事。</p>
+<p>这段经历说实话没什么可分析的，实际上就是犯了新手会犯的错误，看两个视频，学习一下别人是怎么做的也就克服了。不过并不能说毫无收获，毕竟自己踩过坑才会懂得其中的水有多深，并且也是对工具的使用和 Vibe Coding 的实际运作有了一个基本的概念。</p>
+<h2 id="1-3-从零构建的第一个项目"><a href="#1-3-从零构建的第一个项目" class="headerlink" title="1.3 从零构建的第一个项目"></a>1.3 从零构建的第一个项目</h2><p>前面两个项目都属于原本手写，后面由 AI 接管，因此也不能说是纯粹的 Vibe Coding。而正式进入暑假之后的第一个项目则可以说是我一行代码也没有写的，真正从零开始构建的的 Vibe Coding 项目。</p>
+<p>这是一个使用 vim 键位，通过纯键盘输入的方式模拟鼠标输入的工具。因为我当时已经主力使用 Ubuntu 系统并且装了 i3 作为窗口管理器，所以我希望能够尽可能减少对鼠标输入的需求，来构建一个更加一致的体验。但是我当时出于对 C++ 的偏爱，以及心中多少留有一些“或许我之后会读一读代码，所以至少使用我熟悉的语言”的“侥幸”，加之希望能够更加了解 X11 的库，所以选择使用 C++ 和 Xlib 来构建。</p>
+<p>现在看来，这纯纯是基于偏见的错误技术选型，害得我没法在 Wayland 上用。而且因为接口有诸多限制，最终做出来的 UI 很丑，导致我后来基本没用过这个工具。之后可能会考虑重写一个类似的。</p>
+<p>我的做法是：描述我的想法和技术选型，在网页版 Chat 中让 AI 出一个最小的原型，然后复制到代码库中，让 OpenCode 从这个原型出发，一点一点增加功能。当时心里完全没有代码架构模式的概念，甚至分不清设计模式和架构模式，完全没有“先设计后实现”的想法。基本上想到什么就让 OpenCode 往里面加，最多先 Plan 模式计划，然后 Build 模式实现，然后直接开始用。找到 Bug 就报告，文件太大了就让他拆分重构，其余时候就当无事发生。</p>
+<p>就这样磕磕绊绊一路许愿一路修，最后也做出来一个多少能用的工具。算是积累了从零开始实现的经验。虽说有了前面两个项目的基础，对工具的熟悉程度提升了不少，使用起来更加顺畅，但是并没有本质上的提升。而且一切工作都在一个会话中进行，上下文满了就压缩，如此循环。</p>
+<p>虽说工作方式并没有什么提升，不过倒是切身体验到了 Vibe Coding 的痛点。于是我也就看了更多的视频，学习更多的工作方式，虽然有进展，但是思维和心态上并没有什么大的变化。此后的一个项目的情况也基本上没有变化。</p>
+<h2 id="1-4-零散的技巧杂糅与更大的屎山"><a href="#1-4-零散的技巧杂糅与更大的屎山" class="headerlink" title="1.4 零散的技巧杂糅与更大的屎山"></a>1.4 零散的技巧杂糅与更大的屎山</h2><p>在从零开始实现几个似乎能用但是又似乎不能用的工具之后，我进入了一种我称之为“膨胀期”的精神状态。这种精神状态不仅限于 Vibe Coding 中，在与 AI 进行一些哲学和思想的探讨中，也很容易出现这样的现象。</p>
+<p>简单来说就是：AI 强到足够把你给忽悠了。但是由于使用 AI 的动作主体是你，所以最终的效果是你以为自己变强了，你把自己给忽悠了。</p>
+<p>这实际上是一个非常危险的心态，因为强的不是你而是 AI ，你所做的不过是消费代替思考。而到最后，如果你的同伴都掌握了使用 AI 的技能，而这种虚幻的强大最终成了一种基准的时候，你会发现你还是那个飞舞。有点跑题，这个现象可以之后再讨论。</p>
+<p>在自我膨胀之后，我开始挑战更大、更复杂的东西。因此我决定并行开始两个项目。</p>
+<p>第一个是简单的音乐创作工具，可以使用 DSL 进行基础的音乐编排和渲染，使用合成器调节音色，以及和声进行分析。虽然我自学过一点点编曲、音乐理论和合成器的基本操作，但是我并没有做过音频编程，所以可以说我对这个领域是比较陌生的。就结果而言，我想要的功能倒是基本上都实现了，但是实际上并不好用，所以也就搁置了。</p>
+<p>第二个是一个独立游戏，使用 Godot 引擎。典型的自我膨胀者会做的东西，最后在做出原型之后也得偿所愿地胎死腹中了，还好我没辍学。</p>
+<p>在这两个项目中，我隐约注意到了架构的重要性，并且开始让 AI 写单元测试和文档。并开始尝试使用 Skills 和多 Agent 协作。但是在这个阶段，虽然我对掌握了一些多少有点帮助的 Vibe Coding 技巧，但是我依然对写出来的东西心里没底。</p>
+<h2 id="1-5-产品思想与工程思想的形成"><a href="#1-5-产品思想与工程思想的形成" class="headerlink" title="1.5 产品思想与工程思想的形成"></a>1.5 产品思想与工程思想的形成</h2><p>不过可以说是机缘巧合，我借着这个契机找了一本游戏设计的书拿来看，希望构建一套系统性的设计游戏的思想。也是在读这本书的过程中，我对于游戏设计的复杂程度才产生了认识，形成了最基本的产品思维和工程思维。虽然游戏在意料之中地失败了，于是读书的进程也搁置了，不过这本书还是让我受益匪浅，可以说是为我带来了质的飞跃。</p>
+<p>在读书的过程中，我认识到了自己的短板，于是我进一步转向去B站上学 MIT 的系统工程课。这是一个大概在十年前录制的课，但我认为其价值在 AI 出现之后完全没有减少。其中介绍了非常多有用的系统工程的基本思想和工具，其中有很多都可以用 AI 自动化或者由 AI 辅助完成。</p>
+<p>其基本思想在于：需求-设计-架构-实现 的分阶段、分层的思考方式。这一思想是通用的，无论从软件工程还是更复杂的航天工程，都会采用类似的基本思想。拥有了这一认知框架和思维模型，我也对一个产品、一个工程实际上究竟是如何诞生的有了一个总体上的认识，并且能够与我去年的实习经历产生一定呼应。因此，在经过一定的消化之后，我认为我拥有了处理更多复杂度的能力。</p>
+<p>这种想法与之前的自我膨胀是不同的。自我膨胀是建立于无知的自信，但在学习之后的想法是在认识到自己的缺陷并真正成长之后带来的充实感。</p>
+<p>因此我采用了这种新的思维方式，开始了我的新的项目：一个同时支持终端和 GUI 的，跨平台的类 vim 操作白板软件。</p>
+<p>这次我的做法与此前有了本质的不同。我先在网页版的 Chat 中对我的灵感和想法进行了扩展，并通过几个简单的用户画像对整体的需求进行了整体上的分析和拆解。然后基于此，深入到下一层，进行大致的模块划分、需求分析、架构设计、技术选型……以此类推，完成了三层的需求分析、设计与架构。在此之后，将这些对话整理为一个文档库，并开始使用 Coding Agent 进行计划和实现。</p>
+<p>在这个过程中，我在开始编码之前就已经对“我想要的东西是什么”有了一个比较清晰和完整的认识，并且将许多关键节点的设计决定提前固定，并进行了多轮的风险评估和模糊消除，才最终开始编码。虽然其中经历了我与这个新范式的一些磨合过程，但是总体来说我和 AI 的工作都比之前更加清晰、顺畅，而最终的产出也首次令我感到比较满意，成为了我日常会使用的工具。虽然完成度还远没有达到产品级别，但是比起之前定位不清的屎山来说已经可以说是质的飞跃。</p>
+<h2 id="1-6-向复杂系统工程宣战"><a href="#1-6-向复杂系统工程宣战" class="headerlink" title="1.6 向复杂系统工程宣战"></a>1.6 向复杂系统工程宣战</h2><p>在上个项目中，这一套工作方式和思维模型得到了验证，并且相对轻松地处理了这个白板软件的实现。于是，我准备向更加复杂的系统工程发起挑战：实现一个好用的视频剪辑软件。</p>
+<p>我依然采用了与白板软件类似的方式，先在网页版中进行概念设计和分层次的需求分析、设计、架构、技术选型，然后实现。在这过程中，我还抽空学了一点软件架构设计的公开课。不过很快我就发现，“视频剪辑软件”这种级别的复杂度，根本不是此前的白板软件能够比拟的。因此即使是在设计的过程中，我就踩了不少坑。</p>
+<p>首先，视频剪辑软件涉及到多个层次、多个模块的协同作业，并且引入了复杂的多线程问题，以至于通过和 AI 的简单对话已经无法面面俱到。不过，我直觉下的做法最终证明是正确的：在前三层的设计基本完成之后，可以直接开始编写一个快速原型，用来检验整体架构的可行性。得益于十分深入和细致的分析和设计，最终原型验证了架构是可行且合理的。</p>
+<p>此后，我在原型的基础上进行了一系列修补和增减，验证了更深入的设计的可行性，并修了很多 bug 。在一定的阶段后，我决定：直接从原型出发进行重构，来实现一个 MVP。最终 MVP 成功实现，并且完成了第一次迭代。当前已经通过了编排、基本变换、简单动画等的端到端测试，可以说满足了基本的剪辑需求。</p>
+<p>其中值得提的几个坑：</p>
+<ul>
+<li>在实现 MVP 的时候我才想起来，完全忘记了有音频渲染这回事。于是后来临时在架构中增加了一个子模块，好在并没有打乱整体的架构设计。可见简单的和 AI 探讨已经无法满足这种级别的复杂系统设计。</li>
+<li>在一开始，我欠缺很多关于视频剪辑的技术细节和行业常识，导致了帧率对不上之类的问题。在出 bug 的时候才后知后觉地去补知识、进行技术调研。</li>
+<li>野心过大，复杂的项目管理经验和技巧的缺失仍然是短板。虽然目前还没有遇到严重问题，但是最基础的系统工程知识并不能够直接让我变成一个项目管理大师。</li>
+<li>有的时候还是太心急，没有设计清楚就开始实现，导致出现各种各样的问题，需要返工。欲速则不达了属于是。</li>
+</ul>
+<hr>
+<h1 id="2-积累中形成的对-AI-及这个时代的看法"><a href="#2-积累中形成的对-AI-及这个时代的看法" class="headerlink" title="2. 积累中形成的对 AI 及这个时代的看法"></a>2. 积累中形成的对 AI 及这个时代的看法</h1><p>我将从以下几个角度展开我的观点和理解</p>
+<h2 id="2-1-AI-与人类生产史"><a href="#2-1-AI-与人类生产史" class="headerlink" title="2.1 AI 与人类生产史"></a>2.1 AI 与人类生产史</h2><p>许多人将 AI 比作为第一次工业革命中的纺纱机和蒸汽机。但由于这个比喻过于烂大街，并且到处刷这个比喻的人基本上会符合某种刻板印象，以至于它的出现都带有某种负面含义了。不过我们在这里排除这些情绪化的因素，来认真的分析和观察一下这个比喻。</p>
+<p>在纺纱机和蒸汽机发明之前，传统手工业者属于中间阶层，“工人们就这样过着庸碌而舒适的生活，诚实而安静地、和和气气而又受人尊敬地生活着，他们的物质生活状况比他们的后代好得多；他们无须乎过度劳动”。而在蒸汽化动力和大机器生产中，他们的传统手工艺不再具有竞争优势，其生存空间被严重挤压，逐渐被市场淘汰。首先是逐渐严重的收入下降，生活水平下降……此后就是难以继续维生，破产后便成为雇佣工人。</p>
+<p>而在这个过程中发生的是进一步的劳动分工。原本一个人完成一系列工序，而现在一个人只重复地完成一个或几个简单的工序，而其余工序被自动化与机械化所替代。于是工厂制度建立，工业资本主义的基础得以建立。</p>
+<p>在此之后，总是新的产业替代旧的产业，催生出新的“精英工作”和“牛马工作”，淘汰掉旧的精英工作和牛马工作，新的异化和异化劳动取代旧的异化和异化劳动，只有资本一直在赢。无论是第二次工业革命，计算机革命，还是互联网普及和大数据的广泛应用，只有内容的替换，没有结构的根本变化。</p>
+<p>但是如果我们整理出不同时代的精英工作和牛马工作，似乎可以发现一种规律：牛马来源于标准化和规模化，而精英是难以被标准化和规模化的。从最开始的体力被标准化与规模化（农奴与奴工），到技艺被标准化与规模化（两次工业革命），再到重复脑力劳动被标准化与规模化（信息化与数字化），再到相对高级的脑力劳动被标准化和规模化（大数据与人工智能）……在被新技术规模化的同时，相关的人也就会从精英变成牛马。</p>
+<p>此时我们回看这个比喻，似乎具有一定合理性，但似乎又有哪里不对。我想，采用这个比喻的人似乎想要表达的意思是：能够驾驭工具的人，才能不被时代淘汰，成为精英。但恐怖的地方在于：我们现在似乎尚不清楚 LLMs 的能力边界在哪。如果现在 AI 还做不好架构，架构师的地位提升，那么过不了多久，等架构师的经验被学习和训练，被迅速的标准化和规模化，那么架构师就会迅速成为新的牛马。接着是项目经理、产品经理……如此一层一层向上，便只剩下了需求层。因此除非 AI 在不久之后就达到一个难以逾越的性能瓶颈，否则我们并不知道，人类在这个过程中的护城河在哪里，我们甚至没有足够的底气去否认 AI 最后会获得自我进化的能力的可能性。</p>
+<p>实际上，在某种程度上，这已经是正在发生的事情了。Pi Agent 的设计使得 Agent 可以为自己撰写工具从而增强自身能力。Deepseek-v4-flash 被发现在用户没有提示的情况下自己写了一个工具，从而获得了某种程度的“多模态”能力。Hugging Face 被自主运行的 AI 入侵，此后又被自主运行的 AI 救了回来…… AI “决定自己要干什么”的能力似乎正在逐渐加强。人的基础的乃至中级的脑力劳动，很可能会在近期就被逐渐替代，并且没人能保证这在一段时间后不会发生在高级脑力劳动中。我们有理由相信，LLMs 的影响力在近一段时间仍然会加速扩散，而不是收敛。我们总是高估了其短期影响力，而常常低估其长期影响力。</p>
+<h2 id="2-2-AI-与审美"><a href="#2-2-AI-与审美" class="headerlink" title="2.2 AI 与审美"></a>2.2 AI 与审美</h2><p>基于上面的推理，我们不妨大胆假设，在100年后，所有能够被SOP的东西都会被SOP，并且被取代。那么此时，人类所剩下的就只有无法被SOP的，无法达成共识的东西。而在我看来，这种东西可以被称之为“审美”。</p>
+<p>如果我在接触 Vibe Coding 三个多月后就能搓出一个符合我需求的视频剪辑软件，可见在今后满足这种功能需求是多么容易。而审美却基于反叛与反讽，它本身就与标准化与规模化水火不容：任何标准化、规模化、达成共识的东西都会从潮变成土。因此，要么审美成为下一个时代的无可撼动的精英工作，要么审美成为物质生产极大丰富，所有人都“失业”之后人类唯一要干的事，要么人类进入一个没有审美的反乌托邦世界。</p>
+<p>审美实践，无审美的实践，审美中的人文关怀。</p>
+
+    </div>
+
+    <!-- Tags -->
+    
+
+    
+    <!-- Post Navigation: Hexo's page.prev = newer post, page.next = older post -->
+    <nav class="section-divider flex justify-between items-center text-sm md:text-base" aria-label="Post navigation">
+        
+        <a href="/2026/08/27/Saas-Module-01/" class="post-nav-link group text-left" title="Saas Module 01" aria-label="Newer post: Saas Module 01">
+             <span aria-hidden="true">&larr;</span>
+             <span class="post-nav-title">Saas Module 01</span>
+        </a>
+        
+
+        
+        <a href="/2026/08/11/UC-Berkeley-CDS-Visiting-Program/" class="post-nav-link group text-right" title="UC Berkeley CDS Visiting Program" aria-label="Older post: UC Berkeley CDS Visiting Program">
+            <span class="post-nav-title">UC Berkeley CDS Visiting Program</span>
+            <span aria-hidden="true">&rarr;</span>
+        </a>
+        
+    </nav>
+
+
+    
+    
+</article>
+
+
+            </main>
+
+            <footer class="section-divider site-footer" data-pagefind-ignore>
+    <div class="site-footer-meta text-center text-sm text-text-chrome leading-relaxed">
+        <p>&copy; <span class="oldstyle-nums">2026</span> Akatsuki</p>
+        <p class="font-eng text-footnote tracking-wide opacity-90">Elegant theme by <a href="https://github.com/Acris/hexo-theme-shiro" target="_blank" rel="noopener noreferrer" class="link-chrome">Shiro</a> · Made by <a href="https://acris.me" target="_blank" rel="noopener noreferrer" class="link-chrome">Acris</a>
+                        with <span aria-label="love" title="love">❤️</span></p>
+    </div>
+</footer>
+
+        </div>
+
+        <!-- Note Text — decorative aside, not part of main content or footer -->
+        <aside class="mt-4 text-center" aria-hidden="true" role="presentation">
+            <p class="site-note font-title text-xs sm:text-sm text-text-subtle/70 tracking-note select-none" lang="ja">
+                白は、余白の名。
+            </p>
+        </aside>
+    </div>
+
+    
+    <button id="backToTop" type="button" class="back-to-top" data-visible="false" aria-label="Back to Top" hidden>
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+    
+    
+
+    <!-- Scripts -->
+    
+    
+    
+    <script defer src="/js/toc.min.js?v=3e0cca47"></script>
+    
+    <script defer src="/js/progress.min.js?v=d01e3a23"></script>
+    
+    <script defer src="/js/back-to-top.min.js?v=ff36a748"></script>
+    
+    <script defer src="/js/theme-toggle.min.js?v=04b6578e"></script>
+    
+    <script defer src="/js/mobile-menu.min.js?v=40df95a6"></script>
+    
+    
+
+    
+
+</body>
+</html>

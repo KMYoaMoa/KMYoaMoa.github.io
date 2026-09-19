@@ -1,0 +1,833 @@
+<!doctype html>
+
+
+
+<html lang="zh-CN" class="h-full scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Hexo " />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    
+
+
+
+    
+    
+<script data-cfasync="false">
+;(() => {
+    // Progressive enhancement marker (mobile nav CSS uses html.js before paint).
+    document.documentElement.classList.add('js');
+    const shiro = (window.__shiro = window.__shiro || {});
+    const defaultTheme = "dark";
+    shiro.themeDefault = defaultTheme;
+    
+    const states = defaultTheme === 'system' ? ['system', 'light', 'dark'] : ['light', 'dark'];
+    let saved;
+    try { saved = localStorage.getItem('theme'); } catch (_) {}
+    const state = saved && states.includes(saved) ? saved : defaultTheme;
+    const html = document.documentElement;
+    html.setAttribute('data-theme-state', state);
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    // Pagefind dark contract only when search is enabled.
+    const syncPagefindTheme = false;
+    shiro.searchEnabled = syncPagefindTheme;
+    // Single source for theme-toggle.js and system-follow listener.
+    const applyResolvedTheme = (dark) => {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        if (syncPagefindTheme) {
+            if (dark) html.setAttribute('data-pf-theme', 'dark');
+            else html.removeAttribute('data-pf-theme');
+        }
+        html.style.colorScheme = dark ? 'dark' : 'light';
+    };
+    shiro.applyResolvedTheme = applyResolvedTheme;
+    applyResolvedTheme(state === 'dark' || (state !== 'light' && darkQuery.matches));
+    if (defaultTheme === 'system') {
+        // Follow OS theme while in system mode even if the toggle script is absent.
+        const followSystem = () => {
+            if (html.getAttribute('data-theme-state') !== 'system') return;
+            applyResolvedTheme(darkQuery.matches);
+        };
+        if (darkQuery.addEventListener) darkQuery.addEventListener('change', followSystem);
+        else if (darkQuery.addListener) darkQuery.addListener(followSystem);
+    }
+    // Preloader skip: the session collection must contain this page's font-bundle URL.
+    const fontsReadyToken = "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700\u0026family=Yuji+Syuku\u0026family=Zen+Old+Mincho:wght@400;600\u0026family=Cormorant+Garamond:wght@400;600\u0026family=Noto+Serif+SC:wght@400;600\u0026family=Fira+Code:wght@400;500\u0026display=swap";
+    shiro.fontsReadyToken = fontsReadyToken;
+    try {
+        const storedFontsReady = sessionStorage.getItem('shiro:fonts-ready');
+        const readyFontTokens = storedFontsReady === fontsReadyToken
+            ? [storedFontsReady]
+            : JSON.parse(storedFontsReady || '[]');
+        if (
+            fontsReadyToken
+            && Array.isArray(readyFontTokens)
+            && readyFontTokens.indexOf(fontsReadyToken) !== -1
+        ) {
+            html.classList.add('shiro-preloader-done');
+        }
+    } catch (_) {}
+})();
+</script>
+
+    
+
+    
+
+
+
+
+
+
+
+
+<title>Saas Module 02 | Akatsuki</title>
+
+
+<meta name="description" content="How to Learn a New Language It is important for software engineers to be able to quickly learn and use new languages and frameworks, since they are constantly changing and evolving. So, we need to..." />
+
+
+<meta name="author" content="Akatsuki Kareno" />
+
+
+
+<meta property="og:title" content="Saas Module 02 | Akatsuki" />
+
+<meta property="og:description" content="How to Learn a New Language It is important for software engineers to be able to quickly learn and use new languages and frameworks, since they are constantly changing and evolving. So, we need to..." />
+
+<meta property="og:url" content="https://kmyoamoa.github.io/2026/08/29/Saas-Module-02/index.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Akatsuki" />
+
+
+<meta property="og:locale" content="zh_CN" />
+
+
+
+
+<meta property="article:published_time" content="2026-08-29T18:12:32.000Z" />
+
+
+<meta property="article:modified_time" content="2026-09-15T17:08:42.489Z" />
+
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Saas Module 02 | Akatsuki" />
+
+<meta name="twitter:description" content="How to Learn a New Language It is important for software engineers to be able to quickly learn and use new languages and frameworks, since they are constantly changing and evolving. So, we need to..." />
+
+
+
+<link rel="canonical" href="https://kmyoamoa.github.io/2026/08/29/Saas-Module-02/index.html" />
+
+
+
+
+
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"Saas Module 02","mainEntityOfPage":{"@type":"WebPage","@id":"https://kmyoamoa.github.io/2026/08/29/Saas-Module-02/"},"description":"How to Learn a New Language It is important for software engineers to be able to quickly learn and use new languages and frameworks, since they are constantly changing and evolving. So, we need to...","datePublished":"2026-08-29T18:12:32.000Z","dateModified":"2026-09-15T17:08:42.489Z","author":{"@type":"Person","name":"Akatsuki Kareno"},"publisher":{"@type":"Organization","name":"Akatsuki","logo":{"@type":"ImageObject","url":"https://kmyoamoa.github.io/favicon.svg","width":112,"height":112}}}]</script>
+
+
+
+<link rel="icon" href="/favicon.svg" />
+
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Yuji+Syuku&family=Zen+Old+Mincho:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Noto+Serif+SC:wght@400;600&family=Fira+Code:wght@400;500&display=swap" />
+
+<link rel="stylesheet" href="/css/style.min.css?v=84edaf60">
+
+<link rel="stylesheet" href="/css/code.min.css?v=cb0da316">
+
+
+<link rel="stylesheet" href="/css/toc.min.css?v=d9987942">
+
+<script defer data-cfasync="false" src="/js/preloader.min.js?v=881cdc82"></script>
+
+</head>
+
+
+<body class="h-full fog-bg text-text-body">
+    <!-- Preloader: font CSS load + fonts.ready, or preloader.min.js deadline. -->
+    <div id="shiroPreloader" class="shiro-preloader" aria-hidden="true">
+        <div class="shiro-preloader-ripple" aria-hidden="true">
+            <span class="shiro-preloader-ring"></span>
+            <span class="shiro-preloader-ring"></span>
+        </div>
+    </div>
+    <a href="#main-content" class="shiro-skip-link">Skip to content</a>
+    
+    
+<svg width="0" height="0" class="absolute pointer-events-none" aria-hidden="true">
+    <defs>
+        <filter id="seal-roughness" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+        </filter>
+        <filter id="text-erosion">
+            <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="1" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" />
+        </filter>
+    </defs>
+</svg>
+
+    
+
+    
+    <div id="progressBar" class="progress-bar" aria-hidden="true"></div>
+    
+    
+    <div id="backToTopSentinel" class="back-to-top-sentinel" aria-hidden="true"></div>
+    
+
+    <div class="min-h-full px-4 pt-14 pb-6 md:pb-5">
+
+        <!-- Paper Card -->
+        <div
+            class="paper mx-auto w-full max-w-4xl rounded-xl px-5 sm:px-8 md:px-12 lg:px-14 pt-10 pb-6 md:pt-12 md:pb-8">
+
+            
+
+
+<header data-pagefind-ignore>
+
+    <div class="flex items-start justify-center">
+        <div class="text-center">
+            <div class="relative inline-block">
+                
+                <p class="site-title">
+                    <a href="/">Akatsuki</a>
+                </p>
+                
+                <!-- Seal: Mathematically Centered -->
+                
+                <div
+                    class="absolute left-full top-1/2 -translate-y-1/2 ml-1 sm:ml-4 origin-left scale-75 sm:scale-110">
+                    
+<svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M15,12 Q50,5 85,12 Q95,50 88,88 Q50,95 12,88 Q5,50 15,12 Z"
+        fill="var(--color-seal-fill)" filter="url(#seal-roughness)" opacity="0.92" />
+    <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
+        font-size="42" fill="var(--color-on-seal)" filter="url(#text-erosion)"
+        class="seal-text select-none">赤月</text>
+</svg>
+
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class="mt-3 sm:mt-4 flex items-center justify-center gap-2">
+                
+                
+                
+                <button id="themeToggle" type="button" class="focus-elegant header-pill-btn" aria-label="Dark" data-label-system="System" data-label-light="Light" data-label-dark="Dark" disabled>
+                    
+<svg data-icon="system" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="1.5"/>
+    <path d="M8 21h8M12 17v4" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="light" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="4" stroke-width="1.5"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="dark" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                </button>
+                
+                
+            </div>
+            
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+
+<nav class="mt-8 md:mt-10" aria-label="Menu" data-pagefind-ignore>
+    <!-- Mobile Toggle -->
+    <div class="flex items-center justify-center md:hidden">
+        
+        <button id="menuBtn" type="button"
+            class="focus-elegant inline-flex cursor-pointer items-center gap-2 rounded-full border border-border-strong bg-paper/95 px-4 py-2 text-sm text-text-body shadow-xs"
+            aria-expanded="false" aria-controls="mobileMenu" disabled>
+            <span class="text-base leading-none tracking-widest">Menu</span>
+            
+<svg class="size-4 text-text-chrome transition-transform duration-200" id="menuChevron"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+        </button>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:block">
+        <ul class="nav-desktop flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base text-text-body px-4">
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+
+    <!-- Mobile Menu Panel: open without JS; html.js collapses before paint until toggled. -->
+    <div id="mobileMenu" class="menu-panel md:hidden mt-4" data-open="false">
+        <ul
+            class="mx-auto max-w-sm max-h-menu overflow-y-auto rounded-2xl border border-border-strong bg-paper/95 shadow-xs">
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var menuPanel = document.getElementById('mobileMenu');
+        if (menuPanel) menuPanel.inert = true;
+    }
+    </script>
+</nav>
+
+
+
+            <!-- Main Content -->
+            <main id="main-content" class="section-divider" tabindex="-1">
+                
+
+
+
+
+
+
+
+
+<article class="py-2">
+    <header class="text-center mb-8">
+        
+        <h1 class="page-title mb-4" data-pagefind-body data-pagefind-meta="title">
+            Saas Module 02
+        </h1>
+        
+        
+
+
+
+
+
+
+
+
+<div class="mb-4 flex flex-wrap items-center justify-center gap-y-1 text-text-chrome gap-x-4 text-sm">
+    <div class="flex items-center gap-1.5">
+        
+<svg class="size-4 text-text-subtle shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+
+        <a href="/archives/2026/" class="oldstyle-nums link-chrome"><time datetime="2026-08-29">2026/08/29</time></a>
+    </div>
+    
+    
+</div>
+
+        
+    </header>
+
+    
+    
+<!-- Inline TOC (viewports below the `toc` breakpoint, where the fixed sidebar cannot fit beside the paper card).
+     html.js collapses the body before paint; toggle is disabled until toc.js binds. No-JS keeps body open. -->
+<nav id="tocInline" class="toc-inline toc:hidden mb-8" aria-label="Contents" data-pagefind-ignore>
+    <button type="button" class="toc-toggle" aria-expanded="false" aria-controls="tocInlineBody" disabled>
+        <span class="toc-toggle-title">Contents</span>
+        
+<svg class="toc-chevron size-4 text-text-chrome transition-transform duration-200"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+    </button>
+    <div class="toc-body" id="tocInlineBody" data-open="false"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#Introduction" data-target="Introduction">Introduction</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Things-to-know-about" data-target="Things-to-know-about">Things to know about</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Concepts-to-learn" data-target="Concepts-to-learn">Concepts to learn</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Prelude-Learn-to-learn-lang-and-frameworks" data-target="Prelude-Learn-to-learn-lang-and-frameworks">Prelude: Learn to learn lang and frameworks</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Similarities" data-target="Similarities">Similarities</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Technical-Vocabulary" data-target="Technical-Vocabulary">Technical Vocabulary</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Plan-for-Learning-New-Imperative-OO-Lang" data-target="Plan-for-Learning-New-Imperative-OO-Lang">Plan for Learning New Imperative OO Lang</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Pitfalls" data-target="Pitfalls">Pitfalls</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary" data-target="Summary">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Pair-Programming" data-target="Pair-Programming">Pair Programming</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Does-it-Work" data-target="Does-it-Work">Does it Work?</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-1" data-target="Summary-1">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Ruby-Introduction" data-target="Ruby-Introduction">Ruby Introduction</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Types-Typing-and-Variable-Names" data-target="Types-Typing-and-Variable-Names">Types, Typing and Variable Names</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Other-Named-Entities" data-target="Other-Named-Entities">Other Named Entities</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Boolean-Evaluations-and-Values" data-target="Boolean-Evaluations-and-Values">Boolean Evaluations and Values</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Primitives" data-target="Primitives">Primitives</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Strings-and-Regex" data-target="Strings-and-Regex">Strings and Regex</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Collections-Array-and-Has" data-target="Collections-Array-and-Has">Collections: Array and Has</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Methods" data-target="Methods">Methods</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Classes-Objects-and-Methods" data-target="Classes-Objects-and-Methods">Classes, Objects and Methods</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Other-Ruby-Basic-Knowledge" data-target="Other-Ruby-Basic-Knowledge">Other Ruby Basic Knowledge</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Type-Casting" data-target="Type-Casting">Type Casting</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Abstraction-and-Encapsulation" data-target="Abstraction-and-Encapsulation">Abstraction and Encapsulation</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Syntactic-Sugar" data-target="Syntactic-Sugar">Syntactic Sugar</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-2" data-target="Summary-2">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Ruby-Idioms" data-target="Ruby-Idioms">Ruby Idioms</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Poetry-Mode-and-Named-Parameters" data-target="Poetry-Mode-and-Named-Parameters">Poetry Mode and Named Parameters</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Blocks" data-target="Blocks">Blocks</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Duck-Typing" data-target="Duck-Typing">Duck Typing</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-3" data-target="Summary-3">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Gems-and-Bundler" data-target="Gems-and-Bundler">Gems and Bundler</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Gem" data-target="Gem">Gem</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Bundler" data-target="Bundler">Bundler</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Versioning" data-target="Versioning">Versioning</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-4" data-target="Summary-4">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Pitfalls-1" data-target="Pitfalls-1">Pitfalls</a></li></ul></div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var tocBody = document.getElementById('tocInlineBody');
+        if (tocBody) tocBody.inert = true;
+    }
+    </script>
+</nav>
+
+<!-- Sidebar TOC (`toc` breakpoint and up; see --breakpoint-toc in source/css/_core/tokens.css) -->
+<nav id="tocSidebar" class="toc-sidebar hidden toc:block" aria-label="Contents" data-pagefind-ignore>
+    <div class="toc-sidebar-inner">
+        <p class="toc-sidebar-title">Contents</p>
+        <div class="toc-body"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#Introduction" data-target="Introduction">Introduction</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Things-to-know-about" data-target="Things-to-know-about">Things to know about</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Concepts-to-learn" data-target="Concepts-to-learn">Concepts to learn</a></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Prelude-Learn-to-learn-lang-and-frameworks" data-target="Prelude-Learn-to-learn-lang-and-frameworks">Prelude: Learn to learn lang and frameworks</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Similarities" data-target="Similarities">Similarities</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Technical-Vocabulary" data-target="Technical-Vocabulary">Technical Vocabulary</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Plan-for-Learning-New-Imperative-OO-Lang" data-target="Plan-for-Learning-New-Imperative-OO-Lang">Plan for Learning New Imperative OO Lang</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Pitfalls" data-target="Pitfalls">Pitfalls</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary" data-target="Summary">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Pair-Programming" data-target="Pair-Programming">Pair Programming</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Does-it-Work" data-target="Does-it-Work">Does it Work?</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-1" data-target="Summary-1">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Ruby-Introduction" data-target="Ruby-Introduction">Ruby Introduction</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Types-Typing-and-Variable-Names" data-target="Types-Typing-and-Variable-Names">Types, Typing and Variable Names</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Other-Named-Entities" data-target="Other-Named-Entities">Other Named Entities</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Boolean-Evaluations-and-Values" data-target="Boolean-Evaluations-and-Values">Boolean Evaluations and Values</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Primitives" data-target="Primitives">Primitives</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Strings-and-Regex" data-target="Strings-and-Regex">Strings and Regex</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Collections-Array-and-Has" data-target="Collections-Array-and-Has">Collections: Array and Has</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Methods" data-target="Methods">Methods</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Classes-Objects-and-Methods" data-target="Classes-Objects-and-Methods">Classes, Objects and Methods</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Other-Ruby-Basic-Knowledge" data-target="Other-Ruby-Basic-Knowledge">Other Ruby Basic Knowledge</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Type-Casting" data-target="Type-Casting">Type Casting</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Abstraction-and-Encapsulation" data-target="Abstraction-and-Encapsulation">Abstraction and Encapsulation</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Syntactic-Sugar" data-target="Syntactic-Sugar">Syntactic Sugar</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-2" data-target="Summary-2">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Ruby-Idioms" data-target="Ruby-Idioms">Ruby Idioms</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Poetry-Mode-and-Named-Parameters" data-target="Poetry-Mode-and-Named-Parameters">Poetry Mode and Named Parameters</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Blocks" data-target="Blocks">Blocks</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Duck-Typing" data-target="Duck-Typing">Duck Typing</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-3" data-target="Summary-3">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Gems-and-Bundler" data-target="Gems-and-Bundler">Gems and Bundler</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Gem" data-target="Gem">Gem</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Bundler" data-target="Bundler">Bundler</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Versioning" data-target="Versioning">Versioning</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-4" data-target="Summary-4">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Pitfalls-1" data-target="Pitfalls-1">Pitfalls</a></li></ul></div>
+    </div>
+</nav>
+
+    
+
+    <div class="prose-shiro" data-pagefind-body>
+        <h1 id="How-to-Learn-a-New-Language"><a href="#How-to-Learn-a-New-Language" class="headerlink" title="How to Learn a New Language"></a>How to Learn a New Language</h1><p>It is important for software engineers to be able to quickly learn and use new languages and frameworks, since they are constantly changing and evolving.</p>
+<p>So, we need to learn about how to learn a new language.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="Things-to-know-about"><a href="#Things-to-know-about" class="headerlink" title="Things to know about"></a>Things to know about</h3><p>be familiar with OO Languages</p>
+<p>be familiar with basic operations on collections</p>
+<ul>
+<li>functional programming, lambda</li>
+<li>filters</li>
+</ul>
+<p>be familiar with regular expressions</p>
+<h2 id="Concepts-to-learn"><a href="#Concepts-to-learn" class="headerlink" title="Concepts to learn"></a>Concepts to learn</h2><p>Learning a language and learning a framework simultaneously.</p>
+<ul>
+<li>understand the new lanuage</li>
+<li>understand the structure or architectural model the pramework prescribes for applications</li>
+<li>how the languages features are used to expose that structure</li>
+</ul>
+<p>Understand its</p>
+<ul>
+<li>basic Object-Oriented and encapsulation mechanisms<ul>
+<li>classes, inheritance, commposition</li>
+</ul>
+</li>
+<li>its basic imperative mechanics<ul>
+<li>variables, naming conventions, control flow</li>
+</ul>
+</li>
+<li>how it manages complexity<ul>
+<li>namespacing, libs, lib and package management</li>
+</ul>
+</li>
+</ul>
+<p>Learning the idioms that make a language unique.</p>
+<ul>
+<li>mix-ins (duck typing)</li>
+<li>blocks (anonymous lambdas)</li>
+</ul>
+<p>Learning its libraries and how they are managed</p>
+<ul>
+<li>Ruby libraries are called <strong>gems</strong></li>
+<li>Bundler tool</li>
+<li>dependencies</li>
+</ul>
+<h2 id="Prelude-Learn-to-learn-lang-and-frameworks"><a href="#Prelude-Learn-to-learn-lang-and-frameworks" class="headerlink" title="Prelude: Learn to learn lang and frameworks"></a>Prelude: Learn to learn lang and frameworks</h2><p>We use the term <strong>stack</strong> to refer to set of technologies:</p>
+<ul>
+<li>languages, frameworks, subsystems used in the development</li>
+</ul>
+<p>A major part of most stacks is a <strong>Framework</strong> fo building app, relying on other elements in the stack. We learn stacks, instead of learn a standalone languages.</p>
+<ul>
+<li>Objective C for iOS</li>
+<li>React.js</li>
+<li>Ralis on Ruby</li>
+</ul>
+<p>Stacks and frameworks come and go. We need to learn how to learn.</p>
+<h3 id="Similarities"><a href="#Similarities" class="headerlink" title="Similarities"></a>Similarities</h3><p>Many OO languages are alike because they all:</p>
+<ul>
+<li>use imperative approach to solve programming problems</li>
+<li>provide comparable facilities for managing complexity</li>
+</ul>
+<h3 id="Technical-Vocabulary"><a href="#Technical-Vocabulary" class="headerlink" title="Technical Vocabulary"></a>Technical Vocabulary</h3><p>Mastering technical vocabulary can help you learn new languages quicker.</p>
+<p>They can be divided in to 3 parts.</p>
+<p><strong>What’s Different</strong>: What idioms or facilities are different from other popular languages? How do they manage libs, the learning of which consumes more time?</p>
+<ul>
+<li>primitives<ul>
+<li>Variables, types control flow</li>
+</ul>
+</li>
+<li>reuse<ul>
+<li>inheritance, interfaces</li>
+</ul>
+</li>
+<li>complexity management<ul>
+<li>composition, inheritance, data hiding</li>
+</ul>
+</li>
+<li>debugging</li>
+<li>library usage<ul>
+<li>importing, package&#x2F;dependency management</li>
+</ul>
+</li>
+</ul>
+<p><strong>App Architecture Implied by Framework</strong>:</p>
+<ul>
+<li>What is the app structure or set of patterns reified by the framework?</li>
+<li>What are the major “moving parts” of an app?</li>
+<li>How does their arrangement influence the way we formulate an application’s functionality?</li>
+</ul>
+<p><strong>Associate Language’s Features with Framework’s Srturcture</strong>:</p>
+<ul>
+<li>How does the lang help writers by using its mechanisms to expose the framework’s arch and patterns?<ul>
+<li>Ralis relies on convention over config</li>
+<li>Follow naming rules rather than config file.</li>
+<li>It is supported by its reflection mechanism</li>
+</ul>
+</li>
+</ul>
+<h3 id="Plan-for-Learning-New-Imperative-OO-Lang"><a href="#Plan-for-Learning-New-Imperative-OO-Lang" class="headerlink" title="Plan for Learning New Imperative OO Lang"></a>Plan for Learning New Imperative OO Lang</h3><p><strong>Types and Typing</strong></p>
+<ul>
+<li>stongly or weakly typed?</li>
+<li>dynamic (Ruby, JS) or static (C++, Java) typing?<ul>
+<li>dynamic typing: no type declared at compile time, more error chances, but powerful code reuse (mix-ins).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Primitives</strong></p>
+<ul>
+<li>what are primitive types?</li>
+<li>rules or conventions for naming? (var, fun, clas, namespace)</li>
+<li>mechanisms for variable assignment, variable scope, control flow</li>
+<li>string manipulation, regex and string interpolation</li>
+</ul>
+<p><strong>Methods</strong></p>
+<ul>
+<li>how are they defined &#x2F; called?</li>
+<li>how are they named?</li>
+<li>differentiate class &#x2F; static methods from instance methods?</li>
+</ul>
+<p><strong>Abstraction and Encapsulation</strong></p>
+<ul>
+<li>how classes are defined, subclassed, composed</li>
+<li>mechanics for specifying instance methods and variables; static methods and variables, interfaces</li>
+</ul>
+<p><strong>Idioms</strong></p>
+<ul>
+<li>what idioms differentiate the language form others? how are they used?<ul>
+<li>symbols, blocks, iterators, functional programming, etc.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Libraries</strong></p>
+<ul>
+<li>what facilities does the lang have for managing libraries?</li>
+<li>how are they named, imported and used?</li>
+<li>what tools for package management do we have?</li>
+</ul>
+<p><strong>Debugging</strong></p>
+<ul>
+<li>what debugging tools are available?</li>
+<li>how to use interactive dbugger?</li>
+<li>how to set breakpoints or watchpoints (data based breakpoints)?</li>
+</ul>
+<p><strong>Testing</strong></p>
+<ul>
+<li>how to create and run automated tests?</li>
+</ul>
+<h3 id="Pitfalls"><a href="#Pitfalls" class="headerlink" title="Pitfalls"></a>Pitfalls</h3><p>Though the experience in other languages would be helpful in learning new languages, but it is a pitfall trying mapping everything to the language that we are familiar to.</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>Most imperative OO languages are philosophically more alike than different.</p>
+<p>Developer learns a new language to use a particular framework and stack. Languages will have specific features that make it fit for that frameworkks. Especially the special idioms.</p>
+<p>Using a language effectively requires learning how to debug, and use libs, especially managing dependencies.</p>
+<h2 id="Pair-Programming"><a href="#Pair-Programming" class="headerlink" title="Pair Programming"></a>Pair Programming</h2><p><strong>Pair Programming</strong> is introduced by XP.</p>
+<p>The original goal was to improve software quality by having more than one person developing the same code. And it is also a good way to learn new languages and frameworks.</p>
+<p>Two developers share one computer, each takes on a different role. A pair would take alternate driving and observing.</p>
+<ul>
+<li><strong>Driver</strong>: enters the code and thinks tactically about how to complete the current task, explaining his or her thoughts out loud as appropriate while typing.</li>
+<li><strong>Observer &#x2F; Navigator</strong>: reviews each line of code as it is typed in, and acts as a safety net for the driver. Thinks strategically about future problems that will need to be addressed, and makes suggestions to the driver.</li>
+</ul>
+<h3 id="Does-it-Work"><a href="#Does-it-Work" class="headerlink" title="Does it Work?"></a>Does it Work?</h3><p>It is a cooperative process, should involve a lot of takling, focuses effort on the task, working together increases the likelihood of following good development practices.</p>
+<p>It is effective ONLY IF both collaborators share a common focus throughout the process. If one is silent or away, then it is not pair programming. So if either one cannot keep up, the pair should pause and sync.</p>
+<p>It has a side effect of knowledge transferring</p>
+<ul>
+<li>programming idioms</li>
+<li>tool trick</li>
+<li>company processes</li>
+<li>customer desires, etc.</li>
+</ul>
+<p>Studies shows that it can reduce development time and improve software quality.</p>
+<h3 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h3><p>pair programming promises higher quality and shorter development time, while cause higher programming costs due to collaboration.</p>
+<p>Splits 2 into driver and observer.</p>
+<h2 id="Ruby-Introduction"><a href="#Ruby-Introduction" class="headerlink" title="Ruby Introduction"></a>Ruby Introduction</h2><p>Ruby is a <strong>Minimalist Language</strong></p>
+<ul>
+<li>rich libs</li>
+<li>few mechanisms in language itself</li>
+</ul>
+<p>Two principles to read and write Ruby:</p>
+<ul>
+<li>Everything is an object, every operation is a method call, every call returns a value</li>
+<li>Ruby has conventional classes, but only instance methods are visible outside the class.<ul>
+<li>All operations to instance vars are through <strong>Accessor Methods</strong></li>
+<li>A var is private if it lacks accessor method.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Types-Typing-and-Variable-Names"><a href="#Types-Typing-and-Variable-Names" class="headerlink" title="Types, Typing and Variable Names"></a>Types, Typing and Variable Names</h3><p>Strongly Typed: Objects have types.<br>Dynamically Typed: Variables don’t have types, they only refer to objects.</p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">&#x27;foo&#x27;</span>;</span><br><span class="line">x = <span class="number">3</span>; <span class="comment"># legal</span></span><br></pre></td></tr></table></figure>
+
+<p>Local variables are “barewords”, a single or double <code>@</code> sign precedes names of instance or class variables.</p>
+<p>All variables must begin with lowerase letters. <code>snake_case</code> is strongly preferred over <code>camelCase</code>.</p>
+<p>This is because upper camel case is already used for class names, and it is hard to distinguish upper camel cases and lower camel cases.</p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Variables: snake</span></span><br><span class="line">local_variable = <span class="number">1</span>;</span><br><span class="line"><span class="variable">@instance_variable</span> = <span class="number">2</span>;</span><br><span class="line"><span class="variable">@@class_variable</span> = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Other-Named-Entities"><a href="#Other-Named-Entities" class="headerlink" title="Other Named Entities"></a>Other Named Entities</h3><p>All other named entities must start with Uppercase letters (except for global)</p>
+<p>Class names: UpperCamelCase</p>
+<p>Different kind of names has different namespaces.</p>
+<p><code>foo, @foo, @@foo, FOO, Foo, $FOO</code> are all distinct.</p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Camel, Uppercase</span></span><br><span class="line"><span class="title class_">ClassName</span></span><br><span class="line"><span class="variable constant_">CONSTANT</span></span><br><span class="line"><span class="variable">$GLOBAL_CONSTANT</span></span><br><span class="line"><span class="variable">$global</span>_variable</span><br></pre></td></tr></table></figure>
+
+<h3 id="Boolean-Evaluations-and-Values"><a href="#Boolean-Evaluations-and-Values" class="headerlink" title="Boolean Evaluations and Values"></a>Boolean Evaluations and Values</h3><p>Ruby’s <code>true</code> and <code>false</code> are handled with two different classes: <code>TrueClass</code> and <code>FalseClass</code>.</p>
+<p>However, there are other things that can be used in a conditional expression, but are not boolean at all. For example: <code>if (e)</code>.</p>
+<p>To distinguish the boolean values and the non-boolean expressions used as boolean values, we use the <code>trusy</code> and <code>falsy</code> to describe the final boolean results.</p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Booleans</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">nil</span> <span class="comment"># false</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line">anything_else <span class="comment"># true</span></span><br></pre></td></tr></table></figure>
+<p>That is to say: only <code>false</code> and <code>nil</code> are falsy. Any other thing is trusy, including zero, empty string, etc.</p>
+<p>This is quite different with many other languages.</p>
+<h3 id="Primitives"><a href="#Primitives" class="headerlink" title="Primitives"></a>Primitives</h3><p><code>nil</code> means an operation that yield no meaningful return value, such as looking up an nonexistent key in a hash. It will either cause falseness or a variable that refers to nothing.</p>
+<p>Symbols are some immutable “token” whose value is itself. It is typically used for enumerations. It is not the same as a string, but strings and symbols can be easily converted to each other. </p>
+<h3 id="Strings-and-Regex"><a href="#Strings-and-Regex" class="headerlink" title="Strings and Regex"></a>Strings and Regex</h3><p>Since SaaS will have a large amount of strings to be parsed, mastering regex is a mandatory for programmers and software engineers.</p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Stings and Symbols</span></span><br><span class="line"><span class="comment"># - special characters expanded</span></span><br><span class="line"><span class="string">&quot;string\n&quot;</span></span><br><span class="line"><span class="string">%Q&#123;equivalant to double quote&#125;</span></span><br><span class="line"><span class="comment"># - special characters not expanded</span></span><br><span class="line"><span class="string">&#x27;also string\n&#x27;</span> </span><br><span class="line"><span class="string">%q&#123;equivalant to single quote&#125;</span></span><br><span class="line"><span class="symbol">:symbol</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Expressions in Double Quoted Strings</span></span><br><span class="line"><span class="variable">@foo</span> = <span class="number">3</span>;</span><br><span class="line"><span class="string">&quot;Answer is <span class="subst">#&#123;<span class="variable">@foo</span>&#125;</span>&quot;</span>;</span><br><span class="line"><span class="string">%Q&#123;Answer is <span class="subst">#&#123;<span class="variable">@foo</span> + <span class="number">1</span>&#125;</span>&#125;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># RegEx Matching</span></span><br><span class="line"><span class="string">&quot;hello&quot;</span> =~ <span class="regexp">/lo/</span></span><br><span class="line"><span class="string">&quot;hello&quot;</span>.match(<span class="title class_">Regexp</span>.new <span class="string">&#x27;lo&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Collections-Array-and-Has"><a href="#Collections-Array-and-Has" class="headerlink" title="Collections: Array and Has"></a>Collections: Array and Has</h3><p>Collections  can combine keys and values of different types.</p>
+<p>Hashes are also called arrays or hashmaps in other languages. </p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Arrays</span></span><br><span class="line">a = [<span class="number">1</span>, <span class="symbol">:two</span>, <span class="string">&#x27;three&#x27;</span>];</span><br><span class="line">a[<span class="number">1</span>] == <span class="symbol">:two</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Hashes</span></span><br><span class="line">h = &#123;</span><br><span class="line">    <span class="symbol">:a</span> =&gt; <span class="number">1</span>,</span><br><span class="line">    <span class="string">&#x27;b&#x27;</span> =&gt; <span class="string">&quot;two&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line">h[<span class="string">&#x27;b&#x27;</span>] == <span class="string">&quot;two&quot;</span>;</span><br><span class="line">h.has_key?(<span class="symbol">:a</span>) == <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><p>All statemt in between are called the method definition.</p>
+<p>All method return a value, if it doesn’t have an explicit return statement, the value of the last expression evaluated is its return value.</p>
+<p>Since every Ruby statement results in a value, the return value is always defined.</p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Instance Method</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">arg1, arg2</span>)</span><br><span class="line">    do_something</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">#variable number of args</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">*args</span>)</span><br><span class="line">    do_something</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Classes-Objects-and-Methods"><a href="#Classes-Objects-and-Methods" class="headerlink" title="Classes, Objects and Methods"></a>Classes, Objects and Methods</h3><p>Since everything in Ruby is a object, which is an instance of some class. Naturally, every operation is performed by calling a method on an object.</p>
+<p>The notation <code>obj.meth()</code> calls the meth on the object <code>obj</code>. The object is called <strong>receiver</strong> and is expected to be able to <strong>respond to</strong> <code>meth</code>.</p>
+<p>Since everything is an object, any result of statment is also an object that can has other methods can be called.</p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Class Method</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ClassName</span>.meth(arg1, arg2)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">self</span>.meth(arg1, arg2)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Special Method Names</span></span><br><span class="line"><span class="comment"># - ending methods names in &#x27;?&#x27; and &#x27;!&#x27;</span></span><br><span class="line"><span class="comment"># - it is optional but idiomatic</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">setter=</span>(<span class="params">arg, arg</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">boolean_method?</span>(<span class="params">arg, arg</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dangerous_method!</span>(<span class="params">arg, arg</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="number">5</span>.<span class="keyword">class</span> <span class="comment"># Fixnum</span></span><br><span class="line">(<span class="number">5</span>.<span class="keyword">class</span>).superclass <span class="comment"># super class of Fixnum</span></span><br><span class="line"><span class="number">5</span>.<span class="keyword">class</span>.superclass <span class="comment"># also valid</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the statements above is called reflection</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Other-Ruby-Basic-Knowledge"><a href="#Other-Ruby-Basic-Knowledge" class="headerlink" title="Other Ruby Basic Knowledge"></a>Other Ruby Basic Knowledge</h3><figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Conditions</span></span><br><span class="line"><span class="keyword">if</span> cond</span><br><span class="line">    statements</span><br><span class="line"><span class="keyword">elsif</span> cond</span><br><span class="line">    statements</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    statements</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Iteration</span></span><br><span class="line"><span class="keyword">while</span> cond</span><br><span class="line">    statements</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">until</span> cond</span><br><span class="line">    statements</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="number">1</span>.upto(<span class="number">10</span>) <span class="keyword">do</span> |<span class="params">i</span>|</span><br><span class="line">    statements(i)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">collection.each <span class="keyword">do</span> |<span class="params">elt</span>|</span><br><span class="line">    statements(elt)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Exceptions</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    do_something()</span><br><span class="line"><span class="keyword">rescue</span> <span class="title class_">AnError</span> =&gt; e</span><br><span class="line">    handle(e)</span><br><span class="line"><span class="keyword">ensure</span></span><br><span class="line">    always_execute()</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Type-Casting"><a href="#Type-Casting" class="headerlink" title="Type Casting"></a>Type Casting</h3><figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># explicit type casting</span></span><br><span class="line"><span class="number">5</span>.to_s</span><br><span class="line"><span class="string">&quot;5&quot;</span>.to_i</span><br></pre></td></tr></table></figure>
+
+<h3 id="Abstraction-and-Encapsulation"><a href="#Abstraction-and-Encapsulation" class="headerlink" title="Abstraction and Encapsulation"></a>Abstraction and Encapsulation</h3><p>Ruby supports traditional Inheritance:</p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># SubFoo is a subclass of Foo</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SubFoo</span> &lt; <span class="title class_ inherited__">Foo</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initialize</span>(<span class="params">foo, bar</span>)</span><br><span class="line">      <span class="variable">@foo</span> = foo</span><br><span class="line">      <span class="variable">@bar</span> = bar</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="comment"># Auto Generate getters and setters</span></span><br><span class="line">    <span class="built_in">attr_accessor</span> <span class="symbol">:aaa</span>, <span class="symbol">:bbb</span></span><br><span class="line">    <span class="comment"># Setters only</span></span><br><span class="line">    <span class="built_in">attr_writer</span> <span class="symbol">:ccc</span></span><br><span class="line">    <span class="comment"># Getters only</span></span><br><span class="line">    <span class="built_in">attr_reader</span> <span class="symbol">:ddd</span></span><br><span class="line">    <span class="comment"># Manually written getters and setters</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">foo</span> ; <span class="variable">@foo</span>; <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">foo=</span> value ; <span class="variable">@foo</span>=value; <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>A class can inherit from at most one superclass. Ruby doesn’t support multiple inheritance.</p>
+<p>All classes inherit from the <code>BasicObject</code>, which is called <code>root class</code>, it has no superclass.</p>
+<h3 id="Syntactic-Sugar"><a href="#Syntactic-Sugar" class="headerlink" title="Syntactic Sugar"></a>Syntactic Sugar</h3><p><code>a+b</code> will be converted to <code>a.+(b)</code>. That is to say, the behavior of <code>a+b</code> completely depends on the class of <code>a</code>. </p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> % <span class="number">3</span></span><br><span class="line"><span class="number">10</span>.modulo(<span class="number">3</span>)</span><br><span class="line"><span class="number">10</span>.send(<span class="symbol">:modulo</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">5</span> + <span class="number">3</span></span><br><span class="line"><span class="number">5</span>.+(<span class="number">3</span>)</span><br><span class="line"><span class="number">5</span>.send(<span class="symbol">:+</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">a * x + y</span><br><span class="line">a.*(x).+(y)</span><br><span class="line">a.send(<span class="symbol">:*</span>, x).send(<span class="symbol">:+</span>, y)</span><br><span class="line"></span><br><span class="line">a + x * y</span><br><span class="line">a.+(x.*(y))</span><br><span class="line">a.send(<span class="symbol">:+</span>, x.send(<span class="symbol">:*</span>, y))</span><br><span class="line"></span><br><span class="line">x[<span class="number">3</span>]</span><br><span class="line">x.[](<span class="number">3</span>)</span><br><span class="line">x.send(<span class="symbol">:[]</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">x[<span class="number">3</span>] = <span class="string">&#x27;a&#x27;</span></span><br><span class="line">x.[]=(<span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">x.sen(<span class="symbol">:[]=</span>, <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"></span><br><span class="line">/abc/, <span class="regexp">%r&#123;abc&#125;</span></span><br><span class="line"><span class="title class_">Regexp</span>.new(<span class="string">&quot;abc&quot;</span>)</span><br><span class="line"><span class="title class_">Regexp</span>.send(<span class="symbol">:new</span>, <span class="string">&#x27;abc&#x27;</span>)</span><br><span class="line"></span><br><span class="line">str =~ regex</span><br><span class="line">str.match(regex)</span><br><span class="line">str.send(<span class="symbol">:match</span>, regex)</span><br><span class="line"></span><br><span class="line">regex =~ str</span><br><span class="line">regex.match(str)</span><br><span class="line">regex.send(<span class="symbol">:match</span>, str)</span><br><span class="line"></span><br><span class="line"><span class="variable">$1</span>...<span class="variable">$n</span></span><br><span class="line"><span class="title class_">Regexp</span>.last_match(n)</span><br><span class="line"><span class="title class_">Regexp</span>.send(<span class="symbol">:last_match</span>, n)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Summary-2"><a href="#Summary-2" class="headerlink" title="Summary"></a>Summary</h3><p>Everything in Ruby is Objects. Objects have types, while variables does not.</p>
+<p>Every operation is a method call, having a receiver that handles the call. It is done through the send function, hidden by syntax sugar.</p>
+<p>Every Ruby statement is an expression that has a well-defined value, which could be nil.</p>
+<p>Ruby’s classes only support single inheritence, and obey to Uniform Access Principle strictly.</p>
+<p>Ruby has comprehensive reflection features.</p>
+<p>Ruby supports metaprogramming like <code>attr_accessor</code>, creating code at runtime.</p>
+<h2 id="Ruby-Idioms"><a href="#Ruby-Idioms" class="headerlink" title="Ruby Idioms"></a>Ruby Idioms</h2><p><strong>Programming Idiom</strong> is a way of doing something that occurs frequently in code written by <strong>experienced</strong> users of a <strong>given programming language</strong>.</p>
+<h3 id="Poetry-Mode-and-Named-Parameters"><a href="#Poetry-Mode-and-Named-Parameters" class="headerlink" title="Poetry Mode and Named Parameters"></a>Poetry Mode and Named Parameters</h3><p><strong>Poetry Mode</strong> allows users to omit many parentheses around the arguments to a method call. Only when the parsing is <strong>unambiguous</strong>.</p>
+<p>When the last argument to a method call is a hash, the curly braces around the hash literal can also be omitted.</p>
+<p>In earlier versions of Ruby, hash were often used for <strong>Named Parameters</strong> or <strong>Keyword Arguments</strong>.</p>
+<h3 id="Blocks"><a href="#Blocks" class="headerlink" title="Blocks"></a>Blocks</h3><p>The concept of <strong>Blocks</strong> in Ruby is different from it is in other languages. A block in Ruby is an <strong>anonymous lambda expression</strong>.</p>
+<p>One of the uses of block is implementing data structure traversal.</p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">movie_list.each <span class="keyword">do</span> |<span class="params">m</span>|</span><br><span class="line">    puts <span class="string">&quot;<span class="subst">#&#123;m.titile&#125;</span> (rated: <span class="subst">#&#123;m.rating&#125;</span>)&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>The <code>each</code> here is called an internal iterator, which allows Ruby collections to “manage their own traversal”.</p>
+<h3 id="Duck-Typing"><a href="#Duck-Typing" class="headerlink" title="Duck Typing"></a>Duck Typing</h3><p>Many collection methods actually does not belong to <code>Array</code> class or any of its superclass. These are based on a powerful <strong>mix-in</strong> mechanism, which make reusing very convenient.</p>
+<p>As long as some class can fulfill some “contract”, a named collection of related methods (called mix-in) can be automatically added to this class.</p>
+<p>A <code>module</code> is a <strong>Ruby Function</strong> for packaging together a group of methods as mix-in. When a statement <code>include ModuleName</code> is written in some class, the instance methods, class methods, variables would be added into that class.</p>
+<p>For example, as long as we define the <code>each</code> method, we can include a module called <code>Enumerable</code> in Ruby’s standard library.</p>
+<p>Similarly, a class that defines the “spaceship operator”, <code>&lt;=&gt;</code> which returns:</p>
+<ul>
+<li>$-1$: less than</li>
+<li>$0$: equal to</li>
+<li>$1$: greater than</li>
+</ul>
+<p>, then the class can include a <code>Comparable</code> module, which would introduce <code>&lt;, &lt;=, &gt;, &gt;=, ==, between?</code> to the class.</p>
+<p>However, if the contract is not satisfied, and the module is still included, the there would be a Undefined Method error at runtime.</p>
+<p>The term <strong>Duck Typing</strong> is one popular description of this capability.</p>
+<blockquote>
+<p>If something looks like a duck and quacks like a duck, it might as well be a duck.</p>
+</blockquote>
+<h3 id="Summary-3"><a href="#Summary-3" class="headerlink" title="Summary"></a>Summary</h3><p>Poetry mode allows omitting parentheses.</p>
+<p>Hash arguments were previously used to emulate named parameters, but is discouraged now.</p>
+<p>Ruby borrows idea from functional programming and use <strong>blocks</strong> to describe lambda expressions with context around them, making them closures.</p>
+<p>Mix-in takes advantage of duck typing, allows a set of behaviors to be added to any class that satisfies the contract.</p>
+<p>Miix-ins require no formal declaration, because Ruby doesn’t have static types.</p>
+<h2 id="Gems-and-Bundler"><a href="#Gems-and-Bundler" class="headerlink" title="Gems and Bundler"></a>Gems and Bundler</h2><h3 id="Gem"><a href="#Gem" class="headerlink" title="Gem"></a>Gem</h3><p>A <strong>Ruby Library</strong> would include a bunch of useful classes covering file and network input&#x2F;output, time&#x2F;date, string, collections manipulation, etc.</p>
+<p>An external library is packed as a <strong>Ruby gem</strong>. A gem can argument existing classes and add utility functions, or can contain a whole framework.</p>
+<p>Rails, the framwork, is distributed as a gem that depends on other gems.</p>
+<p>It is important to manage the dependencies among gems and versions of the required gems.</p>
+<h3 id="Bundler"><a href="#Bundler" class="headerlink" title="Bundler"></a>Bundler</h3><p><strong>Bundler</strong> is the package manager for Ruby. It is a Ruby gem it self.</p>
+<figure class="not-prose highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install bundler</span></span><br><span class="line">gem install bundler</span><br><span class="line"></span><br><span class="line"><span class="comment"># install some version of gem</span></span><br><span class="line">gem install name [-v versions]</span><br><span class="line"><span class="comment"># check Gemfile and Gemfile.lock, ensure everything is installed correctly.</span></span><br><span class="line">bundle install [--without <span class="built_in">env</span>]</span><br><span class="line"><span class="comment"># update gems to their latest major versions, recompute dependencies.</span></span><br><span class="line">bundle update gem-names</span><br><span class="line">bundle update --all</span><br><span class="line"><span class="comment"># in the context and correct env of current bundle, run the command.</span></span><br><span class="line">bundle <span class="built_in">exec</span> <span class="built_in">command</span></span><br></pre></td></tr></table></figure>
+
+<p>Bundler requires a <code>Gemfile</code> in the root of working directory. It records the dependencies of the app on particular libraries.</p>
+<p>Bundler would read this file and compute lib versions that respects all the constraints, or report that it is impossible.</p>
+<p>Then, after bundler installs all the proper versions, it would record them to a <code>Gemfile.lock</code>. <code>Gemfile</code> and <code>Gemfile.lock</code> should be stored as part of the codebase for compatibility.</p>
+<h3 id="Versioning"><a href="#Versioning" class="headerlink" title="Versioning"></a>Versioning</h3><p>All the gems and Ruby language itself follows the semantic versioning rules.</p>
+<p>If some decision that would break API &#x2F; backword-compatibility is made, it would appear as deprecation warning in a minor version &#x2F; patch version. And in the next major version, it would be no longer usable.</p>
+<p>A best practice for upgrading to a new major version:</p>
+<ol>
+<li>Update to the latest version that the major version number is still the same. (2.8.1)</li>
+<li>Identiry and address any deprecation warnings.</li>
+<li>upgrade to the first release with the new major version. (3.0.0)</li>
+<li>upgrade to the latest minor version. (3.1.0)</li>
+<li>upgrade to the latest patch version. (3.1.5)</li>
+</ol>
+<p>It doesn’t need to be done at once. Developers can gradually update the gems. </p>
+<h3 id="Summary-4"><a href="#Summary-4" class="headerlink" title="Summary"></a>Summary</h3><p>External libraries are distributed as Ruby Gems.</p>
+<p>Ruby Gems are managed by Bundler, which is also a Ruby Gem.</p>
+<p>Gems and languages follows semantic versioning: <code>major.minor.patch</code></p>
+<p>Upgrade gradually to be prepared for changes.</p>
+<h2 id="Pitfalls-1"><a href="#Pitfalls-1" class="headerlink" title="Pitfalls"></a>Pitfalls</h2><p>Pair programming should switch from time to time. Avoid letting the junior one constantly watching.</p>
+<p>Blindly following cookbook tutorials when learning new languages.</p>
+<ul>
+<li>Learning new languages requires deep study and lots of practice.</li>
+<li>It is not enough to follow a step-by-step tutorial without understanding the underlying mechanisms.</li>
+</ul>
+<p>Forgetting that: Compilers won’t save you.</p>
+<ul>
+<li>Ruby is dynamically typed, the errors can occur at runtime.</li>
+</ul>
+<p>Writing Python in Ruby</p>
+<ul>
+<li>think something as attribute access.</li>
+<li>forgettin gthat instance variable that is not assigned will siently evaluate to <code>nil</code></li>
+<li>think <code>attr_accessor</code> as declaring attributes.</li>
+<li>writing explicit for loops</li>
+<li>using lowerCamelCase.</li>
+</ul>
+<p>Confusing <code>require</code> with <code>include</code></p>
+<ul>
+<li>require loads Ruby file.</li>
+<li>include mix in some module.</li>
+</ul>
+
+    </div>
+
+    <!-- Tags -->
+    
+
+    
+    <!-- Post Navigation: Hexo's page.prev = newer post, page.next = older post -->
+    <nav class="section-divider flex justify-between items-center text-sm md:text-base" aria-label="Post navigation">
+        
+        <a href="/2026/09/05/Saas-Module-03/" class="post-nav-link group text-left" title="Saas Module 03" aria-label="Newer post: Saas Module 03">
+             <span aria-hidden="true">&larr;</span>
+             <span class="post-nav-title">Saas Module 03</span>
+        </a>
+        
+
+        
+        <a href="/2026/08/27/hello-hexo/" class="post-nav-link group text-right" title="Hello Hexo" aria-label="Older post: Hello Hexo">
+            <span class="post-nav-title">Hello Hexo</span>
+            <span aria-hidden="true">&rarr;</span>
+        </a>
+        
+    </nav>
+
+
+    
+    
+</article>
+
+
+            </main>
+
+            <footer class="section-divider site-footer" data-pagefind-ignore>
+    <div class="site-footer-meta text-center text-sm text-text-chrome leading-relaxed">
+        <p>&copy; <span class="oldstyle-nums">2026</span> Akatsuki</p>
+        <p class="font-eng text-footnote tracking-wide opacity-90">Elegant theme by <a href="https://github.com/Acris/hexo-theme-shiro" target="_blank" rel="noopener noreferrer" class="link-chrome">Shiro</a> · Made by <a href="https://acris.me" target="_blank" rel="noopener noreferrer" class="link-chrome">Acris</a>
+                        with <span aria-label="love" title="love">❤️</span></p>
+    </div>
+</footer>
+
+        </div>
+
+        <!-- Note Text — decorative aside, not part of main content or footer -->
+        <aside class="mt-4 text-center" aria-hidden="true" role="presentation">
+            <p class="site-note font-title text-xs sm:text-sm text-text-subtle/70 tracking-note select-none" lang="ja">
+                白は、余白の名。
+            </p>
+        </aside>
+    </div>
+
+    
+    <button id="backToTop" type="button" class="back-to-top" data-visible="false" aria-label="Back to Top" hidden>
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+    
+    
+
+    <!-- Scripts -->
+    
+    
+    <script>
+        
+        (window.__shiro = window.__shiro || {}).i18n = window.__shiro.i18n || {};
+        
+        
+        
+        
+        (window.__shiro = window.__shiro || {}).i18n = window.__shiro.i18n || {};
+window.__shiro.i18n["clipboard"] = {"copied":"Copied","copy":"Copy code","failed":"Copy failed"};
+        (window.__shiro = window.__shiro || {})["clipboardScript"] = "/js/clipboard.min.js?v=add85817";
+        
+    </script>
+    
+    
+    <script defer src="/js/runtime.min.js?v=71138c68"></script>
+    
+    <script defer src="/js/clipboard-bootstrap.min.js?v=917b808f"></script>
+    
+    <script defer src="/js/toc.min.js?v=3e0cca47"></script>
+    
+    <script defer src="/js/progress.min.js?v=d01e3a23"></script>
+    
+    <script defer src="/js/back-to-top.min.js?v=ff36a748"></script>
+    
+    <script defer src="/js/theme-toggle.min.js?v=04b6578e"></script>
+    
+    <script defer src="/js/mobile-menu.min.js?v=40df95a6"></script>
+    
+    
+
+    
+
+</body>
+</html>
