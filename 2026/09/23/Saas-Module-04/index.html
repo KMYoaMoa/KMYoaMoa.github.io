@@ -1,0 +1,847 @@
+<!doctype html>
+
+
+
+<html lang="zh-CN" class="h-full scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="Hexo " />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    
+
+
+
+    
+    
+<script data-cfasync="false">
+;(() => {
+    // Progressive enhancement marker (mobile nav CSS uses html.js before paint).
+    document.documentElement.classList.add('js');
+    const shiro = (window.__shiro = window.__shiro || {});
+    const defaultTheme = "dark";
+    shiro.themeDefault = defaultTheme;
+    
+    const states = defaultTheme === 'system' ? ['system', 'light', 'dark'] : ['light', 'dark'];
+    let saved;
+    try { saved = localStorage.getItem('theme'); } catch (_) {}
+    const state = saved && states.includes(saved) ? saved : defaultTheme;
+    const html = document.documentElement;
+    html.setAttribute('data-theme-state', state);
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    // Pagefind dark contract only when search is enabled.
+    const syncPagefindTheme = false;
+    shiro.searchEnabled = syncPagefindTheme;
+    // Single source for theme-toggle.js and system-follow listener.
+    const applyResolvedTheme = (dark) => {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        if (syncPagefindTheme) {
+            if (dark) html.setAttribute('data-pf-theme', 'dark');
+            else html.removeAttribute('data-pf-theme');
+        }
+        html.style.colorScheme = dark ? 'dark' : 'light';
+    };
+    shiro.applyResolvedTheme = applyResolvedTheme;
+    applyResolvedTheme(state === 'dark' || (state !== 'light' && darkQuery.matches));
+    if (defaultTheme === 'system') {
+        // Follow OS theme while in system mode even if the toggle script is absent.
+        const followSystem = () => {
+            if (html.getAttribute('data-theme-state') !== 'system') return;
+            applyResolvedTheme(darkQuery.matches);
+        };
+        if (darkQuery.addEventListener) darkQuery.addEventListener('change', followSystem);
+        else if (darkQuery.addListener) darkQuery.addListener(followSystem);
+    }
+    // Preloader skip: the session collection must contain this page's font-bundle URL.
+    const fontsReadyToken = "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700\u0026family=Yuji+Syuku\u0026family=Zen+Old+Mincho:wght@400;600\u0026family=Cormorant+Garamond:wght@400;600\u0026family=Noto+Serif+SC:wght@400;600\u0026family=Fira+Code:wght@400;500\u0026display=swap";
+    shiro.fontsReadyToken = fontsReadyToken;
+    try {
+        const storedFontsReady = sessionStorage.getItem('shiro:fonts-ready');
+        const readyFontTokens = storedFontsReady === fontsReadyToken
+            ? [storedFontsReady]
+            : JSON.parse(storedFontsReady || '[]');
+        if (
+            fontsReadyToken
+            && Array.isArray(readyFontTokens)
+            && readyFontTokens.indexOf(fontsReadyToken) !== -1
+        ) {
+            html.classList.add('shiro-preloader-done');
+        }
+    } catch (_) {}
+})();
+</script>
+
+    
+
+    
+
+
+
+
+
+
+
+
+<title>Saas Module 04 | Akatsuki</title>
+
+
+<meta name="description" content="Rails as a Model-View-Controller Framework Concepts Good software systems reflect organization at multiple levels of granularity, often based on identifiable architectural patterns. Rails: Server..." />
+
+
+<meta name="author" content="Akatsuki Kareno" />
+
+
+
+<meta property="og:title" content="Saas Module 04 | Akatsuki" />
+
+<meta property="og:description" content="Rails as a Model-View-Controller Framework Concepts Good software systems reflect organization at multiple levels of granularity, often based on identifiable architectural patterns. Rails: Server..." />
+
+<meta property="og:url" content="https://kmyoamoa.github.io/2026/09/23/Saas-Module-04/index.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Akatsuki" />
+
+
+<meta property="og:locale" content="zh_CN" />
+
+
+
+
+<meta property="article:published_time" content="2026-09-23T07:04:13.000Z" />
+
+
+<meta property="article:modified_time" content="2026-10-04T08:19:41.528Z" />
+
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Saas Module 04 | Akatsuki" />
+
+<meta name="twitter:description" content="Rails as a Model-View-Controller Framework Concepts Good software systems reflect organization at multiple levels of granularity, often based on identifiable architectural patterns. Rails: Server..." />
+
+
+
+<link rel="canonical" href="https://kmyoamoa.github.io/2026/09/23/Saas-Module-04/index.html" />
+
+
+
+
+
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"Saas Module 04","mainEntityOfPage":{"@type":"WebPage","@id":"https://kmyoamoa.github.io/2026/09/23/Saas-Module-04/"},"description":"Rails as a Model-View-Controller Framework Concepts Good software systems reflect organization at multiple levels of granularity, often based on identifiable architectural patterns. Rails: Server...","datePublished":"2026-09-23T07:04:13.000Z","dateModified":"2026-10-04T08:19:41.528Z","author":{"@type":"Person","name":"Akatsuki Kareno"},"publisher":{"@type":"Organization","name":"Akatsuki","logo":{"@type":"ImageObject","url":"https://kmyoamoa.github.io/favicon.svg","width":112,"height":112}}}]</script>
+
+
+
+<link rel="icon" href="/favicon.svg" />
+
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Yuji+Syuku&family=Zen+Old+Mincho:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Noto+Serif+SC:wght@400;600&family=Fira+Code:wght@400;500&display=swap" />
+
+<link rel="stylesheet" href="/css/style.min.css?v=84edaf60">
+
+<link rel="stylesheet" href="/css/code.min.css?v=cb0da316">
+
+
+<link rel="stylesheet" href="/css/toc.min.css?v=d9987942">
+
+<script defer data-cfasync="false" src="/js/preloader.min.js?v=881cdc82"></script>
+
+</head>
+
+
+<body class="h-full fog-bg text-text-body">
+    <!-- Preloader: font CSS load + fonts.ready, or preloader.min.js deadline. -->
+    <div id="shiroPreloader" class="shiro-preloader" aria-hidden="true">
+        <div class="shiro-preloader-ripple" aria-hidden="true">
+            <span class="shiro-preloader-ring"></span>
+            <span class="shiro-preloader-ring"></span>
+        </div>
+    </div>
+    <a href="#main-content" class="shiro-skip-link">Skip to content</a>
+    
+    
+<svg width="0" height="0" class="absolute pointer-events-none" aria-hidden="true">
+    <defs>
+        <filter id="seal-roughness" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+        </filter>
+        <filter id="text-erosion">
+            <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="1" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" />
+        </filter>
+    </defs>
+</svg>
+
+    
+
+    
+    <div id="progressBar" class="progress-bar" aria-hidden="true"></div>
+    
+    
+    <div id="backToTopSentinel" class="back-to-top-sentinel" aria-hidden="true"></div>
+    
+
+    <div class="min-h-full px-4 pt-14 pb-6 md:pb-5">
+
+        <!-- Paper Card -->
+        <div
+            class="paper mx-auto w-full max-w-4xl rounded-xl px-5 sm:px-8 md:px-12 lg:px-14 pt-10 pb-6 md:pt-12 md:pb-8">
+
+            
+
+
+<header data-pagefind-ignore>
+
+    <div class="flex items-start justify-center">
+        <div class="text-center">
+            <div class="relative inline-block">
+                
+                <p class="site-title">
+                    <a href="/">Akatsuki</a>
+                </p>
+                
+                <!-- Seal: Mathematically Centered -->
+                
+                <div
+                    class="absolute left-full top-1/2 -translate-y-1/2 ml-1 sm:ml-4 origin-left scale-75 sm:scale-110">
+                    
+<svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M15,12 Q50,5 85,12 Q95,50 88,88 Q50,95 12,88 Q5,50 15,12 Z"
+        fill="var(--color-seal-fill)" filter="url(#seal-roughness)" opacity="0.92" />
+    <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
+        font-size="42" fill="var(--color-on-seal)" filter="url(#text-erosion)"
+        class="seal-text select-none">赤月</text>
+</svg>
+
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class="mt-3 sm:mt-4 flex items-center justify-center gap-2">
+                
+                
+                
+                <button id="themeToggle" type="button" class="focus-elegant header-pill-btn" aria-label="Dark" data-label-system="System" data-label-light="Light" data-label-dark="Dark" disabled>
+                    
+<svg data-icon="system" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="1.5"/>
+    <path d="M8 21h8M12 17v4" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="light" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="4" stroke-width="1.5"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+                    
+<svg data-icon="dark" class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                </button>
+                
+                
+            </div>
+            
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+
+<nav class="mt-8 md:mt-10" aria-label="Menu" data-pagefind-ignore>
+    <!-- Mobile Toggle -->
+    <div class="flex items-center justify-center md:hidden">
+        
+        <button id="menuBtn" type="button"
+            class="focus-elegant inline-flex cursor-pointer items-center gap-2 rounded-full border border-border-strong bg-paper/95 px-4 py-2 text-sm text-text-body shadow-xs"
+            aria-expanded="false" aria-controls="mobileMenu" disabled>
+            <span class="text-base leading-none tracking-widest">Menu</span>
+            
+<svg class="size-4 text-text-chrome transition-transform duration-200" id="menuChevron"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+        </button>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:block">
+        <ul class="nav-desktop flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-base text-text-body px-4">
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="text-text-subtle select-none" role="separator" aria-hidden="true">/</li>
+            
+            
+            <li>
+
+
+<a class="nav-desktop-link focus-elegant rounded-md px-2 py-1 hover:text-seal transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+
+    <!-- Mobile Menu Panel: open without JS; html.js collapses before paint until toggled. -->
+    <div id="mobileMenu" class="menu-panel md:hidden mt-4" data-open="false">
+        <ul
+            class="mx-auto max-w-sm max-h-menu overflow-y-auto rounded-2xl border border-border-strong bg-paper/95 shadow-xs">
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/">Home</a>
+</li>
+            
+            <li class="h-px bg-border-decorative" role="separator" aria-hidden="true"></li>
+            
+            
+            <li>
+
+
+<a class="focus-elegant block px-6 py-3 text-center text-text-body hover:text-seal hover:bg-seal/5 transition-colors"
+    href="/archives">Archives</a>
+</li>
+            
+            
+        </ul>
+    </div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var menuPanel = document.getElementById('mobileMenu');
+        if (menuPanel) menuPanel.inert = true;
+    }
+    </script>
+</nav>
+
+
+
+            <!-- Main Content -->
+            <main id="main-content" class="section-divider" tabindex="-1">
+                
+
+
+
+
+
+
+
+
+<article class="py-2">
+    <header class="text-center mb-8">
+        
+        <h1 class="page-title mb-4" data-pagefind-body data-pagefind-meta="title">
+            Saas Module 04
+        </h1>
+        
+        
+
+
+
+
+
+
+
+
+<div class="mb-4 flex flex-wrap items-center justify-center gap-y-1 text-text-chrome gap-x-4 text-sm">
+    <div class="flex items-center gap-1.5">
+        
+<svg class="size-4 text-text-subtle shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+
+        <a href="/archives/2026/" class="oldstyle-nums link-chrome"><time datetime="2026-09-23">2026/09/23</time></a>
+    </div>
+    
+    
+</div>
+
+        
+    </header>
+
+    
+    
+<!-- Inline TOC (viewports below the `toc` breakpoint, where the fixed sidebar cannot fit beside the paper card).
+     html.js collapses the body before paint; toggle is disabled until toc.js binds. No-JS keeps body open. -->
+<nav id="tocInline" class="toc-inline toc:hidden mb-8" aria-label="Contents" data-pagefind-ignore>
+    <button type="button" class="toc-toggle" aria-expanded="false" aria-controls="tocInlineBody" disabled>
+        <span class="toc-toggle-title">Contents</span>
+        
+<svg class="toc-chevron size-4 text-text-chrome transition-transform duration-200"
+    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+        clip-rule="evenodd" />
+</svg>
+
+    </button>
+    <div class="toc-body" id="tocInlineBody" data-open="false"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#Concepts" data-target="Concepts">Concepts</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#MVC-Architecture" data-target="MVC-Architecture">MVC Architecture</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary" data-target="Summary">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Models-Databses-and-Active-Record" data-target="Models-Databses-and-Active-Record">Models: Databses and Active Record</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Databases" data-target="Databases">Databases</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Resources-in-Rails" data-target="Resources-in-Rails">Resources in Rails</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Active-Record-as-Abstraction" data-target="Active-Record-as-Abstraction">Active Record as Abstraction</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Migration" data-target="Migration">Migration</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-1" data-target="Summary-1">Summary</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Overriding-convention-over-configuration" data-target="Overriding-convention-over-configuration">Overriding convention over configuration</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Routes-Controllers-Views" data-target="Routes-Controllers-Views">Routes, Controllers, Views</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Routes" data-target="Routes">Routes</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Controller" data-target="Controller">Controller</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Rails-Design" data-target="Rails-Design">Rails Design</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-2" data-target="Summary-2">Summary</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Metaprogramming-in-Rails" data-target="Metaprogramming-in-Rails">Metaprogramming in Rails</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Example" data-target="Example">Example</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Forms" data-target="Forms">Forms</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Tag-Helper" data-target="Tag-Helper">Tag Helper</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Parsing-the-user-submission-powered-by-rails" data-target="Parsing-the-user-submission-powered-by-rails">Parsing the user submission powered by rails</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Security" data-target="Security">Security</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#flash-and-session" data-target="flash-and-session">flash and session</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-3" data-target="Summary-3">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Debugging-When-Things-Go-Wrong" data-target="Debugging-When-Things-Go-Wrong">Debugging: When Things Go Wrong</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Two-fundamental-suggestions-for-debug" data-target="Two-fundamental-suggestions-for-debug">Two fundamental suggestions for debug</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#TIDE" data-target="TIDE">TIDE</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-4" data-target="Summary-4">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Fallacies-and-Pitfalls" data-target="Fallacies-and-Pitfalls">Fallacies and Pitfalls.</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Pitfall-Bulky-controller-actions-or-views" data-target="Pitfall-Bulky-controller-actions-or-views">Pitfall: Bulky controller actions or views.</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Overstuffing-the-session-hash" data-target="Overstuffing-the-session-hash">Overstuffing the session[] hash</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Adopting-a-framework-without-a-good-reason" data-target="Adopting-a-framework-without-a-good-reason">Adopting a framework without a good reason.</a></li></ul></li></ul></div>
+    
+    <script data-cfasync="false">
+    if (document.documentElement.classList.contains('js')) {
+        var tocBody = document.getElementById('tocInlineBody');
+        if (tocBody) tocBody.inert = true;
+    }
+    </script>
+</nav>
+
+<!-- Sidebar TOC (`toc` breakpoint and up; see --breakpoint-toc in source/css/_core/tokens.css) -->
+<nav id="tocSidebar" class="toc-sidebar hidden toc:block" aria-label="Contents" data-pagefind-ignore>
+    <div class="toc-sidebar-inner">
+        <p class="toc-sidebar-title">Contents</p>
+        <div class="toc-body"><ul class="toc-list"><li class="toc-item" data-level="0"><a class="toc-link" href="#Concepts" data-target="Concepts">Concepts</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#MVC-Architecture" data-target="MVC-Architecture">MVC Architecture</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary" data-target="Summary">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Models-Databses-and-Active-Record" data-target="Models-Databses-and-Active-Record">Models: Databses and Active Record</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Databases" data-target="Databases">Databases</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Resources-in-Rails" data-target="Resources-in-Rails">Resources in Rails</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Active-Record-as-Abstraction" data-target="Active-Record-as-Abstraction">Active Record as Abstraction</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Migration" data-target="Migration">Migration</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-1" data-target="Summary-1">Summary</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Overriding-convention-over-configuration" data-target="Overriding-convention-over-configuration">Overriding convention over configuration</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Routes-Controllers-Views" data-target="Routes-Controllers-Views">Routes, Controllers, Views</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Routes" data-target="Routes">Routes</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Controller" data-target="Controller">Controller</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Rails-Design" data-target="Rails-Design">Rails Design</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-2" data-target="Summary-2">Summary</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Metaprogramming-in-Rails" data-target="Metaprogramming-in-Rails">Metaprogramming in Rails</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Example" data-target="Example">Example</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Forms" data-target="Forms">Forms</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Tag-Helper" data-target="Tag-Helper">Tag Helper</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Parsing-the-user-submission-powered-by-rails" data-target="Parsing-the-user-submission-powered-by-rails">Parsing the user submission powered by rails</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Security" data-target="Security">Security</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#flash-and-session" data-target="flash-and-session">flash and session</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-3" data-target="Summary-3">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Debugging-When-Things-Go-Wrong" data-target="Debugging-When-Things-Go-Wrong">Debugging: When Things Go Wrong</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Two-fundamental-suggestions-for-debug" data-target="Two-fundamental-suggestions-for-debug">Two fundamental suggestions for debug</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#TIDE" data-target="TIDE">TIDE</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Summary-4" data-target="Summary-4">Summary</a></li></ul></li><li class="toc-item" data-level="0"><a class="toc-link" href="#Fallacies-and-Pitfalls" data-target="Fallacies-and-Pitfalls">Fallacies and Pitfalls.</a><ul class="toc-list toc-list-nested"><li class="toc-item" data-level="1"><a class="toc-link" href="#Pitfall-Bulky-controller-actions-or-views" data-target="Pitfall-Bulky-controller-actions-or-views">Pitfall: Bulky controller actions or views.</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Overstuffing-the-session-hash" data-target="Overstuffing-the-session-hash">Overstuffing the session[] hash</a></li><li class="toc-item" data-level="1"><a class="toc-link" href="#Adopting-a-framework-without-a-good-reason" data-target="Adopting-a-framework-without-a-good-reason">Adopting a framework without a good reason.</a></li></ul></li></ul></div>
+    </div>
+</nav>
+
+    
+
+    <div class="prose-shiro" data-pagefind-body>
+        <h1 id="Rails-as-a-Model-View-Controller-Framework"><a href="#Rails-as-a-Model-View-Controller-Framework" class="headerlink" title="Rails as a Model-View-Controller Framework"></a>Rails as a Model-View-Controller Framework</h1><h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><p>Good software systems reflect organization at multiple levels of granularity, often based on identifiable architectural patterns.</p>
+<p>Rails: Server Side of C&#x2F;S Arch, includes another architectural pattern MVC</p>
+<ul>
+<li>Models are stored in a relational database using the <code>Active Record</code> design pattern. </li>
+<li>Views use the Template View pattern to create HTML or JSON representations of resources.</li>
+<li>Controllers, follow Representational State Transfer, where each comtroller action describes a single self-contained operation on one resource.</li>
+</ul>
+<p>Rails can be used to build both</p>
+<ul>
+<li>SaaS apps designed for browser</li>
+<li>Microservices adapted to work in a service oriented archiecture</li>
+</ul>
+<p>Rails uses Ruby’s features of Metaprogramming and introspection to provide convention over configurration.</p>
+<ul>
+<li>Following certain conventions, so configuration can be avoided.</li>
+<li>Makes apps smaller and simpler to understand and maintain.</li>
+</ul>
+<p>Debugging SaaS requires understanding</p>
+<ul>
+<li>different places where someting could go wrong in the flow</li>
+<li>how to surface that information to the developer.</li>
+</ul>
+<h3 id="MVC-Architecture"><a href="#MVC-Architecture" class="headerlink" title="MVC Architecture"></a>MVC Architecture</h3><p>All well-written andnontriially-sized applications reflect some macroarchitectural organization, and can be thought of as ensembles of large communicating subsystems.</p>
+<p>Model-View-Controller (MVC) is such architectural pattern.</p>
+<p>An application organized according to MVC consists of three main types of code</p>
+<ul>
+<li>Models: data manipulated b the application<ul>
+<li>how to store, operate,change</li>
+<li>have a model for each tpe of entity</li>
+</ul>
+</li>
+<li>Views: presented to user, managge user interactable informaiton<ul>
+<li>serve as the interface between the user and the data</li>
+<li>Rails view is a special case called <code>template view</code>: staticmarkup interspersed with variable substitution, processed by a generic logic engine.</li>
+</ul>
+</li>
+<li>Controller: mediate the interaction in both directions<ul>
+<li>a specific controller action is invoked when user interacts with a view.</li>
+<li>each oltroller corresponds to one model.</li>
+<li>each controller action is handled by a particular Ruby method within that controller.</li>
+</ul>
+</li>
+</ul>
+<p>Alternatives</p>
+<ul>
+<li>Model-View-Presenter: an embellishment of MVP</li>
+<li>Model-View-ViewModel: provides two-way interaction between the model and the view so that pdates to the view automatically occur in the modal<ul>
+<li>while MVC, the focus is on reflecting model changes in the view.</li>
+</ul>
+</li>
+</ul>
+<p>MVC with Rails</p>
+<ul>
+<li>Rails is designed to support MVC apps, provides powerful base classes for MVC.</li>
+<li>Each Rails Model is a resource type whose instances are rows ina particular table of a Relational Database. Data in DB are exposed to ruby via a design pattern known as Active Record.</li>
+<li>Rails app can be viewed as a collection of restful resources, each has its own M, C and a set of Vs. Resources may or may not have relationships to each other. Foreigh keys in the database capture such relationships</li>
+<li>Rails is a server-side framework, provides a flexible way to map an HTTP route to code. </li>
+<li>Rails is designed for apps whose client was a Web Browser, and its view system is designed aaround generating HTML page.</li>
+<li>Rails embodies strong opimions about mechanical details for app implementation. It uses convention over configuration to save you from work.</li>
+</ul>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>MVC is one of a family of patterns for structuring interactive applications.</p>
+<p>Models: business logic<br>View: present information<br>Controller, Mediate interaction</p>
+<p>Every user action that can be performed on a web page is eventually handled by some controller acion, which consult the model and return a view.</p>
+<p>Rails heavily uses convention over configuration.</p>
+<h2 id="Models-Databses-and-Active-Record"><a href="#Models-Databses-and-Active-Record" class="headerlink" title="Models: Databses and Active Record"></a>Models: Databses and Active Record</h2><h3 id="Databases"><a href="#Databases" class="headerlink" title="Databases"></a>Databases</h3><p>For many SaaS apps, there are two key requirements for storing and manipulating persistent data</p>
+<ol>
+<li><strong>Structures</strong>: The app must be able to store different types of data items, or entities.<ul>
+<li>all instances of a particular type of entity share a common set of attributes</li>
+</ul>
+</li>
+<li><strong>Relationships</strong>: The app must be able to express relationships among different kinds of entities</li>
+</ol>
+<p>Relational Database Management Systema (RDBMS) emerged as elegant structured-storage systems.</p>
+<ul>
+<li>stores a collection of tables</li>
+</ul>
+<h3 id="Resources-in-Rails"><a href="#Resources-in-Rails" class="headerlink" title="Resources in Rails"></a>Resources in Rails</h3><p>In Rails, data is considered as a set of resources stored in a relational database.</p>
+<p>What is the correspondence between</p>
+<ul>
+<li>how resource is stored in the database?</li>
+<li>how it is represented in the framework&#x2F;language?</li>
+</ul>
+<p>What software mechanisms mediate between those two representations? What programmig abstractions do those mechanisms expose?</p>
+<p>Rails is <strong>Active Record Architectural Pattern</strong></p>
+<ul>
+<li>Rails Model is a class backed by a specific table of an RDBMS.</li>
+<li>An instance of the class corresponds to a single row in that table. The combination of table name and ‘id’ uniquely identifies a model instance.</li>
+<li>The model has built-in CRUD behaviors that directly operate on the database.</li>
+</ul>
+<h3 id="Active-Record-as-Abstraction"><a href="#Active-Record-as-Abstraction" class="headerlink" title="Active Record as Abstraction"></a>Active Record as Abstraction</h3><p>Many other SaaS frameworks provides a connection to a DBMS as an abstraction.</p>
+<p>Active Record gives each model the knowledge of how to CRUD instances of itself.</p>
+<ul>
+<li>logics talking to the database, serialization and deserialization attributes are implicitly included in eah model</li>
+</ul>
+<p>This is accomplished with : <code>ActiveRecord::Base</code></p>
+<ul>
+<li>Inherit from this base class provides all the necessary mach9inary to connect to the model to the database.</li>
+<li>Create, Read: Class methods defined on the collection of model istances as a whole</li>
+<li>Update, Delete: Instance methods define on a specific model instance</li>
+</ul>
+<p>Conventions</p>
+<ul>
+<li><code>app/models</code> contains one ruby code file per model.</li>
+<li>file name is determined by converting class name to lower_snake_case.</li>
+<li>the databse table name is determined by the class name to lower_snake_case and pluralizing it.<ul>
+<li>class name: <code>Movie</code> -&gt; file name: <code>app/models/movie.rb</code> -&gt; table name: <code>movies</code></li>
+</ul>
+</li>
+<li>the attributes of model and types are inferred from the names and types of the table’s columns</li>
+<li>the model automatically has class methods <code>new</code>, <code>create</code><ul>
+<li>expecting a hash of arguments</li>
+<li>whose keys match those attribute names</li>
+<li>whose values supply the attribute values for a instance to be created<ul>
+<li>in memory (new) </li>
+<li>immediately perissited in the database (create)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Migration"><a href="#Migration" class="headerlink" title="Migration"></a>Migration</h3><p>When a new Rails app is created from scratch, the automatically-generated file <code>config/database.yml</code> specifies how to connect to the databse.</p>
+<ul>
+<li>default: <code>SQLite</code></li>
+<li>can be modified to MySQL and Postgres</li>
+</ul>
+<p>We must create the table in the database ourselves with <strong>Migrations</strong></p>
+<ul>
+<li>migration is a ruby script describing a set of changes to tmake to the database schema.</li>
+<li>we use these scripts, instead of directly using SQL statements.</li>
+</ul>
+<p>Rails defines 3 <strong>environments</strong></p>
+<ul>
+<li>development: when coding</li>
+<li>test: only when running automated tests</li>
+<li>production: the live app containing real customer data</li>
+</ul>
+<p>They are 3 separate databases, but their schemata should be kept in sync. So it is more reasonable to write a single migration script.</p>
+<figure class="not-prose highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rails generate migration &lt;name&gt;</span></span><br><span class="line"><span class="comment"># name is a descriptive name for what the migration does.</span></span><br><span class="line">rails generate migration create_movies_table</span><br></pre></td></tr></table></figure>
+
+<p>Rails will create a Ruby file whose name consists of this name plus a timestamp. The file defines a migration class with yyour specified name that descends form <code>ActiveRecord::Migration</code> and has an empty change instance method.</p>
+<p>We need to fill in that method with the desired schema changes. Then, run <code>rake db:migrate</code>, which invokes the tool <code>rake</code> to run the task.</p>
+<p>We don’t need to specify the filename of migration, Rails tracks which migration have been applied to which environment’s databases.</p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Movie</span> &lt; <span class="title class_ inherited__">ActiveRecord::Base</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CreateMovies</span> &lt; <span class="title class_ inherited__">ActiveRecord::Migration</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">change</span></span><br><span class="line">        create_table <span class="string">&#x27;movies&#x27;</span> <span class="keyword">do</span> |<span class="params">t</span>|</span><br><span class="line">            t.string <span class="string">&#x27;title&#x27;</span></span><br><span class="line">            t.string <span class="string">&#x27;rating&#x27;</span></span><br><span class="line">            t.text   <span class="string">&#x27;description&#x27;</span></span><br><span class="line">            t.datetime <span class="string">&#x27;release_date&#x27;</span></span><br><span class="line">            <span class="comment"># this let rails automatically keep track of when movies are added or modified.</span></span><br><span class="line">            t.timestamps</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">more_movies = [</span><br><span class="line">    &#123;<span class="symbol">:title</span> =&gt; <span class="string">&#x27;Aladdin&#x27;</span>, <span class="symbol">:rating</span> =&gt; <span class="string">&#x27;G&#x27;</span>, <span class="symbol">:release_date</span> =&gt; <span class="string">&#x27;25-Nov-1992&#x27;</span>&#125;</span><br><span class="line">]</span><br><span class="line">more_movies.each <span class="keyword">do</span> |<span class="params">movie</span>| </span><br><span class="line">    <span class="title class_">Movie</span>.create(movie)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h3><p>Rails implementation of ActiveRecord uses convention over configuration to infer database table names from the names of model classes, and to infer the names and types of the columns associated with a given kind of model</p>
+<p>Basic Activercord support focuses on the CRUD actions</p>
+<p>Every model instance saved in the database recceives an ID number unique within its table called the primary key, whose attribute name is <code>id</code> and which is never “recycles”. The combination of table name and <code>id</code> uniquely identifies a model instance stored in the database, and is therefore how objects are usually referenced in RESTful routes</p>
+<p>changing the database schema including creating the tables needed by your models is accomplished by creating and running migrations. Rails itself tracks which migrations have been applied in each of the three environments: development, production, testing</p>
+<p>If we run the code directly without migration, error will occur because the model cannot find its corresponding database table.</p>
+<h3 id="Overriding-convention-over-configuration"><a href="#Overriding-convention-over-configuration" class="headerlink" title="Overriding convention over configuration"></a>Overriding convention over configuration</h3><p>Though Convention over Configuration is great, but sometimes we need to override it.</p>
+<ul>
+<li>integrating rails app with a non-rails legacy app</li>
+<li>friedlier attr names than those given by taking the names of the table columns.</li>
+</ul>
+<p>All the defaults can be overriden.</p>
+<h2 id="Routes-Controllers-Views"><a href="#Routes-Controllers-Views" class="headerlink" title="Routes, Controllers, Views"></a>Routes, Controllers, Views</h2><h3 id="Routes"><a href="#Routes" class="headerlink" title="Routes"></a>Routes</h3><p>The app will receive a request in the form of an HTTP route. So the app should determine which code in the app should be invoked to handle that route.</p>
+<p>Rails provides a flexible routing subsystem that maps routes to specific Ruby methods in each controller: <code>config/routes.rb</code></p>
+<p>Though we can define any routes we like, but we would like to follow the RESTful conventions</p>
+<p>For each of the resources, we can define 7 different kinds of routes.</p>
+<ul>
+<li>CRUDI has only 5, why 7?<ul>
+<li>for we not only need to provide information, but also need to collect information from user with forms.</li>
+<li>new, edit collects information</li>
+<li>create, update operates on the resource</li>
+</ul>
+</li>
+<li>How does browsers generate requrests other than GET and POST?<ul>
+<li>Browswers only implement GET and POST.</li>
+<li>Rails annotate the fomrs, so it allows the web browser to use POST for requests, and rails internally changes the request methods, so it appears that the browser generates PUT or DELETE</li>
+</ul>
+</li>
+<li>How are parameters in the route URI made availablel to the controller action<ul>
+<li>the routing subsystem prepares a hash called <code>params[]</code> that is made available to thecontroller.</li>
+<li>we can use <code>rake routes</code> to inspect the routes and params. then, we can use <code>params[:id]</code> to get the parameters.</li>
+</ul>
+</li>
+<li>What are route helper methods?<ul>
+<li>by convention over configuration, the route URIs will match the resource name, but we can override this behavior.</li>
+<li>we may want to have routes built around <code>film</code> rather than <code>movie</code>.</li>
+<li>however, any view in the app that references the <code>movie</code> route URIs would have to be changed to <code>film</code>.</li>
+<li>helpers can solve these problems: they decouple what the route does, from the actual route URI.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h3><p>Controller methods&#x2F;actions handles RESTful operation.</p>
+<p>Route: <code>resources &#39;movies&#39;</code></p>
+<ul>
+<li>expect <code>controllers/movies_controller.rb</code></li>
+<li>which defines <code>MovieController &lt; ApplicationController</code></li>
+<li>which defines instance methods: <code>index, new, create, show, edit, update, destroy</code></li>
+</ul>
+<p>Each of conroller actions follows a similar pattern</p>
+<ol>
+<li>Collect the informaiton including parameters, etc.</li>
+<li>Determine which ActiveRecord operations are necessary.</li>
+<li>Set instance variables for any informaiton that will need to be displayed in the view.</li>
+<li>Render a view that will be returned as the result of the overall request.<ul>
+<li><code>views/&lt;model-name&gt;/&lt;action&gt;.html.erb</code></li>
+</ul>
+</li>
+</ol>
+<p>View Templates are not legal HTML!</p>
+<ul>
+<li>lack an HTML DOCTYPE, including <code>&lt;html&gt;</code> element and its children <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code></li>
+</ul>
+<h3 id="Rails-Design"><a href="#Rails-Design" class="headerlink" title="Rails Design"></a>Rails Design</h3><p>To make the coding easier, the designer of rails violates OOP orthodoxy, making some instance variables of one class (MoviesController) be accessible to an object of a completely different class (ActionView::Base).</p>
+<p>Actually, rails creates an instance of ActionView::Base to handle rendering the view, and then uses Ruby’s metaprogramming facilities to “copy” all of the controller’s instance variables into that new object.</p>
+<ul>
+<li>The controller code is in <code>MoviesController</code> in <code>app/controllers/movies_controller.rb</code></li>
+<li>Your class inherits from <code>ApplicationController</code> in <code>app/controllers/application_controller.rb</code>.</li>
+<li>This class contains controller behaviors common to multiple controllers, and this class inherits from <code>ActionController::Base</code></li>
+</ul>
+<figure class="not-prose highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| ActionController::Base</span><br><span class="line">v</span><br><span class="line">| ApplicationController</span><br><span class="line">v</span><br><span class="line">O MoviesController, XxxController, etc.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Summary-2"><a href="#Summary-2" class="headerlink" title="Summary"></a>Summary</h3><p>Rials  provides various  helper methods that take advantage of the RESTful route URIs, including link_to for generating HTML links whose URIs refer to RESTful actions</p>
+<p>Convention over configuration is used to determine the file names for controllers and views corresponding to a given model. If the RESTful route helpers are used, as in resources :movies, convention over configuration also maps RESTful action names to controller action names </p>
+<p>Although the most common way to finish a controller action is to render the view corresponding to that action, for some actions such as create it’s more helpful to send the user back to a different view. Using redirect_to replaces the default view rendering with a redirection to a different action</p>
+<p>Although redirection triggers the browser to start a brand-new HTTP request, the flash can be used to save a small amount of information that will be made available ot that new request, for example, to display useful information to the user regarding the redirect</p>
+<h3 id="Metaprogramming-in-Rails"><a href="#Metaprogramming-in-Rails" class="headerlink" title="Metaprogramming in Rails"></a>Metaprogramming in Rails</h3><p>In Active Record, getter and setter instance methods for ActiveRecord models are defined at runtime by inspecting hte database schema.</p>
+<p>In the routing subsystem, route helpers such as new_movie+path are defined at rruntime based on the contents of <code>config/routes.rb</code></p>
+<p>Controller methods automatically knowing how to locate the default view to render is also an example of convention over configuration, there’s no new code that needs to be generated at runtime to support it.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app/controllers/movies_controller.rb</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MoviesController</span> &lt; <span class="title class_ inherited__">ApplicationController</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">index</span></span><br><span class="line">        <span class="variable">@movies</span> = <span class="title class_">Movie</span>.all</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">show</span></span><br><span class="line">        id = params[<span class="symbol">:id</span>]</span><br><span class="line">        <span class="variable">@movie</span> = <span class="title class_">Movie</span>.find(id)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<figure class="not-prose highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>All Movies<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&lt;%= link_to &#x27;Add Movie&#x27;, new_movie_path, :class =&gt; &#x27;btn btn-primary&#x27; %&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;movies&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-8&quot;</span>&gt;</span> Movie Title <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-2&quot;</span>&gt;</span> Rating <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-2&quot;</span>&gt;</span> Release Date <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &lt;%- @movies.each do |movie| %&gt;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-8&quot;</span>&gt;</span> &lt;%= link_to movie.title, movie_path(movie) %&gt; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-2&quot;</span>&gt;</span> &lt;%= movie.rating %&gt; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-2&quot;</span>&gt;</span> &lt;%= movie.release_date.strftime(&#x27;%F&#x27;) %&gt; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &lt;% end %&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Forms"><a href="#Forms" class="headerlink" title="Forms"></a>Forms</h2><p>We have already seen views that display data to the user, but not views that collect data from the user. The simplest mechanism for doing so is HTML forms.</p>
+<p>How do we display a fill-in form to the user?</p>
+<p>How is the information filled in by the user made available to the controller asction, so that it can be used in a create or update ActiveRecord call</p>
+<h3 id="Tag-Helper"><a href="#Tag-Helper" class="headerlink" title="Tag Helper"></a>Tag Helper</h3><ul>
+<li>rails by default defines a new action for this purpose, and can be found in a view <code>app/views/moviesnew.html.erb</code></li>
+<li>since a scenarrio that a form whose fields represent attributes of an ActiveRecord model object is so common, rails streamlines the precess by using for tag helper methods.</li>
+<li>these  helper methods generate HTML form tags whose names follow particular conventions that make them easy to parse by the controller actions.</li>
+</ul>
+<figure class="not-prose highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span> Create New Movie &lt;/ h2 &gt;</span><br><span class="line">&lt;%= form_tag movies_path , :method =&gt; :post, :class =&gt; &#x27;form&#x27; do %&gt;</span><br><span class="line">&lt;%= label :movie , :title, &#x27;Title&#x27;, :class =&gt; &#x27;form-control&#x27; %&gt;</span><br><span class="line">&lt;%= text_field :movie, :title, :class =&gt; &#x27;form-control&#x27; %&gt;</span><br><span class="line">&lt;%= label :movie, :rating, &#x27;Rating&#x27;, :class =&gt; &#x27;form-control&#x27; %&gt;</span><br><span class="line">&lt;%= select :movie, :rating, [&#x27;G&#x27;, &#x27;PG&#x27;, &#x27;PG-13&#x27;, &#x27;R&#x27;, &#x27;NC-17&#x27;], :class =&gt; &#x27;form-control&#x27; %&gt;</span><br><span class="line">&lt;%= label :movie, :release_date, &#x27;Released On&#x27; %&gt;</span><br><span class="line">&lt;%= date_select :movie, :release_date , :class =&gt; &#x27;form-control&#x27; %&gt;</span><br><span class="line">&lt;%= submit_tag &#x27;Save Changes&#x27; %&gt;</span><br><span class="line">&lt;% end %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>form_tag</code> helper takes two arguments</p>
+<ul>
+<li>the URI to which the form should submit. the RESTful route helper is used to generate that URI.</li>
+<li>a hash of optional arguments, one of which may be the HTTP method that should be used to submit the form.<ul>
+<li>POST is the default, GET is acceptable.</li>
+<li>If you use DELETE, PATCH, PUT, the browser would still use POST, but the app would interpret as the specified method.</li>
+</ul>
+</li>
+</ul>
+<p>Not all input field types are supported by the form tag helpers (like date), and in some cases you need to generate forms whose field don’t necessarily correspond to the attributes of some ActiveRecord object.</p>
+<p>tag hepers are not required, but since it is a common procedure, using them saves your work and results in less code.</p>
+<h3 id="Parsing-the-user-submission-powered-by-rails"><a href="#Parsing-the-user-submission-powered-by-rails" class="headerlink" title="Parsing the user submission powered by rails"></a>Parsing the user submission powered by rails</h3><p>Recall that <code>Movie.create</code> call takes a hash of attribute names and values to create a new movie instance in the database.</p>
+<p>The reason to use frm tag helpers is:</p>
+<ul>
+<li>the form fields created by the form tag helpers have names of the form <code>movie[title], movie[rating]</code>, and so on.</li>
+<li>hence, the value of <code>params[&#39;movie&#39;]</code> is exactly the hash of movie attribute names and values.</li>
+<li>as a result, we can directly pass along using <code>Movie.create!(params[&#39;movie&#39;])</code></li>
+</ul>
+<p>This is how a framework simplify the mechanical work of making the models, views, and controllers in a SaaS app work smoothly together.</p>
+<h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h3><p>“Mass assignment” of a whole set of attributes as occurs when we pass the hash <code>params[&#39;movie&#39;]</code> to an ActiveRecord call, is a mechanism that could be used by a malicious attacker, to set model attributes that shouldn’t be changable by regular users.</p>
+<p>Rails requires us to declare in the controller which elements of params are required to be present for a given action, and critically, which elements are permitted to be asigned to model attributes.</p>
+<p>This mechanism follows the <strong>principle of least privilege</strong> in computer security.</p>
+<figure class="not-prose highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MoviesController</span> &lt; <span class="title class_ inherited__">ApplicationController</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">create</span></span><br><span class="line">        params.<span class="keyword">require</span>(<span class="symbol">:movie</span>)</span><br><span class="line">        params[<span class="symbol">:movie</span>].permit(<span class="symbol">:title</span>, <span class="symbol">:rating</span>, <span class="symbol">:release_date</span>)</span><br><span class="line">        <span class="comment"># rest of the code.</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="flash-and-session"><a href="#flash-and-session" class="headerlink" title="flash and session"></a>flash and session</h3><p>What should we display when the <code>create</code> action completes?</p>
+<p>Convention over configuration suggest a view <code>app/view/movies/create.html.erb</code> that simply confims the movie was created, and provides a link or other mechanism to go back to the list of movies.</p>
+<p>But there is no nead to have a separate view just to do that.</p>
+<p>One alternative is: streamline the user experience by just redirectly the user to the newly-updated list of all movies, but arrange to display a confirmation message on the page.</p>
+<p>The DRY way to proceed is to have the controller action issue an <strong>HTTP redirect</strong>, telling the web browser to start an entirely new request for the Index action.</p>
+<ul>
+<li>This approach has a small problem: HTTP is statelens, in the new request, all of the variables associated with the prior create request are gone.</li>
+<li>That prevent us to display the confirmation message.</li>
+</ul>
+<p>To address this scenario, the <code>flash[]</code> is a sepcial object available in a controller tha quacks like a hash, but whose contensts persiste only from the current request to the next.</p>
+<ul>
+<li>we can only pass information to the very next action.</li>
+<li>conventions:<ul>
+<li><code>flash[:notice]</code> is used for informational messages.</li>
+<li><code>flash[:alert]</code> is used for messages about things going wrong.</li>
+</ul>
+</li>
+<li>using the flash conjunction with a redirect is a common combination, so the <code>redirect_to </code> method provide a special syntax for it.<ul>
+<li><code>redirect_to</code> movies_path, :notice &#x3D;&gt; “#{@movie.title} deleted.”</li>
+</ul>
+</li>
+</ul>
+<p>Actually, the flash is a special case of the more general <code>session[]</code> object, whose contents persiste “foreverl” across requests from the same browser (until cleared manually)</p>
+<h3 id="Summary-3"><a href="#Summary-3" class="headerlink" title="Summary"></a>Summary</h3><p>When creating a form you specify the controller action that will receive the form submission by passing <code>form_tag</code> the appropriate RESTful URI and HTTP method (as displayed by <code>rake routes</code>).</p>
+<p>It’s convenient, but not required, to use RESTful URI helpers like <code>movies_path</code> and <code>edit_movie_path</code> rather than creating the URIs manually.</p>
+<p>When the form is submitted, the controller action can inspect <code>params[]</code>, whose keys are the form field names and hose values are the user-supplied contents of the field.</p>
+<p>If you use Rails from helpers, the field names are chose such that <code>params[:&lt;model&gt;]</code> is a hash whose keys and values are the user-supplied values ofr an instance of “model”.</p>
+<p>When creating or updating a model object, for user friendliness, it’s common to simply <code>redirect_to</code> a view such as <code>index</code>, rather than redering a dedicated view.</p>
+<p>When finishing a controller action using a redirect, <code>flash[:notice]</code> or <code>flash[:alert]</code> canbe set to a message that will persist until the next request.</p>
+<p>It is conventional to modify the applicaiton layout to display such messages, so they get displayed no matter where the redirect points.</p>
+<p>Every conrtrollerr action either render a view or perform a redirect. Because HTTP is a request-reply protocol, every action must generate a reply. Also, we can only have one reply, which means it makes no sense to have both a render and a redirect.</p>
+<h2 id="Debugging-When-Things-Go-Wrong"><a href="#Debugging-When-Things-Go-Wrong" class="headerlink" title="Debugging: When Things Go Wrong"></a>Debugging: When Things Go Wrong</h2><p>Debugging is an annoying but invaluable skill.</p>
+<p>The sophistication of today’s software stacks makes it highly productive but with so many “moving parts”.</p>
+<p>It also means that things inevitably go wrong, especially when learning new languages and tools.</p>
+<p>Error happen because mistyping, a change in the environment or configuration, etc.</p>
+<h3 id="Two-fundamental-suggestions-for-debug"><a href="#Two-fundamental-suggestions-for-debug" class="headerlink" title="Two fundamental suggestions for debug"></a>Two fundamental suggestions for debug</h3><p>The best way to debug is to stop a bug in its tracks and fix it before it manifests.</p>
+<p>Two suggestions:</p>
+<ol>
+<li>use good tools including a text editorthat supports automatic indentation and syntax highliting.<ul>
+<li>helps avoid syntax errors.</li>
+</ul>
+</li>
+<li>use good colleagues. by always pair programming, we may save a huge amounts of time, because the partner can catch a silly bug before it became a work stopper.<ul>
+<li>even explaining your code to a pet helps.</li>
+</ul>
+</li>
+</ol>
+<h3 id="TIDE"><a href="#TIDE" class="headerlink" title="TIDE"></a>TIDE</h3><p>Debuggin gusually involves a gradient of activities:</p>
+<ul>
+<li>Trace the source of the error as closely as possible by really examing the error mesages and log files closely.</li>
+<li>Instrument the code near the error, such as by inserting statemtns to print intermediate values of variables, to see where things go off the rails.</li>
+<li>Debug interactively using the facilities provided in your language or framework, suchas <code>byebug</code> for Ruby.</li>
+<li>Explore question boards such as StackOverflow for similar bugs, and  if all else fails, post a question there and ask for help</li>
+</ul>
+<h3 id="Summary-4"><a href="#Summary-4" class="headerlink" title="Summary"></a>Summary</h3><p>Use a language-aware editor with syntax highlighting and automatic indentation to help find syntax errors.</p>
+<p>Instrument app by inserrting the output of debug or inspect into views, or by making htem the argument of raise, which will cause a runtime exception that will display a message as a web page.</p>
+<p>To debug using the interactive debugger, make sure you app’s Gemfile includes byebug and place the statement byebug at the point in your code where you want to break.</p>
+<h2 id="Fallacies-and-Pitfalls"><a href="#Fallacies-and-Pitfalls" class="headerlink" title="Fallacies and Pitfalls."></a>Fallacies and Pitfalls.</h2><h3 id="Pitfall-Bulky-controller-actions-or-views"><a href="#Pitfall-Bulky-controller-actions-or-views" class="headerlink" title="Pitfall: Bulky controller actions or views."></a>Pitfall: Bulky controller actions or views.</h3><p>Do not let logic code creep into views or violating MVC.</p>
+<h3 id="Overstuffing-the-session-hash"><a href="#Overstuffing-the-session-hash" class="headerlink" title="Overstuffing the session[] hash"></a>Overstuffing the <code>session[]</code> hash</h3><p>the session is packed into a cookie, which the HTTP specification limits to 4 KB.</p>
+<p>bulky sessions are a warning that your app’s action aren’t self-contained and therefore probably not RESTful, and may be difficult to use as part of a  SOA.</p>
+<h3 id="Adopting-a-framework-without-a-good-reason"><a href="#Adopting-a-framework-without-a-good-reason" class="headerlink" title="Adopting a framework without a good reason."></a>Adopting a framework without a good reason.</h3><p>Software breeds complexity.</p>
+<p>The more numerous and complex the libraries on which your app relies</p>
+<ul>
+<li>the more you’ll have to learn to write the app properly;</li>
+<li>the more resource-intensive the app will run</li>
+<li>the harder it will be to maintain</li>
+<li>the more exposure surface it will have for being attacked.</li>
+</ul>
+<p>Use the simplest framework that will solve most of your problems.</p>
+<p>The answer to the question “Should my app use framework X” should be NO by default, unless you can come up with good technical reasons why it should.</p>
+
+    </div>
+
+    <!-- Tags -->
+    
+
+    
+    <!-- Post Navigation: Hexo's page.prev = newer post, page.next = older post -->
+    <nav class="section-divider flex justify-between items-center text-sm md:text-base" aria-label="Post navigation">
+        
+        <a href="/2026/10/04/Saas-Module-05/" class="post-nav-link group text-left" title="Saas Module 05" aria-label="Newer post: Saas Module 05">
+             <span aria-hidden="true">&larr;</span>
+             <span class="post-nav-title">Saas Module 05</span>
+        </a>
+        
+
+        
+        <a href="/2026/09/05/Saas-Module-03/" class="post-nav-link group text-right" title="Saas Module 03" aria-label="Older post: Saas Module 03">
+            <span class="post-nav-title">Saas Module 03</span>
+            <span aria-hidden="true">&rarr;</span>
+        </a>
+        
+    </nav>
+
+
+    
+    
+</article>
+
+
+            </main>
+
+            <footer class="section-divider site-footer" data-pagefind-ignore>
+    <div class="site-footer-meta text-center text-sm text-text-chrome leading-relaxed">
+        <p>&copy; <span class="oldstyle-nums">2026</span> Akatsuki</p>
+        <p class="font-eng text-footnote tracking-wide opacity-90">Elegant theme by <a href="https://github.com/Acris/hexo-theme-shiro" target="_blank" rel="noopener noreferrer" class="link-chrome">Shiro</a> · Made by <a href="https://acris.me" target="_blank" rel="noopener noreferrer" class="link-chrome">Acris</a>
+                        with <span aria-label="love" title="love">❤️</span></p>
+    </div>
+</footer>
+
+        </div>
+
+        <!-- Note Text — decorative aside, not part of main content or footer -->
+        <aside class="mt-4 text-center" aria-hidden="true" role="presentation">
+            <p class="site-note font-title text-xs sm:text-sm text-text-subtle/70 tracking-note select-none" lang="ja">
+                白は、余白の名。
+            </p>
+        </aside>
+    </div>
+
+    
+    <button id="backToTop" type="button" class="back-to-top" data-visible="false" aria-label="Back to Top" hidden>
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+    
+    
+
+    <!-- Scripts -->
+    
+    
+    <script>
+        
+        (window.__shiro = window.__shiro || {}).i18n = window.__shiro.i18n || {};
+        
+        
+        
+        
+        (window.__shiro = window.__shiro || {}).i18n = window.__shiro.i18n || {};
+window.__shiro.i18n["clipboard"] = {"copied":"Copied","copy":"Copy code","failed":"Copy failed"};
+        (window.__shiro = window.__shiro || {})["clipboardScript"] = "/js/clipboard.min.js?v=add85817";
+        
+    </script>
+    
+    
+    <script defer src="/js/runtime.min.js?v=71138c68"></script>
+    
+    <script defer src="/js/clipboard-bootstrap.min.js?v=917b808f"></script>
+    
+    <script defer src="/js/toc.min.js?v=3e0cca47"></script>
+    
+    <script defer src="/js/progress.min.js?v=d01e3a23"></script>
+    
+    <script defer src="/js/back-to-top.min.js?v=ff36a748"></script>
+    
+    <script defer src="/js/theme-toggle.min.js?v=04b6578e"></script>
+    
+    <script defer src="/js/mobile-menu.min.js?v=40df95a6"></script>
+    
+    
+
+    
+
+</body>
+</html>
